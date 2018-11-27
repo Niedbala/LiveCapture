@@ -1,0 +1,8 @@
+C:\Users\pniedbala\Desktop\SSR\SSR_pliki_conf2\Full_config_full dual_frame_v0_1.xml
+C:\Users\pniedbala\Desktop\SSR\test_data\scalingTables\509_Maj_2018.tsv
+C:\Users\pniedbala\Desktop\SSR\test_data\instrumentSettings2017.xml
+C:\Users\pniedbala\Desktop\CAP_file\cap_test.cap
+C:\Users\pniedbala\Desktop\CAP_file\cap_ssr_test3_read.tsv
+1023
+192.168.28.1
+509

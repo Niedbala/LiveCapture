@@ -1,0 +1,25 @@
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.exe.config
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.exe.config
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.exe.config
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Release\CompareWithMaintenanceDb.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Release\CompareWithMaintenanceDb.pdb

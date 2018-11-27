@@ -1,0 +1,96 @@
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\WinformsExample.exe.config
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\WinformsExample.exe
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\WinformsExample.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\PacketDotNet.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\SharpPcap.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Common.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Launcher.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Reader.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\System.Threading.Tasks.Dataflow.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\SimpleInjector.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\netstandard.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Common.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Launcher.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\Smo.Reader.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\System.Threading.Tasks.Dataflow.xml
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\bin\Release\SimpleInjector.xml
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\SMO_LiveCaptureForm.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.CaptureForm.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.Chart_form.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.DeviceListForm.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.Settings.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.Set_chart_form.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.Warningform2.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.Warning_Form.resources
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.CopyComplete
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.exe
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\WinformsExample\obj\Release\WinformsExample.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\WinformsExample.exe.config
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\WinformsExample.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\WinformsExample.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\PacketDotNet.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\SharpPcap.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Launcher.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Reader.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\System.Threading.Tasks.Dataflow.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\SimpleInjector.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\netstandard.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Launcher.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Reader.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\System.Threading.Tasks.Dataflow.xml
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\SimpleInjector.xml
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.CaptureForm.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Chart_form.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.DeviceListForm.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Settings.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Set_chart_form.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Warningform2.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Warning_Form.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.CopyComplete
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\WinformsExample.exe.config
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\WinformsExample.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\WinformsExample.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\PacketDotNet.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\SharpPcap.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Launcher.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Reader.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\System.Threading.Tasks.Dataflow.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\SimpleInjector.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\netstandard.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Launcher.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\Smo.Reader.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\System.Threading.Tasks.Dataflow.xml
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Release\SimpleInjector.xml
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.CaptureForm.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Chart_form.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.DeviceListForm.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Settings.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Set_chart_form.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Warningform2.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.Warning_Form.resources
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\SMO_LiveCaptureForm.csproj.CopyComplete
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\obj\Release\WinformsExample.pdb

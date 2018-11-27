@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="reportTemplate.xml" />
+    <None Remove="smoConfig1.xml" />
+    <None Remove="smoConfig2.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="reportTemplate.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="smoConfig1.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="smoConfig2.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="PacketDotNet" Version="0.18.0" />
+    <PackageReference Include="SharpPcap" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Smo.Common.Public\Smo.Common.Public.csproj" />
+    <ProjectReference Include="..\Smo.Common\Smo.Common.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,16 @@
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\Smo.Common.Public\bin\x86\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\Smo.Common.Public\bin\x86\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\bin\x86\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\bin\x86\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\bin\x86\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\bin\x86\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\Smo.Common.Public\obj\x86\Debug\Smo.Common.Public.pdb

@@ -1,0 +1,19 @@
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\ScalingConverter\bin\x86\Release\ScalingConverter.exe.config
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\ScalingConverter\bin\x86\Release\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\ScalingConverter\bin\x86\Release\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\ScalingConverter\obj\x86\Release\ScalingConverter.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\ScalingConverter\obj\x86\Release\ScalingConverter.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\ScalingConverter\obj\x86\Release\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\SSR\SMOReader2\src\SmoReader\ScalingConverter\obj\x86\Release\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Release\ScalingConverter.exe.config
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Release\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Release\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Release\ScalingConverter.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Release\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Release\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Release\ScalingConverter.exe.config
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Release\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Release\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Release\ScalingConverter.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Release\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Release\ScalingConverter.pdb
