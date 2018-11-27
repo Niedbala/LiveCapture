@@ -1,0 +1,5 @@
+﻿################################################################################
+# Ten plik .gitignore został utworzony automatycznie przez Microsoft(R) Visual Studio.
+################################################################################
+
+/SMO_LiveCupture(solution)/.vs/SMO_LiveCapture/v15/Server/sqlite3/db.lock
