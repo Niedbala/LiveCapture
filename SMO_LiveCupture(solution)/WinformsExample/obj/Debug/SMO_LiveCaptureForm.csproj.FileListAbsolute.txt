@@ -70,3 +70,43 @@ C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCuptur
 C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Core.xml
 C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Data.xml
 C:\Users\pniedbala\Desktop\SMO_LiveCupture — kopia\Załącznik1\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Drawing.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\WinformsExample.exe.config
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\WinformsExample.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\WinformsExample.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\PacketDotNet.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Charting.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Core.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Data.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Drawing.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SharpPcap.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Common.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Launcher.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Reader.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SimpleInjector.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\netstandard.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Charting.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Core.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Data.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SciChart.Drawing.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Common.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Launcher.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\Smo.Reader.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\Debug\SimpleInjector.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\SMO_LiveCaptureForm.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.CaptureForm.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Chart_form.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.DeviceListForm.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Settings.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Set_chart_form.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Warningform2.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Warning_Form.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\SMO_LiveCaptureForm.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\SMO_LiveCaptureForm.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\SMO_LiveCaptureForm.csproj.CopyComplete
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.pdb

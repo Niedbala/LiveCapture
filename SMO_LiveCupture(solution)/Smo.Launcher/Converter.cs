@@ -3,6 +3,7 @@ using Smo.Common.Enums;
 using Smo.Common.Infrastructure;
 using Smo.Common.Models;
 using Smo.Common.Utils;
+using Smo.Common.Entities;
 using Smo.Launcher;
 using SmoReader.Utils;
 using System;
@@ -64,20 +65,21 @@ namespace Smo.Startup
 
     public class LiveConverter
     {
-        PacketDecoder _decoder { get; set; }
+        public PacketDecoder decoder { get; set; }
+        public List<ParameterDefinition> parameterDefinitions { get; set; }
 
         string _aircraftName { get; set; }
 
         public LiveConverter(string aircraftName, IAircraftDataProvider aircraftDataProvider, string instrumentSettingsXmlPath)
         {
             var cfgParser = new ConfigParser(aircraftDataProvider, instrumentSettingsXmlPath);
-            var parameterDefinitions = cfgParser.ReadConfigurationXml(aircraftName, DateTime.Now);
-            _decoder = new PacketDecoder(parameterDefinitions, aircraftDataProvider);
+            parameterDefinitions = cfgParser.ReadConfigurationXml(aircraftName, DateTime.Now);
+            decoder = new PacketDecoder(parameterDefinitions, aircraftDataProvider);
         }
 
         public PacketReadResult DecodePacket(RawCapture packet)
         {
-            var result = _decoder.DecodePacket(packet, _aircraftName);
+            var result = decoder.DecodePacket(packet, _aircraftName);
             return result;
         }
     }

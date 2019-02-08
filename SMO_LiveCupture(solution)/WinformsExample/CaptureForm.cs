@@ -18,6 +18,11 @@ using Smo.Common.Entities;
 using Smo.Common.Infrastructure;
 using Smo.Common.Public.Repositories;
 using SmoReader.Entities;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+
+
 
 namespace WinformsExample
 {
@@ -41,7 +46,9 @@ namespace WinformsExample
         public static List<DateTime> timearray_128 = new List<DateTime>();
         public static List<DateTime> timearray_256 = new List<DateTime>();
         public static int data_delay = 100;
-        List<int> occurance = new List<int>();
+        public static Dictionary<int, List<int>> occurance = new Dictionary<int, List<int>>();
+        public static List<ParameterDefinition> parametr_definition = new List<ParameterDefinition>();
+        public static List<int> repeat_occurance = new List<int>();
         /// <summary>
         /// When true the background thread will terminate
         /// </summary>
@@ -182,6 +189,10 @@ namespace WinformsExample
                 startStopToolStripButton.ToolTipText = "Select device to capture from";
             }
         }
+
+
+        
+
 
         private void StartCapture(int itemIndex)
         {
@@ -325,8 +336,10 @@ namespace WinformsExample
                     Console.WriteLine("BackgroundThread: ourQueue.Count is {0}", ourQueue.Count);
 
                      temp_exSam = new Dictionary<string, List<ValueType>>();
-                    
+                    var st = new Stopwatch();
+                    st.Start();
                     foreach (var packet in ourQueue)
+                    //Parallel.ForEach(ourQueue, (packet) =>
                     {
                         // Here is where we can process our packets freely without
                         // holding off packet capture.
@@ -337,59 +350,87 @@ namespace WinformsExample
                         //       cases
                         var result = converter.DecodePacket(packet);
                         
+
                         if (packetCount == 0)
                         {
                             packetCount++;
                             timearray.Add(result.AcraTime.Value);
-                            result.Samples.ForEach(s =>
-                            {
-                                if (temp_exSam.ContainsKey(s.Key))
-                                    temp_exSam?[s.Key].Add(s.Value);
-                                else
-                                    temp_exSam[s.Key] = new List<ValueType>() { s.Value };
-                            });
-                            foreach (var key in temp_exSam.Keys)
-                                {
-                                occurance.Add(temp_exSam[key].Count);
 
-                            }
-                            occurance = occurance.Distinct().ToList();
+                            //result.Samples.ForEach(s =>
+                            //{
+                            //    if (temp_exSam.ContainsKey(s.Key))
+                            //        temp_exSam?[s.Key].Add(s.Value);
+                            //    else
+                            //        temp_exSam[s.Key] = new List<ValueType>() { s.Value };
+                            //});
+
+            
+                            parametr_definition = converter.parameterDefinitions;
+                            parametr_definition.ForEach(x => 
+                            {
+                                if (repeat_occurance.Any(b => b == x.Occurrences) == false)
+                                {
+                                    if (occurance.ContainsKey(x.StreamID))
+                                    {
+                                        occurance?[x.StreamID].Add(x.Occurrences);
+                                        repeat_occurance.Add(x.Occurrences);
+                                    }
+
+
+
+
+                                    else
+                                    {
+                                        occurance[x.StreamID] = new List<int>() { x.Occurrences };
+                                        repeat_occurance.Add(x.Occurrences);
+                                    }
+
+                                }
+
+
+                                
+                            });
+                            //foreach(var item in occurance.Values)
+                            //{
+                            //    item.Distinct().ToList();
+                            //}
                             
+
                             break;
                         }
                         if (save_file == true)
                         {
                             captureFileWriter.Write(packet);
                             save_tsv = true;
-   
+
                         }
 
-                         
-                         temp_exSam = new Dictionary<string, List<ValueType>>();
+
+                        temp_exSam = new Dictionary<string, List<ValueType>>();
 
                         result.Samples.ForEach(s =>
                         {
                             if (extractedSamples.ContainsKey(s.Key))
-                               extractedSamples?[s.Key].Add(s.Value);
-                            
+                                extractedSamples?[s.Key].Add(s.Value);
+
 
                             else
                                 extractedSamples[s.Key] = new List<ValueType>() { s.Value };
-                                
+
 
                             if (temp_exSam.ContainsKey(s.Key))
                                 temp_exSam?[s.Key].Add(s.Value);
                             else
                                 temp_exSam[s.Key] = new List<ValueType>() { s.Value };
                         });
-                        
+
                         timearray.Add(result.AcraTime.Value);
                         //var timeat = result.AcraTime.Value.Ticks;
                         // var timetdt = result.TimeDeltaTicks;
-                        
+
                         if (timearray.Count() > 1)
                         {
-                            foreach (var time_divide in occurance)
+                            foreach (var time_divide in occurance[result.streamID])
                             {
                                 TimeSpan delta = TimeSpan.FromTicks((timearray[timearray.Count() - 1].Subtract(timearray[timearray.Count() - 2]).Ticks) / time_divide);
 
@@ -414,7 +455,7 @@ namespace WinformsExample
 
                                     }
 
-                                   
+
                                 }
                             }
                         }
@@ -431,14 +472,14 @@ namespace WinformsExample
                         */
 
                         int dataKeys = extractedSamples.Keys.Count();
-                        var packetWrapper = new PacketWrapper(packetCount, packet,dataKeys);
+                        var packetWrapper = new PacketWrapper(packetCount, packet, dataKeys);
                         this.BeginInvoke(new MethodInvoker(delegate
                         {
                             packetStrings.Enqueue(packetWrapper);
                         }
                         ));
 
-                        
+
 
                         packetCount++;
                         //zmien_label1(packetCount.ToString());
@@ -446,7 +487,7 @@ namespace WinformsExample
                         var len = packet.Data.Length;
                         Console.WriteLine("BackgroundThread: {0}:{1}:{2},{3} Len={4}",
                             time.Hour, time.Minute, time.Second, time.Millisecond, len);
-                    }
+                    };
                     
 
                     if (save_tsv == true && save_file == false)
@@ -498,7 +539,8 @@ namespace WinformsExample
                         }
 
                     }
-
+                    st.Stop();
+                    var time_em = st.ElapsedMilliseconds;
                 }
             }
         }

@@ -16,6 +16,7 @@ using SharpPcap.AirPcap;
 using SharpPcap.WinPcap;
 using PacketDotNet;
 using Smo.Startup;
+using Smo.Common.Entities;
 
 
 namespace WinformsExample
@@ -34,22 +35,40 @@ namespace WinformsExample
         public static int view_point = 0;
         public static Dictionary<string, List<ValueType>> extractedSamples = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, List<ValueType>> temp_exSam = new Dictionary<string, List<ValueType>>();
-        // public static List<DateTime> timearrayf = new List<DateTime>();
+        public static Dictionary<string, string> dic = new Dictionary<string, string>();
+        public static List<string> keys = new List<string>();
+        public static List<string> occurence = new List<string>();
         // public static List<DateTime> timearray_128f = new List<DateTime>();
         // public static List<DateTime> timearray_256f = new List<DateTime>();
         public static List<double> timearrayf = new List<double>();
         public static List<double> timearray_128f = new List<double>();
         public static List<double> timearray_256f = new List<double>();
+        public static Dictionary<string, List<double>> time_dictionatyf = new Dictionary<string, List<double>>();
         public static string grid = "1000";
+        private double axismax;
+        private double axismin;
+        private int axis_changed = 0;
+        private double axis1 = 0.0;
+        private double axis2 = 0.0;
+        private int packetCount;
+        public static List<ParameterDefinition> parametr_definition = new List<ParameterDefinition>();
+        public static List<int> repeat_occurance = new List<int>();
+        public static Dictionary<int, List<int>> occurance = new Dictionary<int, List<int>>();
         public Chart_form()
         {
             InitializeComponent();
             var sample = CaptureForm.extractedSamples;
-            List<string> keys = new List<string>(sample.Keys);
-
-            //dodawanie chasklistbox;
-            dodawanie_checklistbox(keys, checkedListBox1);
-            dodawanie_checklistbox(keys, checkedListBox2);
+            var parameter_def = CaptureForm.parametr_definition;
+            if (dic.Count == 0)
+            {
+                parameter_def.ForEach(x => keys.Add(x.ToString()));
+                parameter_def.ForEach(x => occurence.Add(x.Occurrences.ToString()));
+                //dodawanie chasklistbox;
+                dic = keys.Zip(occurence, (k, v) => new { k, v })
+                  .ToDictionary(x => x.k, x => x.v);
+            }
+            dodawanie_checklistbox(keys, occurence, checkedListBox1);
+            dodawanie_checklistbox(keys, occurence, checkedListBox2);
 
 
 
@@ -81,6 +100,10 @@ namespace WinformsExample
 
             SetZoom(chart2);
 
+            axismax = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
+
+            axismin = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
+
         }
         private void TimeHandler()
         {
@@ -107,7 +130,7 @@ namespace WinformsExample
 
         }
 
-        private void dodawanie_checklistbox(List<string> keys, CheckedListBox checkedListBox)
+        private void dodawanie_checklistbox(List<string> keys, List<string> occurences,CheckedListBox checkedListBox)
         {
             checkedListBox.Items.Clear();
 
@@ -116,7 +139,7 @@ namespace WinformsExample
             for (int i = keys.Count() - 1; i >= 0; i--)
             {
                 string[] split_key = keys[i].ToString().Split('_');
-                var name = "(" + CaptureForm.temp_exSam[keys[i]].Count.ToString() + ")" + split_key[split_key.Count() - 1];
+                var name = "(" + occurences[i] + ")" + split_key[split_key.Count() - 1];
 
                 if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
                 name_list.Add(name);
@@ -174,7 +197,7 @@ namespace WinformsExample
                 }
 
                 //chart1.Series["Series1"].Points.Clear();
-                List<string> keys = new List<string>(CaptureForm.extractedSamples.Keys);
+                //List<string> keys = new List<string>(CaptureForm.extractedSamples.Keys);
                 int probkowanie = 0;
                 for (int i = 0; i <= co_eksportowac1.Count() - 1; i++)
                     if (co_eksportowac1[i])
@@ -182,7 +205,7 @@ namespace WinformsExample
                         var probkowanie_key = 1;
                         try
                         {
-                            probkowanie_key = Int32.Parse(CaptureForm.temp_exSam[keys[i]].Count.ToString());//.Split(')').First().Split('(').Last();
+                            probkowanie_key = Int32.Parse(dic[keys[i]]);//.Split(')').First().Split('(').Last();
                         }
                         catch
                         {
@@ -205,7 +228,7 @@ namespace WinformsExample
                 for (int i = 0; i <= co_eksportowac2.Count() - 1; i++)
                     if (co_eksportowac2[i])
                     {
-                        var probkowanie_key = Int32.Parse(CaptureForm.temp_exSam[keys[i]].Count.ToString());//.Split(')').First().Split('(').Last();
+                        var probkowanie_key = Int32.Parse(dic[keys[i]]);//.Split(')').First().Split('(').Last();
                         if (probkowanie == 0)
                         { probkowanie = probkowanie_key; }
                         if (probkowanie != probkowanie_key) { warnform.ShowDialog(); break; }
@@ -290,11 +313,9 @@ namespace WinformsExample
         {
             if (stop_chart == false)
             {
-                var sw = new Stopwatch();
-                sw.Start();
+               
                 Changechart(chart1);
-                sw.Stop();
-                Console.WriteLine(sw.ElapsedMilliseconds.ToString());
+                
                 Changechart(chart2);
             }
 
@@ -313,19 +334,20 @@ namespace WinformsExample
             {
                 chart.Series[seria.ToString().Substring(7)].Points.Clear();
 
-
+                string name = seria.ToString().Split('-')[1];
                 var chartarray = CaptureForm.extractedSamples[seria.ToString().Substring(7)];
                 int iter = 0;
                 if (chartarray.Count() < chart_width)
                 { iter = 0; }
                 else { iter = chartarray.Count() - chart_width - 1; }
-                var time_divide = chartarray.Count() / (CaptureForm.timearray.Count() - 1);
-                if (time_divide < 3) { timebase = CaptureForm.timearray; }
-                if (time_divide > 120 && time_divide < 130) { timebase = CaptureForm.timearray_128; }
-                if (time_divide > 250 && time_divide < 260) { timebase = CaptureForm.timearray_256; }
+                var time_divide = dic[name];
+                //if (time_divide < 3) { timebase = CaptureForm.timearray; }
+                // if (time_divide > 120 && time_divide < 130) { timebase = CaptureForm.timearray_128; }
+                // if (time_divide > 250 && time_divide < 260) { timebase = CaptureForm.timearray_256; }
+                timebase = CaptureForm.time_dictionaty[time_divide];
 
-
-
+                var sw = new Stopwatch(); 
+                sw.Start();
                 for (int i = iter; i < chartarray.Count() - 1; ++i)
                 {
 
@@ -334,7 +356,8 @@ namespace WinformsExample
                     //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
                 }
                 //chart.Series[seria.ToString().Substring(7)].Points.Last().Label = chartarray[chartarray.Count() - 1].ToString();
-
+                sw.Stop();
+                Console.WriteLine(sw.ElapsedMilliseconds.ToString());
                 if (show_last_value)
                 {
                     try
@@ -356,8 +379,11 @@ namespace WinformsExample
 
 
         }
+        //kvar sw = new Stopwatch();
         public void Changechartfile(Chart chart)
         {
+
+
 
             var series = chart.Series.ToList();
 
@@ -366,15 +392,18 @@ namespace WinformsExample
             foreach (Series seria in series)
             {
                 chart.Series[seria.ToString().Substring(7)].Points.Clear();
-
+                string name = seria.ToString().Split('-')[1];
 
                 var chartarray = extractedSamples[seria.ToString().Substring(7)];
                 int iter = 0;
+                var time_divide = dic[name];
+                
+                timebase = time_dictionatyf[time_divide];
 
-                var time_divide = chartarray.Count() / (timearrayf.Count() - 1);
-                if (time_divide < 3) { timebase = timearrayf; }
-                if (time_divide > 120 && time_divide < 130) { timebase = timearray_128f; }
-                if (time_divide > 250 && time_divide < 260) { timebase = timearray_256f; }
+                //var time_divide = chartarray.Count() / (timearrayf.Count() - 1);
+                //if (time_divide < 3) { timebase = timearrayf; }
+                //if (time_divide > 120 && time_divide < 130) { timebase = timearray_128f; }
+                //if (time_divide > 250 && time_divide < 260) { timebase = timearray_256f; }
 
 
 
@@ -438,7 +467,7 @@ namespace WinformsExample
         {
 
         }
-
+            
         private void textBox1_Click(object sender, EventArgs e)
         {
 
@@ -489,7 +518,23 @@ namespace WinformsExample
                 new PacketArrivalEventHandler((_sender, _e) => device_OnPacketArrival(this, _e, converter, extractedSamples));
                 device.Capture();
                 var keys2 = new List<string>(extractedSamples.Keys);
+
                 dodawanie_checklistbox2(keys2, checkedListBox1);
+                if (dic.Count == 0)
+                {
+                    parametr_definition.ForEach(x => keys.Add(x.ToString()));
+                    parametr_definition.ForEach(x => occurence.Add(x.Occurrences.ToString()));
+                    //dodawanie chasklistbox;
+                    dic = keys.Zip(occurence, (k, v) => new { k, v })
+                      .ToDictionary(x => x.k, x => x.v);
+                }
+
+
+
+
+
+
+
 
 
             }
@@ -508,8 +553,41 @@ namespace WinformsExample
 
                 var result = converter.DecodePacket(e.Packet);
                 temp_exSam = new Dictionary<string, List<ValueType>>();
+                if (packetCount == 0)
+                {
+                    packetCount++;
 
-                result.Samples.ForEach(s =>
+
+
+
+                    parametr_definition = converter.parameterDefinitions;
+                    parametr_definition.ForEach(x =>
+                    {
+                        if (repeat_occurance.Any(b => b == x.Occurrences) == false)
+                        {
+                            if (occurance.ContainsKey(x.StreamID))
+                            {
+                                occurance?[x.StreamID].Add(x.Occurrences);
+                                repeat_occurance.Add(x.Occurrences);
+                            }
+
+
+
+
+                            else
+                            {
+                                occurance[x.StreamID] = new List<int>() { x.Occurrences };
+                                repeat_occurance.Add(x.Occurrences);
+                            }
+
+                        }
+
+
+
+                    });
+                }
+
+                    result.Samples.ForEach(s =>
                 {
                     if (extractedSamples.ContainsKey(s.Key))
                         extractedSamples?[s.Key].Add(s.Value);
@@ -540,25 +618,60 @@ namespace WinformsExample
                     }
                 }
                 catch { }
+                try
+                {
+                    if (timearrayf.Count() > 1)
+                    {
+                        foreach (var time_divide in occurance[result.streamID])
+                        {
+                            //TimeSpan delta = TimeSpan.FromTicks((timearrayf[timearrayf.Count() - 1].Subtract(timearrayf[timearrayf.Count() - 2]).Ticks) / time_divide);
+                            double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / time_divide;
+                            if (time_dictionatyf.ContainsKey(time_divide.ToString()))
+                            {
+                                time_dictionatyf?[time_divide.ToString()].Add(timearrayf[timearrayf.Count() - 2] + delta);
+                                for (int i = 0; i < time_divide; i++)
+                                {
+                                    time_dictionatyf[time_divide.ToString()].Add(time_dictionatyf[time_divide.ToString()].Last() + delta);
 
-                if (timearrayf.Count() > 1)
-                {
-                    double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / 128;
-                    timearray_128f.Add(timearrayf[timearrayf.Count() - 2] + delta);
-                    for (int i = 0; i < 127; i++)
-                    {
-                        timearray_128f.Add(timearray_128f.Last() + delta);
+                                }
+                            }
+
+
+                            else
+                            {
+                                time_dictionatyf[time_divide.ToString()] = new List<double>();
+                                time_dictionatyf[time_divide.ToString()].Add(timearrayf[timearrayf.Count() - 2] + delta);
+                                for (int i = 0; i < time_divide - 1; i++)
+                                {
+                                    time_dictionatyf[time_divide.ToString()].Add(time_dictionatyf[time_divide.ToString()].Last() + delta);
+
+                                }
+
+
+                            }
+                        }
                     }
                 }
-                if (timearrayf.Count() > 1)
-                {
-                    double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / 128;
-                    timearray_256f.Add(timearrayf[timearrayf.Count() - 2] + delta);
-                    for (int i = 0; i < 255; i++)
-                    {
-                        timearray_256f.Add(timearray_256f.Last() + delta);
-                    }
-                }
+                catch { }
+                
+                //if (timearrayf.Count() > 1)
+                //{
+                //    double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / 128;
+                //    timearray_128f.Add(timearrayf[timearrayf.Count() - 2] + delta);
+                //    for (int i = 0; i < 127; i++)
+                //    {
+                //        timearray_128f.Add(timearray_128f.Last() + delta);
+                //    }
+                //}
+                //if (timearrayf.Count() > 1)
+                //{
+                //    double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / 128;
+                //    timearray_256f.Add(timearrayf[timearrayf.Count() - 2] + delta);
+                //    for (int i = 0; i < 255; i++)
+                //    {
+                //        timearray_256f.Add(timearray_256f.Last() + delta);
+                //    }
+                //}
 
 
                 // int dataKeys = extractedSamples.Keys.Count();
@@ -599,18 +712,34 @@ namespace WinformsExample
         {
 
         }
-        bool axis_changed = false;
+       
         private void chart1_AxisViewChanged(object sender, ViewEventArgs e)
         {
-            if (axis_changed == true)
-            {
-                double ymax = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
+            double ymax = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
 
-                double ymin = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
+            double ymin = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
+            if (axis_changed != 0 && Math.Abs(ymax - axis1) > 0 && Math.Abs(ymin - axis2) > 0)
+            {
+               
                 int i = found_i((int)(ymax - ymin));
-                chart1.ChartAreas[0].AxisY.ScaleView.Zoom(round((int)ymax, i), round((int)ymin,i));
+
+                axismax = round((int)ymax, i);
+
+                axismin = round((int)ymin, i);
+
+                if (ymax != axismax || ymin != axismin)
+                { chart1.ChartAreas[0].AxisY.ScaleView.Zoom(axismin, axismax);
+                    axis1 = axismax;
+                    axis2 = axismin;
+                    }
+                //chart1.ChartAreas[0].AxisY.ScaleView.Zoom(11000, 48000);
             }
-            axis_changed = !axis_changed;
+            else
+            {
+                axis_changed++;
+                double axis1 = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
+                double axis2 = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
+            }
         }
         private int found_i(int num)
         {
@@ -626,8 +755,10 @@ namespace WinformsExample
             } while (dalej);
             wynik = m * (int)(Math.Pow(10, i - 1));
 
-
-            return i;
+            if (i != 0)
+                return i - 1;
+            else
+                return 0;
         }
 
         private int round(int num, int i)
@@ -637,6 +768,8 @@ namespace WinformsExample
             int temp = num / (int)(Math.Pow(10, i - 1));
             if(m > 5 * (int)(Math.Pow(10, i - 2)))
             wynik = (temp + 1) * (int)(Math.Pow(10, i - 1));
+            else
+            wynik = (temp ) * (int)(Math.Pow(10, i - 1));
 
             return wynik;
         }
@@ -644,6 +777,11 @@ namespace WinformsExample
         private void chart1_AxisViewChanging(object sender, ViewEventArgs e)
         {
 
+
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
         }
     }

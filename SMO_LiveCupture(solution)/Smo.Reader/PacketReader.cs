@@ -23,7 +23,7 @@ namespace SmoReader
         /// Packets Below this date will be IGNORED
         /// </summary>
         public DateTime CutoffDate { get; set; }
-        List<ParameterDefinition> _parameterDefinitions { get; set; }
+       List<ParameterDefinition> _parameterDefinitions { get; set; }
         
         private string _cachedAircraftName = null;
 
@@ -102,10 +102,15 @@ namespace SmoReader
                 var AcraKamSeconds =
                     BitConverter.ToInt32(
                         encapsulatedPacket.PayloadData.Skip(16).Take(4).Reverse().ToArray(), 0);
+                
                 var stream_ID = 
                     BitConverter.ToInt32(
                         encapsulatedPacket.PayloadData.Skip(4).Take(4).Reverse().ToArray(), 0);
+                
+
+
                 if (stream_ID > 100) { stream_ID = 1; }
+                result.streamID = stream_ID;
                 var AcraKamNanoSeconds =
                     BitConverter.ToInt32(
                         encapsulatedPacket.PayloadData.Skip(20).Take(4).Reverse().ToArray(), 0);
@@ -153,8 +158,8 @@ namespace SmoReader
                 //get samples per parameter
                 _parameterDefinitions.ForEach(parameterDefinition =>
                 {
-                    //if (parameterDefinition.StreamID == stream_ID)
-                   // {
+                    if (parameterDefinition.StreamID == stream_ID)
+                    {
                         var offset = parameterDefinition.OffsetBytes;
                         var size = (parameterDefinition.SizeInBits / 8);
                         if (parameterDefinition.Occurrences == 0)
@@ -190,7 +195,7 @@ namespace SmoReader
                             }
 
                         }
-                   // }
+                    }
                 });
 
                 result.IsSuccess = true;

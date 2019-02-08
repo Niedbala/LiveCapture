@@ -14,7 +14,7 @@ namespace SmoReader
         public ReadErrorFlags Flags = new ReadErrorFlags();
 
         public string Message { get; set; }
-
+        public int streamID { get; set; }
         //taken directly from ethernet packet header
         public DateTime? EthernetTime = null;
         public long? TimeDeltaTicks = null;

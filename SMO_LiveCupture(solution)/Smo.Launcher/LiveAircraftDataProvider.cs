@@ -12,12 +12,14 @@ namespace Smo.Launcher
     {
         public string _aircraftName { get; set; }
         public string _configXmlContent { get; set; }
+        
         public string _scalingTsvContent { get; set; }
 
         public LiveAircraftDataProvider(string aircraftName, string configXmlPath, string scalingTsvPath)
         {
             _aircraftName = aircraftName;
             _configXmlContent = File.ReadAllText(configXmlPath);
+            
             _scalingTsvContent = File.ReadAllText(scalingTsvPath);
         }
 
