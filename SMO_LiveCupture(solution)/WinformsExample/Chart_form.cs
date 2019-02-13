@@ -17,6 +17,7 @@ using SharpPcap.WinPcap;
 using PacketDotNet;
 using Smo.Startup;
 using Smo.Common.Entities;
+using System.IO;
 
 
 namespace WinformsExample
@@ -34,6 +35,8 @@ namespace WinformsExample
         Warningform2 warnform2 = new Warningform2();
         public static int view_point = 0;
         public static Dictionary<string, List<ValueType>> extractedSamples = new Dictionary<string, List<ValueType>>();
+        public static Dictionary<string, List<ValueType>> extractedPartOfSamples= new Dictionary<string, List<ValueType>>();
+        public static Dictionary<string, List<ValueType>> extractedSamples2 = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, List<ValueType>> temp_exSam = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, string> dic = new Dictionary<string, string>();
         public static List<string> keys = new List<string>();
@@ -41,6 +44,7 @@ namespace WinformsExample
         // public static List<DateTime> timearray_128f = new List<DateTime>();
         // public static List<DateTime> timearray_256f = new List<DateTime>();
         public static List<double> timearrayf = new List<double>();
+        public static List<double> timearrayf2 = new List<double>();
         public static List<double> timearray_128f = new List<double>();
         public static List<double> timearray_256f = new List<double>();
         public static Dictionary<string, List<double>> time_dictionatyf = new Dictionary<string, List<double>>();
@@ -159,7 +163,29 @@ namespace WinformsExample
             for (int i = keys.Count() - 1; i >= 0; i--)
             {
                 string[] split_key = keys[i].ToString().Split('_');
+                
                 var name = "(" + extractedSamples[keys[i]].Count.ToString() + ")" + split_key[split_key.Count() - 1];
+
+                if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
+                name_list.Add(name);
+                checkedListBox.Items.Insert(0, name);
+            }
+
+
+
+        }
+
+        private void dodawanie_checklistbox3(List<string> keys, CheckedListBox checkedListBox)
+        {
+            checkedListBox.Items.Clear();
+
+            List<string> name_list = new List<string>();
+
+            for (int i = keys.Count() - 1; i >= 0; i--)
+            {
+                string[] split_key = keys[i].ToString().Split('_');
+
+                var name = "(" + extractedSamples2[keys[i]].Count.ToString() + ")" + split_key[split_key.Count() - 1];
 
                 if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
                 name_list.Add(name);
@@ -247,7 +273,7 @@ namespace WinformsExample
             catch { }
         }
 
-        private void StartChart_file()
+        private void StartChart_file(Chart chart1, CheckedListBox checkedListBox1, Dictionary<string, List<ValueType>> extractedSamples)
         {
 
             if (grid == "None") { chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false; }
@@ -259,7 +285,7 @@ namespace WinformsExample
             else { chart2.ChartAreas[0].AxisX.MajorGrid.Interval = Int64.Parse(grid); }
 
             chart1.Series.Clear();
-            chart2.Series.Clear();
+            
             List<bool> co_eksportowac1 = new List<bool>();
 
             for (int i = 0; i < checkedListBox1.Items.Count; i++)
@@ -380,7 +406,7 @@ namespace WinformsExample
 
         }
         //kvar sw = new Stopwatch();
-        public void Changechartfile(Chart chart)
+        public void Changechartfile(Chart chart, Dictionary<string, List<ValueType>> extractedSamples)
         {
 
 
@@ -453,10 +479,10 @@ namespace WinformsExample
             set_chart_form.Show();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
-        {
-            view_point = trackBar1.Value;
-        }
+        //private void trackBar1_Scroll(object sender, EventArgs e)
+        //{
+        //    view_point = trackBar1.Value;
+        //}
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -471,20 +497,67 @@ namespace WinformsExample
         private void textBox1_Click(object sender, EventArgs e)
         {
 
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-            openFileDialog1.ShowDialog();
+            //openFileDialog1.InitialDirectory = "c:\\";
+            //openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            //openFileDialog1.FilterIndex = 2;
+            //openFileDialog1.RestoreDirectory = true;
+            //openFileDialog1.ShowDialog();
 
-            textBox1.Text = openFileDialog1.FileName;
+            //textBox1.Text = openFileDialog1.FileName;
 
-        }
 
-        private void button1_Click(object sender, EventArgs e)
+            FolderBrowserDialog katalog = new FolderBrowserDialog();
+            using (StreamReader sr = new StreamReader("actual_settings\\path.txt"))
+            {
+
+                katalog.SelectedPath = sr.ReadLine();
+
+
+            }
+
+            katalog.ShowDialog();
+            var kat_sciezka = katalog.SelectedPath.ToString();
+            textBox1.Text = kat_sciezka;
+            using (StreamWriter sw = File.CreateText("actual_settings\\path.txt"))
+            {
+                sw.WriteLine(katalog.SelectedPath);
+            }
+            
+
+            if (kat_sciezka.Count() > 0)
+            {
+                textBox1.Text = kat_sciezka;
+                DirectoryInfo katalog2 = new DirectoryInfo(kat_sciezka);
+                try
+                {
+                    FileInfo[] pliki_test = katalog2.GetFiles(".cap");
+                }
+
+                catch (DirectoryNotFoundException ex)
+                {
+                    MessageBox.Show("Brak katalogu o podanej nazwie.", "UWAGA!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //this.Close(); //tak mozna zamknac okno
+                    return;
+                }
+
+
+                FileInfo[] pliki = katalog2.GetFiles();
+                comboBox1.Items.Clear();
+                comboBox1.Text = "";
+                comboBox1.Items.AddRange(pliki);
+
+            }
+            }
+
+            private void button1_Click(object sender, EventArgs e)
         {
+            if (comboBox1.SelectedItem == null)
+            {
+                MessageBox.Show("Wskaż plik", "UWAGA!", MessageBoxButtons.OK);
+                return;
+            }
             if (textBox1.Text == "")
             {
                 warnform2.ShowDialog(); return;
@@ -498,7 +571,7 @@ namespace WinformsExample
                 timearray_256f = new List<double>();
                 packetIndex = 0;
                 ICaptureDevice device;
-                string capFile = textBox1.Text;
+                string capFile = textBox1.Text + "\\" + comboBox1.SelectedItem.ToString();
                 try
                 {
                     // Get an offline device
@@ -699,8 +772,8 @@ namespace WinformsExample
 
         private void button2_Click(object sender, EventArgs e)
         {
-            StartChart_file();
-            Changechartfile(chart1);
+            StartChart_file(chart1, checkedListBox1, extractedSamples);
+            Changechartfile(chart1, extractedSamples);
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -783,6 +856,201 @@ namespace WinformsExample
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_Click(object sender, EventArgs e)
+        {
+
+            //OpenFileDialog openFileDialog1 = new OpenFileDialog();
+
+            //openFileDialog1.InitialDirectory = "c:\\";
+            //openFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            //openFileDialog1.FilterIndex = 2;
+            //openFileDialog1.RestoreDirectory = true;
+            //openFileDialog1.ShowDialog();
+
+            //textBox2.Text = openFileDialog1.FileName;
+
+            FolderBrowserDialog katalog = new FolderBrowserDialog();
+            // katalog.SelectedPath = @"C:\Users\pniedbala\Desktop\SSR\test_data\305_509_fulltest\14_509_12102017";
+            using (StreamReader sr = new StreamReader("actual_settings\\path.txt"))
+            {
+
+                katalog.SelectedPath = sr.ReadLine();
+                
+
+            }
+
+            katalog.ShowDialog();
+            var kat_sciezka = katalog.SelectedPath.ToString();
+            textBox2.Text = kat_sciezka;
+            using (StreamWriter sw = File.CreateText("actual_settings\\path.txt"))
+            {
+                sw.WriteLine(katalog.SelectedPath);
+            }
+
+            if (kat_sciezka.Count() > 0)
+            {
+                textBox2.Text = kat_sciezka;
+                DirectoryInfo katalog2 = new DirectoryInfo(kat_sciezka);
+                try
+                {
+                    FileInfo[] pliki_test = katalog2.GetFiles(".cap");
+                }
+
+                catch (DirectoryNotFoundException ex)
+                {
+                    MessageBox.Show("Brak katalogu o podanej nazwie.", "UWAGA!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //this.Close(); //tak mozna zamknac okno
+                    return;
+                }
+
+
+                FileInfo[] pliki = katalog2.GetFiles();
+                comboBox2.Items.Clear();
+                comboBox2.Text = "";
+                comboBox2.Items.AddRange(pliki);
+
+            }
+
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedItem == null)
+            {
+                MessageBox.Show("Wskaż plik", "UWAGA!", MessageBoxButtons.OK);
+                return;
+            }
+            if (textBox2.Text == "")
+            {
+                warnform2.ShowDialog(); return;
+
+            }
+            else
+            {
+                extractedSamples2 = new Dictionary<string, List<ValueType>>();
+                timearrayf2 = new List<double>();
+                time_dictionatyf = new Dictionary<string, List<double>>();
+               
+                packetIndex = 0;
+                ICaptureDevice device;
+                string capFile = textBox2.Text + "\\" + comboBox2.SelectedItem.ToString() ;
+                try
+                {
+                    // Get an offline device
+                    device = new CaptureFileReaderDevice(capFile);
+
+                    // Open the device
+                    device.Open();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Caught exception when opening file" + ex.ToString());
+                    return;
+                }
+                //var converter = Converter.BuildLiveConverter(CaptureForm.aircraftname, CaptureForm.path_configxml, CaptureForm.path_scalingtable, CaptureForm.path_instrumentsetting);
+                var converter = Converter.BuildLiveConverter(CaptureForm.aircraftname, CaptureForm.path_configxml, CaptureForm.path_scalingtable, CaptureForm.path_instrumentsetting);
+                device.OnPacketArrival +=
+                new PacketArrivalEventHandler((_sender, _e) => device_OnPacketArrival(this, _e, converter, extractedSamples2));
+                device.Capture();
+                var keys2 = new List<string>(extractedSamples2.Keys);
+
+                dodawanie_checklistbox3(keys2, checkedListBox2);
+                if (dic.Count == 0)
+                {
+                    parametr_definition.ForEach(x => keys.Add(x.ToString()));
+                    parametr_definition.ForEach(x => occurence.Add(x.Occurrences.ToString()));
+                    //dodawanie chasklistbox;
+                    dic = keys.Zip(occurence, (k, v) => new { k, v })
+                      .ToDictionary(x => x.k, x => x.v);
+                }
+
+
+
+
+
+
+
+
+
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            StartChart_file(chart2,checkedListBox2,extractedSamples2);
+            Changechartfile(chart2, extractedSamples2);
+        }
+        public int FileCount = 0;
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
+            double min = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
+            var name = chart1.Series[0].ToString().Substring(7);
+            var div = dic[name];
+            var list_series = chart1.Series.ToList(); //.Single(s => s.Equals(max));
+            foreach (var series in list_series)
+            {
+                name = series.ToString().Substring(7);
+                for (int i = (int)Math.Round(min); i < max; i++)
+                {
+                    //extractedPartOfSamples.Add(extractedSamples[list_series[0].ToString().Substring(7)][i]);
+
+
+
+                    if (extractedPartOfSamples.ContainsKey(name))
+                        extractedPartOfSamples?[name].Add(extractedSamples[name][i]);
+                    else
+                        extractedPartOfSamples[name] = new List<ValueType>() { extractedSamples[name][i] };
+
+
+                }
+            }
+
+            string headerLine = "";
+            foreach (string key in extractedPartOfSamples.Keys)
+            {
+                headerLine = headerLine + key + "\t";
+            }
+            var keys_test = new List<string>(extractedPartOfSamples.Keys);
+            var test = keys_test[0];
+            int len = extractedPartOfSamples[test].Count;
+            FileCount++;
+            //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
+            var directory = Path.GetDirectoryName(CaptureForm.path_savetsv);
+            var name_file = directory +"\\" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file" + FileCount.ToString() + ".tsv";
+            using (StreamWriter sw = File.CreateText(name_file))
+            {
+                sw.WriteLine(headerLine);
+                for (int i = 0; i < len; i++)
+                {
+                    string valuesLine = "";
+                    foreach (string key in extractedPartOfSamples.Keys)
+                    {
+                        valuesLine = valuesLine + extractedPartOfSamples[key][i] + "\t";
+                    }
+                    sw.WriteLine(valuesLine);
+                }
+            }
+        }
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            if (chart1.Legends[0].Enabled) { chart1.Legends[0].Enabled = false; }
+            else { chart1.Legends[0].Enabled = true; }
+        }
+
+        private void toolStripButton6_Click(object sender, EventArgs e)
+        {
+            var axis_set = new Axis_setting();
+            axis_set.Show();
         }
     }
 

@@ -110,3 +110,4 @@ C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\SMO_LiveCaptureForm.csproj.CopyComplete
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.exe
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Axis_setting.resources

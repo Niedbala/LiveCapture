@@ -87,6 +87,12 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Axis_setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Axis_setting.Designer.cs">
+      <DependentUpon>Axis_setting.cs</DependentUpon>
+    </Compile>
     <Compile Include="CaptureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     <Compile Include="Warning_Form.Designer.cs">
       <DependentUpon>Warning_Form.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Axis_setting.resx">
+      <DependentUpon>Axis_setting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CaptureForm.resx">
       <DependentUpon>CaptureForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -182,6 +191,8 @@
     <None Include="Resources\rec5.png" />
     <None Include="Resources\graph.png" />
     <Content Include="PacketDotNet.dll" />
+    <None Include="Properties\icons\axis.jpg" />
+    <None Include="Properties\icons\legend.png" />
     <Content Include="Resources\stop_icon_disabled.png" />
   </ItemGroup>
   <ItemGroup>
