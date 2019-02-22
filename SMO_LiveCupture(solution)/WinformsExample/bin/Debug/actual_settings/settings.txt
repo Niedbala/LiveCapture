@@ -1,7 +1,7 @@
-C:\Users\pniedbala\Desktop\SSR\test_data\smoConfig2.xml
+C:\Users\pniedbala\Desktop\SSR\test_data\SSR_pliki_conf2\Full_config_full dual_frame_v0_1.xml
 C:\Users\pniedbala\Desktop\SSR\test_data\scalingTables\11.tsv
 C:\Users\pniedbala\Desktop\SSR\test_data\instrumentSettings2017.xml
-C:\Users\pniedbala\Desktop\SSR\CAP_file\cap_test.cap
+C:\Users\pniedbala\Desktop\tsv test\new_cap.cap
 C:\Users\pniedbala\Desktop\tsv test\test1.tsv
 1023
 192.168.28.1

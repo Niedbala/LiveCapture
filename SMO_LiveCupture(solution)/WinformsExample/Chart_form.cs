@@ -30,7 +30,7 @@ namespace WinformsExample
         private Thread Time;
         public static int chart_width = 8000;
         public static bool show_last_value = false;
-        public static bool show_legend = false;
+        public static bool show_legend = true;
         Warning_Form warnform = new Warning_Form();
         Warningform2 warnform2 = new Warningform2();
         public static int view_point = 0;
@@ -418,11 +418,22 @@ namespace WinformsExample
             foreach (Series seria in series)
             {
                 chart.Series[seria.ToString().Substring(7)].Points.Clear();
-                string name = seria.ToString().Split('-')[1];
+                var strings = seria.ToString().Split('-');
+                string name = strings[1];
+               // if (strings.Count() == 2) { name = strings[1]; }
+               // else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
+               // else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
 
                 var chartarray = extractedSamples[seria.ToString().Substring(7)];
                 int iter = 0;
-                var time_divide = dic[name];
+                string time_divide = "";
+                try {  time_divide = dic[name]; }
+                catch {
+                    try { time_divide = dic[name.Remove(strings[1].Length - 1)]; }
+                    catch {
+                        try { time_divide = dic[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+                        catch { time_divide = dic[strings[1] + '-' + strings[2]]; } }
+                }
                 
                 timebase = time_dictionatyf[time_divide];
 
@@ -670,10 +681,10 @@ namespace WinformsExample
                         extractedSamples[s.Key] = new List<ValueType>() { s.Value };
 
 
-                    if (temp_exSam.ContainsKey(s.Key))
-                        temp_exSam?[s.Key].Add(s.Value);
-                    else
-                        temp_exSam[s.Key] = new List<ValueType>() { s.Value };
+                    //if (temp_exSam.ContainsKey(s.Key))
+                    //    temp_exSam?[s.Key].Add(s.Value);
+                    //else
+                    //    temp_exSam[s.Key] = new List<ValueType>() { s.Value };
                 });
 
                 try
@@ -837,6 +848,7 @@ namespace WinformsExample
         private int round(int num, int i)
         {
             int wynik = 0;
+            if (i== 0) { num = 1; }
             int m = num % (int)(Math.Pow(10, i - 1));
             int temp = num / (int)(Math.Pow(10, i - 1));
             if(m > 5 * (int)(Math.Pow(10, i - 2)))
@@ -994,8 +1006,30 @@ namespace WinformsExample
             double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
             double min = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
             var name = chart1.Series[0].ToString().Substring(7);
-            var div = dic[name];
-            var list_series = chart1.Series.ToList(); //.Single(s => s.Equals(max));
+            //var div = dic[name];
+
+            //var strings = seria.ToString().Split('-');
+            //string name = strings[1];
+            //// if (strings.Count() == 2) { name = strings[1]; }
+            //// else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
+            //// else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
+
+            //var chartarray = extractedSamples[seria.ToString().Substring(7)];
+            //int iter = 0;
+            //string time_divide = "";
+            //try { time_divide = dic[name]; }
+            //catch
+            //{
+            //    try { time_divide = dic[name.Remove(strings[1].Length - 1)]; }
+            //    catch
+            //    {
+            //        try { time_divide = dic[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+            //        catch { time_divide = dic[strings[1] + '-' + strings[2]]; }
+            //    }
+
+
+
+                var list_series = chart1.Series.ToList(); //.Single(s => s.Equals(max));
             foreach (var series in list_series)
             {
                 name = series.ToString().Substring(7);
@@ -1052,6 +1086,40 @@ namespace WinformsExample
             var axis_set = new Axis_setting();
             axis_set.Show();
         }
+
+        private void toolStripButton7_Click(object sender, EventArgs e)
+        {
+            
+
+          
+
+            string headerLine = "";
+            foreach (string key in extractedSamples.Keys)
+            {
+                headerLine = headerLine + key + "\t";
+            }
+            var keys_test = new List<string>(extractedSamples.Keys);
+            var test = keys_test[0];
+            int len = extractedPartOfSamples[test].Count;
+            FileCount++;
+            //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
+            var directory = Path.GetDirectoryName(CaptureForm.path_savetsv);
+            var name_file = directory + "\\" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_allParamsfile" + FileCount.ToString() + ".tsv";
+            using (StreamWriter sw = File.CreateText(name_file))
+            {
+                sw.WriteLine(headerLine);
+                for (int i = 0; i < len; i++)
+                {
+                    string valuesLine = "";
+                    foreach (string key in extractedPartOfSamples.Keys)
+                    {
+                        valuesLine = valuesLine + extractedSamples[key][i] + "\t";
+                    }
+                    sw.WriteLine(valuesLine);
+                }
+            }
+        }
+    }
     }
 
 }

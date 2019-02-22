@@ -193,6 +193,8 @@
     <Content Include="PacketDotNet.dll" />
     <None Include="Properties\icons\axis.jpg" />
     <None Include="Properties\icons\legend.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\saveee.png" />
     <Content Include="Resources\stop_icon_disabled.png" />
   </ItemGroup>
   <ItemGroup>

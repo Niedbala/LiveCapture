@@ -490,31 +490,31 @@ namespace WinformsExample
                     };
                     
 
-                    if (save_tsv == true && save_file == false)
-                    {
-                        string headerLine = "";
-                        foreach (string key in extractedSamples.Keys)
-                        {
-                            headerLine = headerLine + key + "\t";
-                        }
-                        var keys_test = new List<string>(extractedSamples.Keys);
-                        var test = keys_test[0];
-                        int len = extractedSamples[test].Count;
-                        //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
-                        using (StreamWriter sw = File.CreateText(path_savetsv))
-                        {
-                            sw.WriteLine(headerLine);
-                            for (int i = 0; i < len; i++)
-                            {
-                                string valuesLine = "";
-                                foreach (string key in extractedSamples.Keys)
-                                {
-                                    valuesLine = valuesLine + extractedSamples[key][i] + "\t";
-                                }
-                                sw.WriteLine(valuesLine);
-                            }
-                        }
-                    }
+                    //if (save_tsv == true && save_file == false)
+                    //{
+                    //    string headerLine = "";
+                    //    foreach (string key in extractedSamples.Keys)
+                    //    {
+                    //        headerLine = headerLine + key + "\t";
+                    //    }
+                    //    var keys_test = new List<string>(extractedSamples.Keys);
+                    //    var test = keys_test[0];
+                    //    int len = extractedSamples[test].Count;
+                    //    //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
+                    //    using (StreamWriter sw = File.CreateText(path_savetsv))
+                    //    {
+                    //        sw.WriteLine(headerLine);
+                    //        for (int i = 0; i < len; i++)
+                    //        {
+                    //            string valuesLine = "";
+                    //            foreach (string key in extractedSamples.Keys)
+                    //            {
+                    //                valuesLine = valuesLine + extractedSamples[key][i] + "\t";
+                    //            }
+                    //            sw.WriteLine(valuesLine);
+                    //        }
+                    //    }
+                    //}
 
                     this.BeginInvoke(new MethodInvoker(delegate
                     {

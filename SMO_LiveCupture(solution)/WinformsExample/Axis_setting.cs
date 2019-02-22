@@ -38,5 +38,15 @@ namespace WinformsExample
 
             this.Close();
         }
+
+        private void Axis_setting_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = Chart_form.chart1.ChartAreas[0].AxisX.Minimum.ToString();
+            textBox3.Text = Chart_form.chart1.ChartAreas[0].AxisX.Maximum.ToString();
+            textBox6.Text = Chart_form.chart1.ChartAreas[0].AxisY.Minimum.ToString();
+            textBox5.Text = Chart_form.chart1.ChartAreas[0].AxisY.Maximum.ToString();
+            textBox2.Text = Chart_form.chart1.ChartAreas[0].AxisX.MajorGrid.Interval.ToString();
+            textBox4.Text = Chart_form.chart1.ChartAreas[0].AxisY.MajorGrid.Interval.ToString();
+        }
     }
 }

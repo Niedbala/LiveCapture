@@ -201,6 +201,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "Axis_setting";
             this.Text = "Axis_setting";
+            this.Load += new System.EventHandler(this.Axis_setting_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
