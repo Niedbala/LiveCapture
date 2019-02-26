@@ -1,4 +1,4 @@
-C:\Users\pniedbala\Desktop\SSR\test_data\SSR_pliki_conf2\Full_config_full dual_frame_v0_1.xml
+C:\Users\pniedbala\Desktop\SMST Mi8 dane proba silnika\SMST_hangar_03012019.xidml
 C:\Users\pniedbala\Desktop\SSR\test_data\scalingTables\11.tsv
 C:\Users\pniedbala\Desktop\SSR\test_data\instrumentSettings2017.xml
 C:\Users\pniedbala\Desktop\tsv test\new_cap.cap

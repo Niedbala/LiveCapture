@@ -58,6 +58,7 @@ namespace WinformsExample
         public static List<ParameterDefinition> parametr_definition = new List<ParameterDefinition>();
         public static List<int> repeat_occurance = new List<int>();
         public static Dictionary<int, List<int>> occurance = new Dictionary<int, List<int>>();
+        public static Dictionary<int, double> last_times = new Dictionary<int, double>();
         public Chart_form()
         {
             InitializeComponent();
@@ -318,7 +319,7 @@ namespace WinformsExample
                     chart1.Series.Add(keys[i]).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine; ;
                     chart1.Series[keys[i]].ToolTip = "x = {#VALX}" + '\r' + '\n' + "y = {#VALY}";
                     chart1.Series[keys[i]].XValueType = ChartValueType.Double;
-                    chart1.Series[keys[i]].IsXValueIndexed = true;
+                    //chart1.Series[keys[i]].IsXValueIndexed = true;
                     chart1.Series[keys[i]].SmartLabelStyle.Enabled = false;
                     chart1.Series[keys[i]].IsVisibleInLegend = show_legend;
                     //chart1.Series[keys[i]].IsValueShownAsLabel = true;
@@ -654,10 +655,6 @@ namespace WinformsExample
                                 occurance?[x.StreamID].Add(x.Occurrences);
                                 repeat_occurance.Add(x.Occurrences);
                             }
-
-
-
-
                             else
                             {
                                 occurance[x.StreamID] = new List<int>() { x.Occurrences };
@@ -665,7 +662,7 @@ namespace WinformsExample
                             }
 
                         }
-
+                        last_times = occurance.Keys.ToDictionary(w => w ,w=> 0.0);
 
 
                     });
@@ -686,46 +683,45 @@ namespace WinformsExample
                     //else
                     //    temp_exSam[s.Key] = new List<ValueType>() { s.Value };
                 });
+                // double[] last_times = new double[occurance.Count()];
+
 
                 try
                 {
-                    if (timearrayf.Count == 0)
+                    if (last_times[result.streamID] == 0.0)
                     {
-                        last_time = result.AcraTime.Value.TimeOfDay.TotalSeconds;
-                        timearrayf.Add(0);
+                        last_times[result.streamID] = result.AcraTime.Value.TimeOfDay.TotalSeconds;
+
 
                     }
-                    else
-                    {
-                        timearrayf.Add(result.AcraTime.Value.TimeOfDay.TotalSeconds - last_time);
 
-                    }
                 }
                 catch { }
                 try
-                {
-                    if (timearrayf.Count() > 1)
+                { 
+                    if (last_times[result.streamID] != 0.0)
                     {
                         foreach (var time_divide in occurance[result.streamID])
                         {
                             //TimeSpan delta = TimeSpan.FromTicks((timearrayf[timearrayf.Count() - 1].Subtract(timearrayf[timearrayf.Count() - 2]).Ticks) / time_divide);
-                            double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / time_divide;
+                            double delta = ( result.AcraTime.Value.TimeOfDay.TotalSeconds - last_times[result.streamID]) / time_divide;
                             if (time_dictionatyf.ContainsKey(time_divide.ToString()))
                             {
-                                time_dictionatyf?[time_divide.ToString()].Add(timearrayf[timearrayf.Count() - 2] + delta);
-                                for (int i = 0; i < time_divide; i++)
+                                
+                                for (int i = 0; i < time_divide ; i++)
                                 {
                                     time_dictionatyf[time_divide.ToString()].Add(time_dictionatyf[time_divide.ToString()].Last() + delta);
 
                                 }
+                                
                             }
 
 
                             else
                             {
                                 time_dictionatyf[time_divide.ToString()] = new List<double>();
-                                time_dictionatyf[time_divide.ToString()].Add(timearrayf[timearrayf.Count() - 2] + delta);
-                                for (int i = 0; i < time_divide - 1; i++)
+                                time_dictionatyf[time_divide.ToString()].Add(delta);
+                                for (int i = 0; i < time_divide - 1 ; i++)
                                 {
                                     time_dictionatyf[time_divide.ToString()].Add(time_dictionatyf[time_divide.ToString()].Last() + delta);
 
@@ -733,6 +729,7 @@ namespace WinformsExample
 
 
                             }
+                            last_times[result.streamID] = result.AcraTime.Value.TimeOfDay.TotalSeconds;
                         }
                     }
                 }
@@ -848,7 +845,7 @@ namespace WinformsExample
         private int round(int num, int i)
         {
             int wynik = 0;
-            if (i== 0) { num = 1; }
+            if (i== 0) { num = 1; i = 1; }
             int m = num % (int)(Math.Pow(10, i - 1));
             int temp = num / (int)(Math.Pow(10, i - 1));
             if(m > 5 * (int)(Math.Pow(10, i - 2)))
@@ -1001,6 +998,8 @@ namespace WinformsExample
             Changechartfile(chart2, extractedSamples2);
         }
         public int FileCount = 0;
+        private int time;
+
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
             double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
@@ -1100,7 +1099,7 @@ namespace WinformsExample
             }
             var keys_test = new List<string>(extractedSamples.Keys);
             var test = keys_test[0];
-            int len = extractedPartOfSamples[test].Count;
+            int len = extractedSamples[test].Count;
             FileCount++;
             //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
             var directory = Path.GetDirectoryName(CaptureForm.path_savetsv);
@@ -1111,7 +1110,7 @@ namespace WinformsExample
                 for (int i = 0; i < len; i++)
                 {
                     string valuesLine = "";
-                    foreach (string key in extractedPartOfSamples.Keys)
+                    foreach (string key in extractedSamples.Keys)
                     {
                         valuesLine = valuesLine + extractedSamples[key][i] + "\t";
                     }
@@ -1122,4 +1121,3 @@ namespace WinformsExample
     }
     }
 
-}
