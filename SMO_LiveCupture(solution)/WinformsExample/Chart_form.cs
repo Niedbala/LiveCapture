@@ -791,9 +791,22 @@ namespace WinformsExample
 
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
+            //double yOffset = GetYOffset(chart1, e.X);
+            Point mousePoint = new Point(e.X, e.Y);
+            chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, false);
+            chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
+
+            try {
+                //chart1.ChartAreas[0].CursorX.SelectionStart
+                double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+                double xValue = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                label4.Text = String.Concat(String.Concat(Math.Round(xValue, 2).ToString(), " , "), Math.Round(yValue, 2).ToString());
+                label4.Location = new Point(10, e.Y);
+            }
+            catch { }
 
         }
-       
+        
         private void chart1_AxisViewChanged(object sender, ViewEventArgs e)
         {
             double ymax = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
@@ -1082,7 +1095,7 @@ namespace WinformsExample
 
         private void toolStripButton6_Click(object sender, EventArgs e)
         {
-            var axis_set = new Axis_setting();
+            var axis_set = new Axis_setting(chart1);
             axis_set.Show();
         }
 
