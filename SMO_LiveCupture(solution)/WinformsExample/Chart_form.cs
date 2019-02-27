@@ -1088,18 +1088,39 @@ namespace WinformsExample
 
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
+
+// var sortedDict = from entry in dic orderby entry.Value ascending select entry;
+            dic = dic.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+            var time_dictionat_new = new Dictionary<string, List<ValueType>>();
             
 
-          
+            foreach (var x in time_dictionatyf)
+            {
+                foreach(var item in time_dictionatyf[x.Key])
+                {
+                    var it = (ValueType)item;
+
+                    if (time_dictionat_new.ContainsKey("TimewithOccure" + x.Key))
+                        time_dictionat_new?["TimewithOccure" + x.Key].Add(it);
+                    else
+                        time_dictionat_new["TimewithOccure" + x.Key] = new List<ValueType>() { it };
+                }
+            }
+
+
+           
+            
+            var extractedSamplesWithTime = extractedSamples.Concat(time_dictionat_new).ToDictionary(x => x.Key, x => x.Value);
+            var extractedSamplesSorted = extractedSamplesWithTime.OrderByDescending(x => x.Value.Count).ToDictionary(x => x.Key, x => x.Value);
 
             string headerLine = "";
-            foreach (string key in extractedSamples.Keys)
+            foreach (string key in extractedSamplesSorted.Keys)
             {
                 headerLine = headerLine + key + "\t";
             }
-            var keys_test = new List<string>(extractedSamples.Keys);
+            var keys_test = new List<string>(extractedSamplesSorted.Keys);
             var test = keys_test[0];
-            int len = extractedSamples[test].Count;
+            int len = extractedSamplesSorted[test].Count;
             FileCount++;
             //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
             var directory = Path.GetDirectoryName(CaptureForm.path_savetsv);
@@ -1110,9 +1131,13 @@ namespace WinformsExample
                 for (int i = 0; i < len; i++)
                 {
                     string valuesLine = "";
-                    foreach (string key in extractedSamples.Keys)
+                    foreach (string key in extractedSamplesSorted.Keys)
                     {
-                        valuesLine = valuesLine + extractedSamples[key][i] + "\t";
+                        try
+                        {
+                            valuesLine = valuesLine + extractedSamplesSorted[key][i] + "\t";
+                        }
+                        catch { break; }
                     }
                     sw.WriteLine(valuesLine);
                 }
