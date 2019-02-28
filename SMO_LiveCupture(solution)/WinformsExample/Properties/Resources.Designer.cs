@@ -63,6 +63,26 @@ namespace WinformsExample.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _10_MAXmin_logo {
+            get {
+                object obj = ResourceManager.GetObject("10.MAXmin-logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _10_MAXmin_logo2 {
+            get {
+                object obj = ResourceManager.GetObject("10.MAXmin-logo2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap axis {
             get {
                 object obj = ResourceManager.GetObject("axis", resourceCulture);

@@ -195,6 +195,8 @@
     <None Include="Properties\icons\legend.png" />
     <None Include="Resources\save.png" />
     <None Include="Resources\saveee.png" />
+    <None Include="Resources\10.MAXmin-logo.jpg" />
+    <None Include="Resources\10.MAXmin-logo2.jpg" />
     <Content Include="Resources\stop_icon_disabled.png" />
   </ItemGroup>
   <ItemGroup>

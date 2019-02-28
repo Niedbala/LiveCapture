@@ -319,7 +319,7 @@ namespace WinformsExample
                     chart1.Series.Add(keys[i]).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine; ;
                     chart1.Series[keys[i]].ToolTip = "x = {#VALX}" + '\r' + '\n' + "y = {#VALY}";
                     chart1.Series[keys[i]].XValueType = ChartValueType.Double;
-                    //chart1.Series[keys[i]].IsXValueIndexed = true;
+                    chart1.Series[keys[i]].IsXValueIndexed = true;
                     chart1.Series[keys[i]].SmartLabelStyle.Enabled = false;
                     chart1.Series[keys[i]].IsVisibleInLegend = show_legend;
                     //chart1.Series[keys[i]].IsValueShownAsLabel = true;
@@ -798,9 +798,14 @@ namespace WinformsExample
 
             try {
                 //chart1.ChartAreas[0].CursorX.SelectionStart
+                
+                int xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                 double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
-                double xValue = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                label4.Text = String.Concat(String.Concat(Math.Round(xValue, 2).ToString(), " , "), Math.Round(yValue, 2).ToString());
+                var list_series = chart1.Series.ToList();
+                var name = list_series[0].ToString().Substring(7);
+                //.Single(s => s.Equals(max));
+                var YVAL = extractedSamples[name][xValue];
+                label4.Text = String.Concat(String.Concat(xValue.ToString(), " , "), YVAL.ToString());
                 label4.Location = new Point(10, e.Y);
             }
             catch { }
@@ -1015,6 +1020,7 @@ namespace WinformsExample
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
+            //chart1.Series[keys[i]].IsXValueIndexed = true;
             double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
             double min = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
             var name = chart1.Series[0].ToString().Substring(7);
@@ -1041,10 +1047,12 @@ namespace WinformsExample
 
 
 
-                var list_series = chart1.Series.ToList(); //.Single(s => s.Equals(max));
+                var list_series = chart1.Series.ToList();
+            
             foreach (var series in list_series)
             {
                 name = series.ToString().Substring(7);
+                
                 for (int i = (int)Math.Round(min); i < max; i++)
                 {
                     //extractedPartOfSamples.Add(extractedSamples[list_series[0].ToString().Substring(7)][i]);
@@ -1155,6 +1163,17 @@ namespace WinformsExample
                     sw.WriteLine(valuesLine);
                 }
             }
+        }
+
+        private void toolStripButton8_Click(object sender, EventArgs e)
+        {
+            var list_series = chart1.Series.ToList();
+            var name = list_series[0].ToString().Substring(7);
+
+            var max = extractedSamples[name].Max();
+            var max_index = extractedSamples[name].ToList().IndexOf(max);
+            //chart1.ChartAreas[0].CursorX.SetCursorPosition()
+            //chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
         }
     }
     }
