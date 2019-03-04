@@ -59,6 +59,7 @@ namespace WinformsExample
         public static List<int> repeat_occurance = new List<int>();
         public static Dictionary<int, List<int>> occurance = new Dictionary<int, List<int>>();
         public static Dictionary<int, double> last_times = new Dictionary<int, double>();
+        public static int xValue;
         public Chart_form()
         {
             InitializeComponent();
@@ -385,19 +386,26 @@ namespace WinformsExample
                 //chart.Series[seria.ToString().Substring(7)].Points.Last().Label = chartarray[chartarray.Count() - 1].ToString();
                 sw.Stop();
                 Console.WriteLine(sw.ElapsedMilliseconds.ToString());
-                if (show_last_value)
+               
+                }
+            if (show_last_value)
+            {
+                try
                 {
-                    try
-                    {
-                        int which_point = (view_point * (chartarray.Count() - 10) / 1000) + 1;
-                        string[] split_key = seria.ToString().Split('_');
-                        chart.Series[seria.ToString().Substring(7)].LegendText = split_key[split_key.Count() - 1] + ";Val:" + Math.Round(chart.Series[seria.ToString().Substring(7)].Points[which_point].YValues[0]).ToString();
-                        //chart.Series[seria.ToString().Substring(7)].LegendText = split_key[split_key.Count() - 1] + ";Val:" + Math.Round(chart.Series[seria.ToString().Substring(7)].Points.Last().YValues[0]).ToString();
-                    }
-                    catch (Exception ex)
-                    {
+                    
+                    var name = series[0].ToString().Substring(7);
+                    //.Single(s => s.Equals(max));
+                    var YVAL = CaptureForm.extractedSamples[name][xValue];
+                    label4.Text = String.Concat(String.Concat(xValue.ToString(), " , "), YVAL.ToString());
 
-                    }
+                    //int which_point = (view_point * (chartarray.Count() - 10) / 1000) + 1;
+                    //string[] split_key = seria.ToString().Split('_');
+                    //chart.Series[seria.ToString().Substring(7)].LegendText = split_key[split_key.Count() - 1] + ";Val:" + Math.Round(chart.Series[seria.ToString().Substring(7)].Points[which_point].YValues[0]).ToString();
+                    //chart.Series[seria.ToString().Substring(7)].LegendText = split_key[split_key.Count() - 1] + ";Val:" + Math.Round(chart.Series[seria.ToString().Substring(7)].Points.Last().YValues[0]).ToString();
+                }
+                catch (Exception ex)
+                {
+
                 }
                 //string[] split_key = keys[i].ToString().Split('_')
                 //chart.Series[seria.ToString().Substring(7)].Points.Last;
@@ -584,39 +592,46 @@ namespace WinformsExample
                 packetIndex = 0;
                 ICaptureDevice device;
                 string capFile = textBox1.Text + "\\" + comboBox1.SelectedItem.ToString();
-                try
+                if (capFile[capFile.Count() - 3] == 'c')
                 {
-                    // Get an offline device
-                    device = new CaptureFileReaderDevice(capFile);
+                    try
+                    {
+                        // Get an offline device
+                        device = new CaptureFileReaderDevice(capFile);
 
-                    // Open the device
-                    device.Open();
+                        // Open the device
+                        device.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Caught exception when opening file" + ex.ToString());
+                        return;
+                    }
+                    //var converter = Converter.BuildLiveConverter(CaptureForm.aircraftname, CaptureForm.path_configxml, CaptureForm.path_scalingtable, CaptureForm.path_instrumentsetting);
+                    var converter = Converter.BuildLiveConverter(CaptureForm.aircraftname, CaptureForm.path_configxml, CaptureForm.path_scalingtable, CaptureForm.path_instrumentsetting);
+                    device.OnPacketArrival +=
+                    new PacketArrivalEventHandler((_sender, _e) => device_OnPacketArrival(this, _e, converter, extractedSamples));
+                    device.Capture();
+                    var keys2 = new List<string>(extractedSamples.Keys);
+
+                    dodawanie_checklistbox2(keys2, checkedListBox1);
+                    if (dic.Count == 0)
+                    {
+                        parametr_definition.ForEach(x => keys.Add(x.ToString()));
+                        parametr_definition.ForEach(x => occurence.Add(x.Occurrences.ToString()));
+                        //dodawanie chasklistbox;
+                        dic = keys.Zip(occurence, (k, v) => new { k, v })
+                          .ToDictionary(x => x.k, x => x.v);
+                    }
+
+
                 }
-                catch (Exception ex)
+                if (capFile[capFile.Count() - 3] == 't')
                 {
-                    Console.WriteLine("Caught exception when opening file" + ex.ToString());
+                    MessageBox.Show("odczyt tsv", "UWAGA!", MessageBoxButtons.OK);
+                    text_file_reader(capFile);
                     return;
                 }
-                //var converter = Converter.BuildLiveConverter(CaptureForm.aircraftname, CaptureForm.path_configxml, CaptureForm.path_scalingtable, CaptureForm.path_instrumentsetting);
-                var converter = Converter.BuildLiveConverter(CaptureForm.aircraftname, CaptureForm.path_configxml, CaptureForm.path_scalingtable, CaptureForm.path_instrumentsetting);
-                device.OnPacketArrival +=
-                new PacketArrivalEventHandler((_sender, _e) => device_OnPacketArrival(this, _e, converter, extractedSamples));
-                device.Capture();
-                var keys2 = new List<string>(extractedSamples.Keys);
-
-                dodawanie_checklistbox2(keys2, checkedListBox1);
-                if (dic.Count == 0)
-                {
-                    parametr_definition.ForEach(x => keys.Add(x.ToString()));
-                    parametr_definition.ForEach(x => occurence.Add(x.Occurrences.ToString()));
-                    //dodawanie chasklistbox;
-                    dic = keys.Zip(occurence, (k, v) => new { k, v })
-                      .ToDictionary(x => x.k, x => x.v);
-                }
-
-
-
-
 
 
 
@@ -624,6 +639,57 @@ namespace WinformsExample
 
             }
         }
+        private void text_file_reader(string file_name)
+        {
+            try
+            {
+                
+                using (StreamReader read = new StreamReader(file_name))
+                {
+                    String header = read.ReadLine();
+                    string[] parametry = header.Split('\t');
+                    List<string> parametry_list = new List<string>(parametry);
+                    parametry_list.Remove(parametry_list.Last());
+                    foreach (var paramter in parametry_list)
+                    {
+                        extractedSamples[paramter] = new List<ValueType>();
+                    }
+
+                    while(read.Peek() > -1)
+                    {
+                        String line = read.ReadLine();
+                        string[] data_line = line.Split('\t');
+                        List<string> data_line_list = new List<string>(data_line);
+                        data_line_list.Remove(data_line_list.Last());
+                        for ( int i = 0; i < data_line_list.Count(); i++)
+                        {
+                            extractedSamples[parametry_list[i]].Add(Convert.ToDouble(data_line_list[i]));
+                        }
+                    }
+
+
+                }
+
+                var keys2 = new List<string>(extractedSamples.Keys);
+                var matchingvalues = keys2.Where(stringToCheck => stringToCheck.Contains("Time_with_occurence_")).ToList();
+                dodawanie_checklistbox2(keys2, checkedListBox1);
+                //time_dictionatyf[matchingvalues[0].Split('_')[3]] = extractedSamples[matchingvalues[0]];
+                time_dictionatyf[matchingvalues[0].Split('_')[3]] = new List<double>();
+                for (int i = 0; i < extractedSamples[matchingvalues[0]].Count(); i++ )
+                {
+                    time_dictionatyf[matchingvalues[0].Split('_')[3]].Add((double)extractedSamples[matchingvalues[0]][i]);
+                }
+                
+                dic = keys2.ToDictionary(x => x, x => matchingvalues[0].Split('_')[3]);
+              
+
+
+
+            }
+            catch { }
+
+        }
+
         private static int packetIndex = 0;
         private static double last_time = 0;
         private void device_OnPacketArrival(object sender, CaptureEventArgs e, LiveConverter converter, Dictionary<string, List<ValueType>> extractedSamples)
@@ -799,7 +865,7 @@ namespace WinformsExample
             try {
                 //chart1.ChartAreas[0].CursorX.SelectionStart
                 
-                int xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                 double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
                 var list_series = chart1.Series.ToList();
                 var name = list_series[0].ToString().Substring(7);
@@ -1038,10 +1104,10 @@ namespace WinformsExample
             //try { time_divide = dic[name]; }
             //catch
             //{
-            //    try { time_divide = dic[name.Remove(strings[1].Length - 1)]; }
+            //    try { time_divide = dic[name.remove(strings[1].length - 1)]; }
             //    catch
             //    {
-            //        try { time_divide = dic[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+            //        try { time_divide = dic[strings[1] + '-' + strings[2].remove(strings[2].length - 1)]; }
             //        catch { time_divide = dic[strings[1] + '-' + strings[2]]; }
             //    }
 
@@ -1067,8 +1133,28 @@ namespace WinformsExample
 
                 }
             }
+            
+            var strings = list_series[0].ToString().Split('-');
+            string name2 = strings[1];
+            string time_divide = "";
+            try { time_divide = dic[name2]; }
+            catch
+            {
+                try { time_divide = dic[name2.Remove(strings[1].Length - 1)]; }
+                catch
+                {
+                    try { time_divide = dic[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+                    catch { time_divide = dic[strings[1] + '-' + strings[2]]; }
+                }
+            }
+            extractedPartOfSamples["Time_with_occurence_" + time_divide] = new List<ValueType>();
+            for (int i = (int)Math.Round(min); i < max; i++)
+            {
+                extractedPartOfSamples["Time_with_occurence_" + time_divide].Add(time_dictionatyf[time_divide][i]);
+            }
 
-            string headerLine = "";
+
+                string headerLine ="";
             foreach (string key in extractedPartOfSamples.Keys)
             {
                 headerLine = headerLine + key + "\t";
@@ -1090,6 +1176,7 @@ namespace WinformsExample
                     {
                         valuesLine = valuesLine + extractedPartOfSamples[key][i] + "\t";
                     }
+                    //time_dictionatyf[time_divide][i]
                     sw.WriteLine(valuesLine);
                 }
             }
@@ -1121,10 +1208,10 @@ namespace WinformsExample
                 {
                     var it = (ValueType)item;
 
-                    if (time_dictionat_new.ContainsKey("TimewithOccure" + x.Key))
-                        time_dictionat_new?["TimewithOccure" + x.Key].Add(it);
+                    if (time_dictionat_new.ContainsKey("Time_with_occurence_" + x.Key))
+                        time_dictionat_new?["Time_with_occurence_" + x.Key].Add(it);
                     else
-                        time_dictionat_new["TimewithOccure" + x.Key] = new List<ValueType>() { it };
+                        time_dictionat_new["Time_with_occurence_" + x.Key] = new List<ValueType>() { it };
                 }
             }
 
