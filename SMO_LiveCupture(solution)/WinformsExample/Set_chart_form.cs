@@ -72,10 +72,10 @@ namespace WinformsExample
             {
                 CaptureForm.data_delay = Int32.Parse(comboBox2.SelectedItem.ToString());
                 Chart_form.chart_width = Int32.Parse(comboBox1.SelectedItem.ToString());
-                if (checkBox1.Checked) { Chart_form.show_last_value = true; }
-                else { Chart_form.show_last_value = false; }
-                if (checkBox2.Checked) { Chart_form.show_legend = true; }
-                else { Chart_form.show_legend = false; }
+               // if (checkBox1.Checked) { Chart_form.show_last_value = true; }
+               // else { Chart_form.show_last_value = true; }
+               // if (checkBox2.Checked) { Chart_form.show_legend = true; }
+               // else { Chart_form.show_legend = true; }
                 Chart_form.grid = comboBox3.SelectedItem.ToString();
 
 
