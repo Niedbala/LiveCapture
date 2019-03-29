@@ -197,6 +197,7 @@
     <None Include="Resources\saveee.png" />
     <None Include="Resources\10.MAXmin-logo.jpg" />
     <None Include="Resources\10.MAXmin-logo2.jpg" />
+    <None Include="Resources\full-screen.jpg" />
     <Content Include="Resources\stop_icon_disabled.png" />
   </ItemGroup>
   <ItemGroup>

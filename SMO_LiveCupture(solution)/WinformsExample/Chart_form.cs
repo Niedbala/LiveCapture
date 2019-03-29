@@ -28,14 +28,18 @@ namespace WinformsExample
     {
         private double[] ChartArray = new double[1000];
         private bool stop_chart = false;
+        public static bool every = true;
+        public static bool dy = false;
+
         private Set_chart_form set_chart_form = new Set_chart_form();
         private Thread Time;
-        public static int chart_width = 8000;
+        public static int chart_width = 10000;
         public static bool show_last_value = true;
         public static bool show_legend = true;
         Warning_Form warnform = new Warning_Form();
         Warningform2 warnform2 = new Warningform2();
         public static int view_point = 0;
+        public static string resampling = "1";
         public static Dictionary<string, List<ValueType>> extractedSamples = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, List<ValueType>> extractedPartOfSamples= new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, List<ValueType>> extractedSamples2 = new Dictionary<string, List<ValueType>>();
@@ -52,7 +56,7 @@ namespace WinformsExample
         public static List<double> timearray_256f = new List<double>();
         public static Dictionary<string, List<double>> time_dictionatyf = new Dictionary<string, List<double>>();
         public static Dictionary<string, List<double>> time_dictionatyf2 = new Dictionary<string, List<double>>();
-        public static string grid = "1000";
+        public static string grid = "Auto";
         private double axismax;
         private double axismin;
         private int axis_changed = 0;
@@ -154,6 +158,8 @@ namespace WinformsExample
                 var name = "(" + occurences[i] + ")" + split_key[split_key.Count() - 1];
 
                 if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
+                if (name.Contains("Analog")) { name = name + "_" + split_key[4]; }
+                
                 name_list.Add(name);
                 checkedListBox.Items.Insert(0, name);
             }
@@ -175,6 +181,8 @@ namespace WinformsExample
                 var name = "(" + extractedSamples[keys[i]].Count.ToString() + ")" + split_key[split_key.Count() - 1];
 
                 if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
+                if (name.Contains("Analog")) { name = name + "_" + split_key[4]; }
+                if (name.Split('_').Last() == "B") { name = name + "_" + split_key[5]; }
                 name_list.Add(name);
                 checkedListBox.Items.Insert(0, name);
             }
@@ -370,7 +378,7 @@ namespace WinformsExample
                 chart.Series[seria.ToString().Substring(7)].Points.Clear();
 
                 string name = seria.ToString().Split('-')[1];
-                var chartarray = CaptureForm.extractedSamples[seria.ToString().Substring(7)];
+                var chartarray = CaptureForm.extractedSamples[seria.ToString().Substring(7)].Select(x => Convert.ToDouble(x)).ToList();
                 int iter = 0;
                 if (chartarray.Count() < chart_width)
                 { iter = 0; }
@@ -383,15 +391,38 @@ namespace WinformsExample
 
                 var sw = new Stopwatch(); 
                 sw.Start();
-                /*
-                for (int i = iter; i < chartarray.Count() - 1; i++)
+                int iteration = Int32.Parse(resampling);
+                if (every)
                 {
+                    iteration = Int32.Parse(resampling.Split('_').Last());
+                    for (int i = iter; i < chartarray.Count() - 1; i += iteration)
+                    {
 
-                    chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
+                        chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
 
-                    //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
+                        //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
+                    }
                 }
-                */
+                sw.Stop();
+                Console.WriteLine(sw.ElapsedMilliseconds.ToString());
+                sw.Start();
+                if (dy)
+                {
+                    int iterable = 0;
+                    bool dir = chartarray[iter] - chartarray[iter - 1] > 0;
+                    for (int i = iter + 1; i < chartarray.Count() - 1; i++)
+                    {
+                        if ((chartarray[i] - chartarray[i - 1] > 0 && !dir) || (chartarray[i] - chartarray[i - 1] < 0 && dir))
+                        {
+                            chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i - 1], chartarray[i - 1]);
+                            dir = !dir; iterable++;
+                        }
+                    }
+
+
+
+                }
+
                 // chart.DataBindCrossTable(chartarray);
                 //chart.Series[seria.ToString().Substring(7)].Points.Last().Label = chartarray[chartarray.Count() - 1].ToString();
                 sw.Stop();
@@ -439,21 +470,24 @@ namespace WinformsExample
                 chart.Series[seria.ToString().Substring(7)].Points.Clear();
                 var strings = seria.ToString().Split('-');
                 string name = strings[1];
-               // if (strings.Count() == 2) { name = strings[1]; }
-               // else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
-               // else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
+                // if (strings.Count() == 2) { name = strings[1]; }
+                // else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
+                // else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
 
-                var chartarray = extractedSamples[seria.ToString().Substring(7)];
-                int iter = 0;
+                var chartarray =  extractedSamples[seria.ToString().Substring(7)].Select(x => Convert.ToDouble(x)).ToList();
+                int iter = 1;
                 string time_divide = "";
-                try {  time_divide = dic[name]; }
-                catch {
+                try { time_divide = dic[name]; }
+                catch
+                {
                     try { time_divide = dic[name.Remove(strings[1].Length - 1)]; }
-                    catch {
+                    catch
+                    {
                         try { time_divide = dic[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
-                        catch { time_divide = dic[strings[1] + '-' + strings[2]]; } }
+                        catch { time_divide = dic[strings[1] + '-' + strings[2]]; }
+                    }
                 }
-                
+
                 timebase = time_dictionatyf[time_divide];
 
                 //var time_divide = chartarray.Count() / (timearrayf.Count() - 1);
@@ -463,28 +497,77 @@ namespace WinformsExample
 
 
 
-                for (int i = iter; i < chartarray.Count() - 1; ++i)
+                int iteration = Int32.Parse(resampling);
+                if (every)
                 {
+                    iteration = Int32.Parse(resampling.Split('_').Last());
+                    for (int i = iter; i < chartarray.Count() - 1; i += iteration)
+                    {
 
-                    chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
+                        chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
 
-                    //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
+                        //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
+                    }
                 }
+                //sw.Stop();
+                //Console.WriteLine(sw.ElapsedMilliseconds.ToString());
+                //sw.Start();
+                
+                if (dy)
+                {
+                   int iterable = 0;
+                    bool dir = chartarray[iter] - chartarray[iter - 1] > 0;
+                    for (int i = iter + 1; i < chartarray.Count() - 1; i++)
+                    {
+                        if ((chartarray[i] - chartarray[i - 1] > 0 && !dir) || (chartarray[i] - chartarray[i - 1] < 0 && dir) )
+                        {
+                            chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i - 1], chartarray[i -1]);
+                            dir = !dir; iterable++;
+                        }
+                    }
+                    
+
+                       
+                }
+
+                // chart.DataBindCrossTable(chartarray);
                 //chart.Series[seria.ToString().Substring(7)].Points.Last().Label = chartarray[chartarray.Count() - 1].ToString();
+                //sw.Stop();
+                // Console.WriteLine(sw.ElapsedMilliseconds.ToString());
 
 
-                //string[] split_key = keys[i].ToString().Split('_')
-                //chart.Series[seria.ToString().Substring(7)].Points.Last;
+
             }
-
-
-
         }
+        int mrk_counter = 0;
+        private void marker_genrator()
+        {
+            //Label lbl = new System.Windows.Forms.Label();
+            mrk_1.Name = "marker" + mrk_counter.ToString();
+            mrk_1.Text = "";
+            mrk_1.BackColor = System.Drawing.Color.Red;
+            mrk_1.Location = new System.Drawing.Point(580, 50);
 
+            mrk_1.Size = new System.Drawing.Size(10, 341);
+            mrk_1.TabIndex = 0;
+            mrk_counter++;
+            //this.Controls.Add(lbl);
+            Application.DoEvents();
+            //this.ResumeLayout(false);
+            //this.PerformLayout();
+        }
 
         private void chart1_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                this.Invoke((MethodInvoker)delegate { marker_genrator(); });
+                //UpdateChart();
+            }
+            catch
+            {
+            }
+            
         }
 
         private void Chart_form_Load(object sender, EventArgs e)
@@ -604,6 +687,8 @@ namespace WinformsExample
                 dic1 = new Dictionary<string, string>();
                 packetIndex = 0;
                 packetCount = 0;
+                keys = new List<string>();
+                occurance = new Dictionary<int, List<int>>();
                 ICaptureDevice device;
                 string capFile = textBox1.Text + "\\" + comboBox1.SelectedItem.ToString();
                 if (capFile[capFile.Count() - 3] == 'c')
@@ -627,7 +712,14 @@ namespace WinformsExample
                     new PacketArrivalEventHandler((_sender, _e) => device_OnPacketArrival(this, _e, converter, extractedSamples, time_dictionatyf));
                     device.Capture();
                     var keys2 = new List<string>(extractedSamples.Keys);
-
+                    try
+                    {
+                        this.Invoke((MethodInvoker)delegate { Updatelabel2(); });
+                        //UpdateChart();
+                    }
+                    catch
+                    {
+                    }
                     dodawanie_checklistbox2(keys2, checkedListBox1, extractedSamples);
                     if (dic1.Count == 0)
                     {
@@ -736,7 +828,7 @@ namespace WinformsExample
 
 
 
-
+                    repeat_occurance = new List<int>();
                     parametr_definition = converter.parameterDefinitions;
                     parametr_definition.ForEach(x =>
                     {
@@ -758,6 +850,7 @@ namespace WinformsExample
 
 
                     });
+
                 }
 
                     result.Samples.ForEach(s =>
@@ -870,12 +963,24 @@ namespace WinformsExample
             label3.Text = "Process pacet" + packetIndex.ToString();
             Application.DoEvents();
         }
+        public void Updatelabel2()
+        {
+            label3.Text = "DONE";
+            Application.DoEvents();
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
             StartChart_file(chart1, checkedListBox1, extractedSamples);
             Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1);
         }
+
+        public void button_Click()
+        {
+            StartChart_file(chart1, checkedListBox1, extractedSamples);
+            Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1);
+        }
+
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -885,11 +990,13 @@ namespace WinformsExample
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
             //double yOffset = GetYOffset(chart1, e.X);
-            Point mousePoint = new Point(e.X, e.Y);
-            chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, false);
-            chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
+            try
+            {
+                Point mousePoint = new Point(e.X, e.Y);
+                chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, false);
+                chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
 
-            try {
+           
                 //chart1.ChartAreas[0].CursorX.SelectionStart
                 
                 xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
@@ -1063,6 +1170,9 @@ namespace WinformsExample
                 last_times = new Dictionary<int, double>();
                 packetIndex = 0;
                 packetCount = 0;
+                dic2 = new Dictionary<string, string>();
+                keys = new List<string>();
+                occurance = new Dictionary<int, List<int>>();
                 ICaptureDevice device;
                 string capFile = textBox2.Text + "\\" + comboBox2.SelectedItem.ToString();
                 if (capFile[capFile.Count() - 3] == 'c')
@@ -1355,6 +1465,35 @@ namespace WinformsExample
         {
             series_iter++;
             if (series_iter == list_series.Count()) { series_iter = 0; }
+        }
+
+        private void toolStripButton10_Click(object sender, EventArgs e)
+        {
+            while (chart1.ChartAreas[0].AxisY.ScaleView.IsZoomed || chart1.ChartAreas[0].AxisX.ScaleView.IsZoomed)
+            {
+                chart1.ChartAreas[0].AxisY.ScaleView.ZoomReset();
+                chart1.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+            }
+        }
+
+        private void toolStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripContainer1_TopToolStripPanel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
         }
     }
     }
