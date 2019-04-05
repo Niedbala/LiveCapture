@@ -123,6 +123,16 @@ namespace WinformsExample.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap markerpng {
+            get {
+                object obj = ResourceManager.GetObject("markerpng", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap play_icon_enabled {
             get {
                 object obj = ResourceManager.GetObject("play_icon_enabled", resourceCulture);
@@ -133,9 +143,29 @@ namespace WinformsExample.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pobrane {
+            get {
+                object obj = ResourceManager.GetObject("pobrane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rec5 {
             get {
                 object obj = ResourceManager.GetObject("rec5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Red_Cross_Icon_Reworked {
+            get {
+                object obj = ResourceManager.GetObject("Red_Cross_Icon_Reworked", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +226,16 @@ namespace WinformsExample.Properties {
         internal static System.Drawing.Bitmap stop_icon_enabled {
             get {
                 object obj = ResourceManager.GetObject("stop_icon_enabled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap unnamed_1 {
+            get {
+                object obj = ResourceManager.GetObject("unnamed-1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -38,10 +38,12 @@ namespace WinformsExample
         public static bool show_legend = true;
         Warning_Form warnform = new Warning_Form();
         Warningform2 warnform2 = new Warningform2();
+        Marker_Setting marker_setings_form = new Marker_Setting();
         public static int view_point = 0;
         public static string resampling = "1";
         public static Dictionary<string, List<ValueType>> extractedSamples = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, List<ValueType>> extractedPartOfSamples= new Dictionary<string, List<ValueType>>();
+        public static Dictionary<string, List<ValueType>> extractedPartOfSamples2 = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, List<ValueType>> extractedSamples2 = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, List<ValueType>> temp_exSam = new Dictionary<string, List<ValueType>>();
         public static Dictionary<string, string> dic1 = new Dictionary<string, string>();
@@ -70,6 +72,14 @@ namespace WinformsExample
         public static int xValue;
         public static int series_iter;
         public static List<Series> list_series = new List<Series>();
+        public static List<Series> list_series2 = new List<Series>();
+        public static string[] mrk_series = new string[4];
+        public static bool mouse_event = false;
+        public static int hold_coursor = 0;
+        public static bool croos_cursor_on = true;
+
+        public int X_diff { get; private set; }
+
         public Chart_form()
         {
             InitializeComponent();
@@ -149,7 +159,7 @@ namespace WinformsExample
         private void dodawanie_checklistbox(List<string> keys, List<string> occurences,CheckedListBox checkedListBox)
         {
             checkedListBox.Items.Clear();
-
+            
             List<string> name_list = new List<string>();
 
             for (int i = keys.Count() - 1; i >= 0; i--)
@@ -167,6 +177,8 @@ namespace WinformsExample
 
 
         }
+
+     
 
         private void dodawanie_checklistbox2(List<string> keys, CheckedListBox checkedListBox, Dictionary<string, List<ValueType>> extractedSamples)
         {
@@ -282,6 +294,7 @@ namespace WinformsExample
                 chart2.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm:ss";
                 chart2.ChartAreas[0].AxisY.LabelStyle.Format = "N2";
                 list_series = chart1.Series.ToList();
+                list_series2 = chart2.Series.ToList();
                 Time = new Thread(new ThreadStart(this.TimeHandler));
                 Time.IsBackground = true;
                 Time.Start();
@@ -357,9 +370,9 @@ namespace WinformsExample
             if (stop_chart == false)
             {
                
-                Changechart(chart1);
+                Changechart(chart1,list_series);
                 
-                Changechart(chart2);
+                Changechart(chart2,list_series2);
             }
 
         }
@@ -367,7 +380,7 @@ namespace WinformsExample
 
 
 
-        public void Changechart(Chart chart)
+        public void Changechart(Chart chart, List<Series> list_series)
         {
 
             //var series = chart.Series.ToList();
@@ -464,7 +477,7 @@ namespace WinformsExample
             var series = chart.Series.ToList();
 
             //List<DateTime> timebase = new List<DateTime>();
-            List<double> timebase = new List<double>();
+             timebase = new List<double>();
             foreach (Series seria in series)
             {
                 chart.Series[seria.ToString().Substring(7)].Points.Clear();
@@ -539,35 +552,11 @@ namespace WinformsExample
 
             }
         }
-        int mrk_counter = 0;
-        private void marker_genrator()
-        {
-            //Label lbl = new System.Windows.Forms.Label();
-            mrk_1.Name = "marker" + mrk_counter.ToString();
-            mrk_1.Text = "";
-            mrk_1.BackColor = System.Drawing.Color.Red;
-            mrk_1.Location = new System.Drawing.Point(580, 50);
-
-            mrk_1.Size = new System.Drawing.Size(10, 341);
-            mrk_1.TabIndex = 0;
-            mrk_counter++;
-            //this.Controls.Add(lbl);
-            Application.DoEvents();
-            //this.ResumeLayout(false);
-            //this.PerformLayout();
-        }
+       
 
         private void chart1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.Invoke((MethodInvoker)delegate { marker_genrator(); });
-                //UpdateChart();
-            }
-            catch
-            {
-            }
-            
+
         }
 
         private void Chart_form_Load(object sender, EventArgs e)
@@ -990,26 +979,51 @@ namespace WinformsExample
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
             //double yOffset = GetYOffset(chart1, e.X);
-            try
+            if (croos_cursor_on)
             {
-                Point mousePoint = new Point(e.X, e.Y);
-                chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, false);
-                chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
+                try
+                {
+                    Point mousePoint = new Point(e.X, e.Y);
+                    chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, false);
+                    chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
 
-           
-                //chart1.ChartAreas[0].CursorX.SelectionStart
-                
-                xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
-                double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
-                
-                var name = list_series[series_iter].ToString().Substring(7);
-                //.Single(s => s.Equals(max));
-                var YVAL = extractedSamples[name][xValue];
-                label4.Text = String.Concat(String.Concat(xValue.ToString(), " , "), YVAL.ToString());
-                label4.Location = new Point(10, e.Y + 40);
+
+                    //chart1.ChartAreas[0].CursorX.SelectionStart
+
+                    xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                    double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+
+                    var name = list_series[series_iter].ToString().Substring(7);
+                    //.Single(s => s.Equals(max));
+                    var YVAL = extractedSamples[name][xValue];
+                    label4.Text = String.Concat(String.Concat(xValue.ToString(), " , "), YVAL.ToString());
+                    label4.Location = new Point(10, e.Y + 40);
+                }
+                catch { }
             }
-            catch { }
 
+            if (mouse_event)
+            {
+                try
+                {
+                    Label mrk =new Label();
+                    
+                    Point mousePoint = new Point(e.X, e.Y);
+                    switch (hold_coursor)
+                    {
+                        case 0: mrk_1.Location = new Point(e.X + X_diff, 50); break;
+                        case 1: mrk_2.Location = new Point(e.X + X_diff, 50); break;
+                        case 2: mrk_3.Location = new Point(e.X + X_diff, 50); break;
+                        case 3: mrk_4.Location = new Point(e.X + X_diff, 50); break;
+                    }
+
+                    //mrk.Location = new Point(e.X + X_diff, 500);
+
+
+                }
+                catch { }
+            }
+            
         }
         
         private void chart1_AxisViewChanged(object sender, ViewEventArgs e)
@@ -1019,7 +1033,11 @@ namespace WinformsExample
             double ymin = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
             if (axis_changed != 0 && Math.Abs(ymax - axis1) > 0 && Math.Abs(ymin - axis2) > 0)
             {
-               
+                //marker_hider(mrk_1, mrk_lbl_1,lbl_num_mrk1);
+                //marker_hider(mrk_2, mrk_lbl_2, lbl_num_mrk2);
+                //marker_hider(mrk_3, mrk_lbl_3, lbl_num_mrk3);
+                //marker_hider(mrk_4, mrk_lbl_4, lbl_num_mrk4);
+
                 int i = found_i((int)(ymax - ymin));
 
                 axismax = round((int)ymax, i);
@@ -1031,6 +1049,8 @@ namespace WinformsExample
                     axis1 = axismax;
                     axis2 = axismin;
                     }
+
+             
                 //chart1.ChartAreas[0].AxisY.ScaleView.Zoom(11000, 48000);
             }
             else
@@ -1039,6 +1059,10 @@ namespace WinformsExample
                 double axis1 = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum;
                 double axis2 = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum;
             }
+           
+                
+          
+
         }
         private int found_i(int num)
         {
@@ -1238,107 +1262,111 @@ namespace WinformsExample
 
         private void toolStripButton4_Click(object sender, EventArgs e)
         {
-            //chart1.Series[keys[i]].IsXValueIndexed = true;
-            double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
-            double min = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
-            var name = chart1.Series[0].ToString().Substring(7);
-            extractedPartOfSamples = new Dictionary<string, List<ValueType>>();
-            FileCount = 1;
-                 //var div = dic[name];
-
-                 //var strings = seria.ToString().Split('-');
-                 //string name = strings[1];
-                 //// if (strings.Count() == 2) { name = strings[1]; }
-                 //// else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
-                 //// else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
-
-                 //var chartarray = extractedSamples[seria.ToString().Substring(7)];
-                 //int iter = 0;
-                 //string time_divide = "";
-                 //try { time_divide = dic[name]; }
-                 //catch
-                 //{
-                 //    try { time_divide = dic[name.remove(strings[1].length - 1)]; }
-                 //    catch
-                 //    {
-                 //        try { time_divide = dic[strings[1] + '-' + strings[2].remove(strings[2].length - 1)]; }
-                 //        catch { time_divide = dic[strings[1] + '-' + strings[2]]; }
-                 //    }
-
-
-
-                 var list_series = chart1.Series.ToList();
-            
-            foreach (var series in list_series)
+            try
             {
-                name = series.ToString().Substring(7);
-                
-                for (int i = (int)Math.Round(min); i < max; i++)
+                //chart1.Series[keys[i]].IsXValueIndexed = true;
+                double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
+                double min = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
+                var name = chart1.Series[0].ToString().Substring(7);
+                extractedPartOfSamples = new Dictionary<string, List<ValueType>>();
+                FileCount = 1;
+                //var div = dic[name];
+
+                //var strings = seria.ToString().Split('-');
+                //string name = strings[1];
+                //// if (strings.Count() == 2) { name = strings[1]; }
+                //// else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
+                //// else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
+
+                //var chartarray = extractedSamples[seria.ToString().Substring(7)];
+                //int iter = 0;
+                //string time_divide = "";
+                //try { time_divide = dic[name]; }
+                //catch
+                //{
+                //    try { time_divide = dic[name.remove(strings[1].length - 1)]; }
+                //    catch
+                //    {
+                //        try { time_divide = dic[strings[1] + '-' + strings[2].remove(strings[2].length - 1)]; }
+                //        catch { time_divide = dic[strings[1] + '-' + strings[2]]; }
+                //    }
+
+
+
+                var list_series = chart1.Series.ToList();
+
+                foreach (var series in list_series)
                 {
-                    //extractedPartOfSamples.Add(extractedSamples[list_series[0].ToString().Substring(7)][i]);
+                    name = series.ToString().Substring(7);
+
+                    for (int i = (int)Math.Round(min); i < max; i++)
+                    {
+                        //extractedPartOfSamples.Add(extractedSamples[list_series[0].ToString().Substring(7)][i]);
 
 
 
-                    if (extractedPartOfSamples.ContainsKey(name))
-                        extractedPartOfSamples?[name].Add(extractedSamples[name][i]);
-                    else
-                        extractedPartOfSamples[name] = new List<ValueType>() { extractedSamples[name][i] };
+                        if (extractedPartOfSamples.ContainsKey(name))
+                            extractedPartOfSamples?[name].Add(extractedSamples[name][i]);
+                        else
+                            extractedPartOfSamples[name] = new List<ValueType>() { extractedSamples[name][i] };
 
 
+                    }
                 }
-            }
-            
-            var strings = list_series[0].ToString().Split('-');
-            string name2 = strings[1];
-            string time_divide = "";
-            try { time_divide = dic1[name2]; }
-            catch
-            {
-                try { time_divide = dic1[name2.Remove(strings[1].Length - 1)]; }
+
+                var strings = list_series[0].ToString().Split('-');
+                string name2 = strings[1];
+                string time_divide = "";
+                try { time_divide = dic1[name2]; }
                 catch
                 {
-                    try { time_divide = dic1[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
-                    catch { time_divide = dic1[strings[1] + '-' + strings[2]]; }
-                }
-            }
-            extractedPartOfSamples["Time_with_occurence_" + time_divide] = new List<ValueType>();
-            for (int i = (int)Math.Round(min); i < max; i++)
-            {
-                extractedPartOfSamples["Time_with_occurence_" + time_divide].Add(time_dictionatyf[time_divide][i]);
-            }
-
-
-                string headerLine ="";
-            foreach (string key in extractedPartOfSamples.Keys)
-            {
-                headerLine = headerLine + key + "\t";
-            }
-            var keys_test = new List<string>(extractedPartOfSamples.Keys);
-            var test = keys_test[0];
-            int len = extractedPartOfSamples[test].Count;
-            //FileCount++;
-            //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
-            var directory = Path.GetDirectoryName(CaptureForm.path_savetsv);
-            var name_file = directory +"\\" +comboBox1.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_1.tsv";
-            while (File.Exists(name_file))
-            {
-                FileCount++;
-                name_file = directory + "\\" + comboBox1.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_" + FileCount + ".tsv";
-            }
-            using (StreamWriter sw = File.CreateText(name_file))
-            {
-                sw.WriteLine(headerLine);
-                for (int i = 0; i < len; i++)
-                {
-                    string valuesLine = "";
-                    foreach (string key in extractedPartOfSamples.Keys)
+                    try { time_divide = dic1[name2.Remove(strings[1].Length - 1)]; }
+                    catch
                     {
-                        valuesLine = valuesLine + extractedPartOfSamples[key][i] + "\t";
+                        try { time_divide = dic1[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+                        catch { time_divide = dic1[strings[1] + '-' + strings[2]]; }
                     }
-                    //time_dictionatyf[time_divide][i]
-                    sw.WriteLine(valuesLine);
+                }
+                extractedPartOfSamples["Time_with_occurence_" + time_divide] = new List<ValueType>();
+                for (int i = (int)Math.Round(min); i < max; i++)
+                {
+                    extractedPartOfSamples["Time_with_occurence_" + time_divide].Add(time_dictionatyf[time_divide][i]);
+                }
+
+
+                string headerLine = "";
+                foreach (string key in extractedPartOfSamples.Keys)
+                {
+                    headerLine = headerLine + key + "\t";
+                }
+                var keys_test = new List<string>(extractedPartOfSamples.Keys);
+                var test = keys_test[0];
+                int len = extractedPartOfSamples[test].Count;
+                //FileCount++;
+                //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
+                var directory =CaptureForm.path_savetsv;
+                var name_file = directory + "\\" + comboBox1.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_1.tsv";
+                while (File.Exists(name_file))
+                {
+                    FileCount++;
+                    name_file = directory + "\\" + comboBox1.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_" + FileCount + ".tsv";
+                }
+                using (StreamWriter sw = File.CreateText(name_file))
+                {
+                    sw.WriteLine(headerLine);
+                    for (int i = 0; i < len; i++)
+                    {
+                        string valuesLine = "";
+                        foreach (string key in extractedPartOfSamples.Keys)
+                        {
+                            valuesLine = valuesLine + extractedPartOfSamples[key][i] + "\t";
+                        }
+                        //time_dictionatyf[time_divide][i]
+                        sw.WriteLine(valuesLine);
+                    }
                 }
             }
+            catch { }
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
@@ -1355,82 +1383,89 @@ namespace WinformsExample
 
         private void toolStripButton7_Click(object sender, EventArgs e)
         {
-
-// var sortedDict = from entry in dic orderby entry.Value ascending select entry;
-            dic1 = dic1.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-            var time_dictionat_new = new Dictionary<string, List<ValueType>>();
-            
-
-            foreach (var x in time_dictionatyf)
+            try
             {
-                foreach(var item in time_dictionatyf[x.Key])
+                // var sortedDict = from entry in dic orderby entry.Value ascending select entry;
+                dic1 = dic1.OrderByDescending(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
+                var time_dictionat_new = new Dictionary<string, List<ValueType>>();
+
+
+                foreach (var x in time_dictionatyf)
                 {
-                    var it = (ValueType)item;
-
-                    if (time_dictionat_new.ContainsKey("Time_with_occurence_" + x.Key))
-                        time_dictionat_new?["Time_with_occurence_" + x.Key].Add(it);
-                    else
-                        time_dictionat_new["Time_with_occurence_" + x.Key] = new List<ValueType>() { it };
-                }
-            }
-
-
-           
-            
-            var extractedSamplesWithTime = extractedSamples.Concat(time_dictionat_new).ToDictionary(x => x.Key, x => x.Value);
-            var extractedSamplesSorted = extractedSamplesWithTime.OrderByDescending(x => x.Value.Count).ToDictionary(x => x.Key, x => x.Value);
-
-            string headerLine = "";
-            foreach (string key in extractedSamplesSorted.Keys)
-            {
-                headerLine = headerLine + key + "\t";
-            }
-            var keys_test = new List<string>(extractedSamplesSorted.Keys);
-            var test = keys_test[0];
-            int len = extractedSamplesSorted[test].Count;
-            FileCount++;
-            //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
-            var directory = Path.GetDirectoryName(CaptureForm.path_savetsv);
-            var name_file = directory + "\\" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_allParamsfile" + FileCount.ToString() + ".tsv";
-
-
-            StringBuilder stringbuilder = new StringBuilder();
-            stringbuilder.Append(headerLine + "\n");
-            var keys = extractedSamplesSorted.Keys.ToList();
-            for (int i = 1; i < len; i++)
-            {
-                foreach(string key in keys)
-                {
-                    try
+                    foreach (var item in time_dictionatyf[x.Key])
                     {
-                        stringbuilder.Append(extractedSamplesSorted[key][i].ToString() + "\t");
+                        var it = (ValueType)item;
+
+                        if (time_dictionat_new.ContainsKey("Time_with_occurence_" + x.Key))
+                            time_dictionat_new?["Time_with_occurence_" + x.Key].Add(it);
+                        else
+                            time_dictionat_new["Time_with_occurence_" + x.Key] = new List<ValueType>() { it };
                     }
-                    catch {
-                        keys.Remove(key);
-                        break; }
-                    
                 }
-                stringbuilder.Append("\n");
-            }
-
-            File.AppendAllText(name_file, stringbuilder.ToString());
 
 
+                Dictionary<string, List<ValueType>> extractedSamplesWithTime = new Dictionary<string, List<ValueType>>();
+                if (comboBox1.Text.Split('.')[1] == "cap")
+                { extractedSamplesWithTime = extractedSamples.Concat(time_dictionat_new).ToDictionary(x => x.Key, x => x.Value); }
+                else
+                { extractedSamplesWithTime = extractedSamples; }
+                var extractedSamplesSorted = extractedSamplesWithTime.OrderByDescending(x => x.Value.Count).ToDictionary(x => x.Key, x => x.Value);
 
-
-            var threads = new List<Thread>();
-            for (int i = 0; i < 300; i++)
-            {
-                int j = i;
-                var thread = new Thread(() =>
+                string headerLine = "";
+                foreach (string key in extractedSamplesSorted.Keys)
                 {
-                   // primeGenerator.GeneratePrimes(j * 1000, 1000);
-                });
-                thread.Start();
-                threads.Add(thread);
-            };
-            foreach (var t in threads)
-                t.Join();
+                    headerLine = headerLine + key + "\t";
+                }
+                var keys_test = new List<string>(extractedSamplesSorted.Keys);
+                var test = keys_test[0];
+                int len = extractedSamplesSorted[test].Count;
+                FileCount++;
+                //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
+                var directory = CaptureForm.path_savetsv;
+                var name_file = directory + "\\" + comboBox1.Text.Split('.')[0] + '_' + System.DateTime.Today.ToString("MM-dd-yyyy") + "_allParamsfile" + FileCount.ToString() + ".tsv";
+
+
+                StringBuilder stringbuilder = new StringBuilder();
+                stringbuilder.Append(headerLine + "\n");
+                var keys = extractedSamplesSorted.Keys.ToList();
+                for (int i = 1; i < len; i++)
+                {
+                    foreach (string key in keys)
+                    {
+                        try
+                        {
+                            stringbuilder.Append(extractedSamplesSorted[key][i].ToString() + "\t");
+                        }
+                        catch
+                        {
+                            keys.Remove(key);
+                            break;
+                        }
+
+                    }
+                    stringbuilder.Append("\n");
+                }
+
+                File.AppendAllText(name_file, stringbuilder.ToString());
+
+
+
+
+                var threads = new List<Thread>();
+                for (int i = 0; i < 300; i++)
+                {
+                    int j = i;
+                    var thread = new Thread(() =>
+                    {
+                        // primeGenerator.GeneratePrimes(j * 1000, 1000);
+                    });
+                    thread.Start();
+                    threads.Add(thread);
+                };
+                foreach (var t in threads)
+                    t.Join();
+            }
+            catch { }
             //using (StreamWriter sw = File.CreateText(name_file))
             //{
             //    sw.WriteLine(headerLine);
@@ -1452,11 +1487,11 @@ namespace WinformsExample
 
         private void toolStripButton8_Click(object sender, EventArgs e)
         {
-            var list_series = chart1.Series.ToList();
-            var name = list_series[0].ToString().Substring(7);
+            var min_max_marker = new Min_max_setting(this);
+            min_max_marker.Show();
+            
 
-            var max = extractedSamples[name].Max();
-            var max_index = extractedSamples[name].ToList().IndexOf(max);
+           // Marker_max_generator(max_name);
             //chart1.ChartAreas[0].CursorX.SetCursorPosition()
             //chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
         }
@@ -1485,14 +1520,541 @@ namespace WinformsExample
         {
 
         }
-
+        //save 2
         private void toolStripButton11_Click(object sender, EventArgs e)
         {
+            try
+            {
+                //chart1.Series[keys[i]].IsXValueIndexed = true;
+                double max = chart2.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
+                double min = chart2.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
+                var name = chart2.Series[0].ToString().Substring(7);
+                extractedPartOfSamples2 = new Dictionary<string, List<ValueType>>();
+                FileCount = 1;
+                //var div = dic[name];
 
+                //var strings = seria.ToString().Split('-');
+                //string name = strings[1];
+                //// if (strings.Count() == 2) { name = strings[1]; }
+                //// else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
+                //// else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
+
+                //var chartarray = extractedSamples[seria.ToString().Substring(7)];
+                //int iter = 0;
+                //string time_divide = "";
+                //try { time_divide = dic[name]; }
+                //catch
+                //{
+                //    try { time_divide = dic[name.remove(strings[1].length - 1)]; }
+                //    catch
+                //    {
+                //        try { time_divide = dic[strings[1] + '-' + strings[2].remove(strings[2].length - 1)]; }
+                //        catch { time_divide = dic[strings[1] + '-' + strings[2]]; }
+                //    }
+
+
+
+                var list_series = chart2.Series.ToList();
+
+                foreach (var series in list_series)
+                {
+                    name = series.ToString().Substring(7);
+
+                    for (int i = (int)Math.Round(min); i < max; i++)
+                    {
+                        //extractedPartOfSamples.Add(extractedSamples[list_series[0].ToString().Substring(7)][i]);
+
+
+
+                        if (extractedPartOfSamples2.ContainsKey(name))
+                            extractedPartOfSamples2?[name].Add(extractedSamples2[name][i]);
+                        else
+                            extractedPartOfSamples2[name] = new List<ValueType>() { extractedSamples2[name][i] };
+
+
+                    }
+                }
+
+                var strings = list_series[0].ToString().Split('-');
+                string name2 = strings[1];
+                string time_divide = "";
+                try { time_divide = dic2[name2]; }
+                catch
+                {
+                    try { time_divide = dic2[name2.Remove(strings[1].Length - 1)]; }
+                    catch
+                    {
+                        try { time_divide = dic2[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+                        catch { time_divide = dic2[strings[1] + '-' + strings[2]]; }
+                    }
+                }
+                extractedPartOfSamples2["Time_with_occurence_" + time_divide] = new List<ValueType>();
+                for (int i = (int)Math.Round(min); i < max; i++)
+                {
+                    extractedPartOfSamples2["Time_with_occurence_" + time_divide].Add(time_dictionatyf2[time_divide][i]);
+                }
+
+
+                string headerLine = "";
+                foreach (string key in extractedPartOfSamples2.Keys)
+                {
+                    headerLine = headerLine + key + "\t";
+                }
+                var keys_test = new List<string>(extractedPartOfSamples2.Keys);
+                var test = keys_test[0];
+                int len = extractedPartOfSamples2[test].Count;
+                //FileCount++;
+                //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
+                var directory = CaptureForm.path_savetsv;
+                var name_file = directory + "\\" + comboBox2.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_1.tsv";
+                while (File.Exists(name_file))
+                {
+                    FileCount++;
+                    name_file = directory + "\\" + comboBox2.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_" + FileCount + ".tsv";
+                }
+                using (StreamWriter sw = File.CreateText(name_file))
+                {
+                    sw.WriteLine(headerLine);
+                    for (int i = 0; i < len; i++)
+                    {
+                        string valuesLine = "";
+                        foreach (string key in extractedPartOfSamples2.Keys)
+                        {
+                            valuesLine = valuesLine + extractedPartOfSamples2[key][i] + "\t";
+                        }
+                        //time_dictionatyf[time_divide][i]
+                        sw.WriteLine(valuesLine);
+                    }
+                }
+            }
+            catch { }
         }
 
         private void label7_Click(object sender, EventArgs e)
         {
+
+        }
+        int mrk_counter = 0;
+        public double[,] Yvalues = new double[4,3];
+        public int[] Xvalues = new int[4];
+        public string[] lbl_texts = new string[4];
+        private void marker_genrator(Label mrk_1,Label mrk_lbl_1, Label lbl_num_mrk, int X, int mrk_count)
+        {
+            //Label lbl = new System.Windows.Forms.Label();
+            //mrk_1.Name = "marker" + mrk_counter.ToString();
+            Xvalues[mrk_count - 1] = X;
+            mrk_1.Text = "";
+            mrk_1.BackColor = System.Drawing.Color.Lime;
+            mrk_1.Location = new System.Drawing.Point(X, 50);
+
+            mrk_1.Size = new System.Drawing.Size(1, 340);
+            mrk_1.TabIndex = 0;
+            
+
+            xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(X);
+           // double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(Y);
+            int iter = 0;
+            string lbl_text = "";
+            string[] series = new string[3];
+            try
+            {
+                series = mrk_series[mrk_count - 1].Split('%');
+            }
+            catch
+            {
+                series = null;
+            }
+            var name = "";
+            while (iter < 3)
+            {
+                try
+                {
+                   
+                    if (series == null)
+                    {
+                        name = list_series[iter].ToString().Substring(7);
+                        //.Single(s => s.Equals(max));
+                        
+                    }
+                    else
+                    {
+                        
+                        name = series[iter].ToString().Substring(7);
+
+                    }
+                    Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
+                    lbl_text = lbl_text + Yvalues[mrk_count - 1, iter].ToString() + "\n";
+                    
+                }
+                catch
+                {
+                    if (mrk_series[mrk_count - 1] == null) break;
+                    
+                }
+                iter++;
+
+            }
+            lbl_texts[mrk_count - 1] = lbl_text;
+            mrk_lbl_1.Text = lbl_text;
+            mrk_lbl_1.Location = new Point(X, 400);
+            mrk_lbl_1.Size = new System.Drawing.Size(60, 40);
+            lbl_num_mrk.Text = '#' + mrk_count.ToString();
+            lbl_num_mrk.Location = new Point(X, 32);
+            //this.Controls.Add(lbl);
+            Application.DoEvents();
+            //this.ResumeLayout(false);
+            //this.PerformLayout();
+        }
+
+        private void marker_hider(Label mrk_1, Label mrk_lbl_1, Label lbl_num_mrk)
+        {
+            //Label lbl = new System.Windows.Forms.Label();
+            //mrk_1.Name = "marker" + mrk_counter.ToString();
+            mrk_1.Text = "";
+            mrk_1.BackColor = System.Drawing.SystemColors.Control;
+            mrk_1.Location = new System.Drawing.Point(1074, 8);
+
+            mrk_1.Size = new System.Drawing.Size(1, 1);
+            mrk_1.TabIndex = 0;
+            
+            mrk_lbl_1.Text = "";
+            mrk_lbl_1.Location = new Point(1074,8);
+            mrk_lbl_1.Size = new System.Drawing.Size(1, 1);
+
+            lbl_num_mrk.Text = "";
+            lbl_num_mrk.Location = new Point(1074, 8);
+            //this.Controls.Add(lbl);
+            Application.DoEvents();
+            //this.ResumeLayout(false);
+            //this.PerformLayout();
+        }
+        private void chart1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (!mouse_event)
+            {
+                for (int x = 0; x < 4; x++)
+                {
+                    if ((Xvalues[x] < (e.X + 5)) && (Xvalues[x] > (e.X - 5)))
+                    {
+                        mouse_event = true;
+                        hold_coursor = x;
+                        X_diff = e.X - Xvalues[x];
+                    }
+                }
+            }
+            else
+            {
+                mouse_event = false;
+                Xvalues[hold_coursor] = e.X ;
+
+
+                xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X + X_diff);
+                // double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(Y);
+                int iter = 0;
+                string lbl_text = "";
+                string[] series = new string[3];
+                try
+                {
+                    series = mrk_series[hold_coursor].Split('%');
+                }
+                catch
+                {
+                    series = null;
+                }
+                var name = "";
+                while (iter < 3)
+                {
+                    try
+                    {
+
+                        if (series == null)
+                        {
+                            name = list_series[iter].ToString().Substring(7);
+                            //.Single(s => s.Equals(max));
+
+                        }
+                        else
+                        {
+
+                            name = series[iter].ToString().Substring(7);
+
+                        }
+                        Yvalues[hold_coursor, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
+                        lbl_text = lbl_text + Yvalues[hold_coursor , iter].ToString() + "\n";
+
+                    }
+                    catch
+                    {
+                        if (mrk_series[hold_coursor] == null) break;
+
+                    }
+                    iter++;
+
+                }
+                lbl_texts[hold_coursor] = lbl_text;
+                Label mrk_lbl = new Label();
+
+                switch (hold_coursor)
+                {
+                    case 0: mrk_lbl = mrk_lbl_1; break;
+                    case 1: mrk_lbl = mrk_lbl_2; break;
+                    case 2: mrk_lbl = mrk_lbl_3; break;
+                    case 3: mrk_lbl = mrk_lbl_4; break;
+                }
+
+
+                mrk_lbl.Text = lbl_text;
+                mrk_lbl.Location = new Point(e.X + X_diff, 400);
+                mrk_lbl.Size = new System.Drawing.Size(60, 40);
+                //this.Controls.Add(lbl);
+                Application.DoEvents();
+
+
+
+
+
+            }
+
+
+            
+        }
+
+      
+
+        private void marker_shower(Label mrk_1, Label mrk_lbl_1, Label lbl_num_mrk, int num)
+        {
+
+
+            mrk_1.Text = "";
+            mrk_1.BackColor = System.Drawing.Color.Lime;
+            mrk_1.Location = new System.Drawing.Point(Xvalues[num], 50);
+
+            mrk_1.Size = new System.Drawing.Size(1, 341);
+            mrk_1.TabIndex = 0;
+
+
+            xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(Xvalues[num]);
+            //double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(Y);
+
+            var name = list_series[series_iter].ToString().Substring(7);
+            //.Single(s => s.Equals(max));
+            //var YVAL = extractedSamples[name][xValue];
+            mrk_lbl_1.Text = lbl_texts[num];
+            mrk_lbl_1.Location = new Point(Xvalues[num], 400);
+            mrk_lbl_1.Size = new System.Drawing.Size(60, 40);
+            lbl_num_mrk.Text = '#' + (num + 1).ToString();
+            lbl_num_mrk.Location = new Point(Xvalues[num], 32);
+            //this.Controls.Add(lbl);
+            Application.DoEvents();
+
+
+
+        }
+
+        private bool m1_press = false;
+        private bool m2_press = false;
+        private bool m3_press = false;
+        private bool m4_press = false;
+        internal static bool find_max;
+        internal static string max_name;
+        private bool find_min;
+        public List<double> timebase;
+
+        private bool preser(Label mrk,Label mrk_lbl,Label lbl_num_mrk,  bool m_press, int num)
+        {
+            if (!m_press)
+            {
+
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate { marker_hider(mrk, mrk_lbl, lbl_num_mrk); });
+                    //UpdateChart();
+                }
+                catch
+                {
+                }
+            }
+
+            else
+            {
+                try
+                {
+                    this.Invoke((MethodInvoker)delegate { marker_shower(mrk, mrk_lbl, lbl_num_mrk,num); });
+                    //UpdateChart();
+                }
+                catch
+                {
+                }
+            }
+
+            return !m_press;
+
+
+        }
+
+   
+
+        private void toolStripButton17_Click(object sender, EventArgs e)
+        {
+            m1_press = preser(mrk_1, mrk_lbl_1, lbl_num_mrk1, m1_press, 0);
+            
+        }
+
+        private void toolStripButton18_Click(object sender, EventArgs e)
+        {
+            m2_press= preser(mrk_2, mrk_lbl_2, lbl_num_mrk2, m2_press,1);
+
+        }
+
+        private void toolStripButton19_Click(object sender, EventArgs e)
+        {
+            m3_press =  preser(mrk_3, mrk_lbl_3, lbl_num_mrk3, m3_press,2);
+        }
+
+        private void toolStripButton20_Click(object sender, EventArgs e)
+        {
+            m4_press = preser(mrk_4, mrk_lbl_4, lbl_num_mrk4,m4_press, 3);
+        }
+
+        private void toolStripButton21_Click(object sender, EventArgs e)
+        {
+            marker_setings_form = new Marker_Setting();
+            marker_setings_form.Show();
+        }
+
+        private void chart1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var mrk = new Label();
+            var mrk_lbl = new Label();
+            var lbl_num_mrk = new Label();
+            switch (mrk_counter)
+            {
+                case 1: mrk = mrk_1; mrk_lbl = mrk_lbl_1; lbl_num_mrk = lbl_num_mrk1;  break;
+                case 2: mrk = mrk_2; mrk_lbl = mrk_lbl_2; lbl_num_mrk = lbl_num_mrk2; break;
+                case 3: mrk = mrk_3; mrk_lbl = mrk_lbl_3; lbl_num_mrk = lbl_num_mrk3; break;
+                case 4: mrk = mrk_4; mrk_lbl = mrk_lbl_4; lbl_num_mrk = lbl_num_mrk4; break;
+                default:
+                    {
+                        mrk_counter = 1;
+                        mrk = mrk_1;
+                        mrk_lbl = mrk_lbl_1;
+                        lbl_num_mrk = lbl_num_mrk1;
+                        break;
+                    }
+            }
+
+            var X = e.X;
+            var Y = e.Y;
+
+            try
+            {
+                this.Invoke((MethodInvoker)delegate { marker_genrator(mrk, mrk_lbl, lbl_num_mrk, X, mrk_counter); });
+                //UpdateChart();
+            }
+            catch
+            {
+            }
+            mrk_counter++;
+
+        }
+
+       
+        public void Marker_max_generator(string name)
+        {
+            //MessageBox.Show("Jestes tu");
+            var mrk = new Label();
+            var mrk_lbl = new Label();
+            var lbl_num_mrk = new Label();
+            switch (mrk_counter)
+            {
+                case 1: mrk = mrk_1; mrk_lbl = mrk_lbl_1; lbl_num_mrk = lbl_num_mrk1; break;
+                case 2: mrk = mrk_2; mrk_lbl = mrk_lbl_2; lbl_num_mrk = lbl_num_mrk2; break;
+                case 3: mrk = mrk_3; mrk_lbl = mrk_lbl_3; lbl_num_mrk = lbl_num_mrk3; break;
+                case 4: mrk = mrk_4; mrk_lbl = mrk_lbl_4; lbl_num_mrk = lbl_num_mrk4; break;
+                default:
+                    {
+                        mrk_counter = 1;
+                        mrk = mrk_1;
+                        mrk_lbl = mrk_lbl_1;
+                        lbl_num_mrk = lbl_num_mrk1;
+                        break;
+                    }
+            }
+
+             var max = extractedSamples[name].Max();
+             var max_index = extractedSamples[name].ToList().IndexOf(max);
+            var X = (int)chart1.ChartAreas[0].AxisX.ValueToPixelPosition(max_index) + 1;
+            marker_genrator(mrk, mrk_lbl,lbl_num_mrk, X, mrk_counter);
+        }
+
+        public void Marker_min_generator(string name)
+        {
+            //MessageBox.Show("Jestes tu");
+            var mrk = new Label();
+            var mrk_lbl = new Label();
+            var lbl_num_mrk = new Label();
+            switch (mrk_counter)
+            {
+                case 1: mrk = mrk_1; mrk_lbl = mrk_lbl_1; lbl_num_mrk = lbl_num_mrk1; break;
+                case 2: mrk = mrk_2; mrk_lbl = mrk_lbl_2; lbl_num_mrk = lbl_num_mrk2; break;
+                case 3: mrk = mrk_3; mrk_lbl = mrk_lbl_3; lbl_num_mrk = lbl_num_mrk3; break;
+                case 4: mrk = mrk_4; mrk_lbl = mrk_lbl_4; lbl_num_mrk = lbl_num_mrk4; break;
+                default:
+                    {
+                        mrk_counter = 1;
+                        mrk = mrk_1;
+                        mrk_lbl = mrk_lbl_1;
+                        lbl_num_mrk = lbl_num_mrk1;
+                        break;
+                    }
+            }
+
+
+            var min = extractedSamples[name].Min();
+            var min_index = extractedSamples[name].ToList().IndexOf(min);
+            var X = (int)chart1.ChartAreas[0].AxisX.ValueToPixelPosition(min_index) + 1;
+            marker_genrator(mrk, mrk_lbl,lbl_num_mrk, X, mrk_counter);
+        }
+
+        private void toolStripButton22_Click(object sender, EventArgs e)
+        {
+            var dtime_fome = new Time_delta_form(this);
+            dtime_fome.Show();
+        }
+        //legenda 2
+        private void toolStripButton12_Click(object sender, EventArgs e)
+        {
+            if (chart2.Legends[0].Enabled) { chart2.Legends[0].Enabled = false; }
+            else { chart2.Legends[0].Enabled = true; }
+        }
+        //axis2
+        private void toolStripButton13_Click(object sender, EventArgs e)
+        {
+            var axis_set = new Axis_setting(chart2);
+            axis_set.Show();
+        }
+        //resize2
+        private void toolStripButton16_Click(object sender, EventArgs e)
+        {
+            while (chart2.ChartAreas[0].AxisY.ScaleView.IsZoomed || chart2.ChartAreas[0].AxisX.ScaleView.IsZoomed)
+            {
+                chart2.ChartAreas[0].AxisY.ScaleView.ZoomReset();
+                chart2.ChartAreas[0].AxisX.ScaleView.ZoomReset();
+            }
+        }
+
+        private void toolStripButton14_Click(object sender, EventArgs e)
+        {
+            if (croos_cursor_on)
+            {
+                
+                chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(new Point(0,0), true);
+                chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(new Point(0,0), true);
+                chart1.ChartAreas[0].CursorX.IsUserEnabled = false;
+            }
+            else
+            { chart1.ChartAreas[0].CursorX.IsUserEnabled = true; }
+            croos_cursor_on = !croos_cursor_on;
 
         }
     }

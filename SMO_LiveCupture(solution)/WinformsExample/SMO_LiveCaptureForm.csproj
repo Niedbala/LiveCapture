@@ -111,6 +111,18 @@
     <Compile Include="DeviceListForm.Designer.cs">
       <DependentUpon>DeviceListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Marker_Setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Marker_Setting.Designer.cs">
+      <DependentUpon>Marker_Setting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Min_max_setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Min_max_setting.Designer.cs">
+      <DependentUpon>Min_max_setting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs">
@@ -124,6 +136,12 @@
     </Compile>
     <Compile Include="Set_chart_form.Designer.cs">
       <DependentUpon>Set_chart_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Time_delta_form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Time_delta_form.Designer.cs">
+      <DependentUpon>Time_delta_form.cs</DependentUpon>
     </Compile>
     <Compile Include="Warningform2.cs">
       <SubType>Form</SubType>
@@ -150,6 +168,12 @@
     <EmbeddedResource Include="DeviceListForm.resx">
       <DependentUpon>DeviceListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Marker_Setting.resx">
+      <DependentUpon>Marker_Setting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Min_max_setting.resx">
+      <DependentUpon>Min_max_setting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -165,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Set_chart_form.resx">
       <DependentUpon>Set_chart_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Time_delta_form.resx">
+      <DependentUpon>Time_delta_form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Warningform2.resx">
       <DependentUpon>Warningform2.cs</DependentUpon>
@@ -185,6 +212,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\unnamed-1.png" />
     <None Include="Resources\play_icon_enabled.png" />
     <None Include="Resources\save1.png" />
     <None Include="Resources\set.png" />
@@ -198,6 +226,9 @@
     <None Include="Resources\10.MAXmin-logo.jpg" />
     <None Include="Resources\10.MAXmin-logo2.jpg" />
     <None Include="Resources\full-screen.jpg" />
+    <None Include="Resources\markerpng.png" />
+    <None Include="Resources\pobrane.png" />
+    <None Include="Resources\Red_Cross_Icon_Reworked.jpg" />
     <Content Include="Resources\stop_icon_disabled.png" />
   </ItemGroup>
   <ItemGroup>

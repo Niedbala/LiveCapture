@@ -196,15 +196,17 @@ namespace WinformsExample
 
         private void button6_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "All Files (*.*)|*.*";
+            //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            FolderBrowserDialog katalog = new FolderBrowserDialog();
+            katalog.SelectedPath = textBox5.Text;
+            //saveFileDialog1.Filter = "All Files (*.*)|*.*";
 
-            saveFileDialog1.ShowDialog();
+            katalog.ShowDialog();
 
 
 
 
-            textBox5.Text = saveFileDialog1.FileName;
+            textBox5.Text = katalog.SelectedPath.ToString();
         }
     }
 }
