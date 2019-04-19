@@ -1,0 +1,34 @@
+            var card305 = new NetworkCard()
+            {
+                MacAddress = "000C4D000322"
+            };
+
+            var card308 = new NetworkCard()
+            {
+                MacAddress = "000C4D000323"
+            };
+
+            var card310_1 = new NetworkCard()
+            {
+                MacAddress = "000C4D000267"
+            };
+
+            var card310_2 = new NetworkCard()
+            {
+                MacAddress = "000C4D695D53"
+            };
+
+            var card508 = new NetworkCard()
+            {
+                MacAddress = "000C4D000326"
+            };
+
+            var card509 = new NetworkCard()
+            {
+                MacAddress = "000C4D0002BE"
+            };
+
+            var card707 = new NetworkCard()
+            {
+                MacAddress = "000C4D000327"
+            };

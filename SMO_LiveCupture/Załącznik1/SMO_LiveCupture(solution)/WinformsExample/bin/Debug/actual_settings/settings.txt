@@ -1,0 +1,8 @@
+C:\Users\pniedbala\Desktop\SSR\test_data\smoConfig2.xml
+C:\Users\pniedbala\Desktop\SSR\test_data\scalingTables\11.tsv
+C:\Users\pniedbala\Desktop\SSR\test_data\instrumentSettings2017.xml
+C:\Users\pniedbala\Desktop\SSR\CAP_file\cap_test.cap
+C:\Users\pniedbala\Desktop\SSR\CAP_file\cap_ssr_test3_read.tsv
+1023
+192.168.28.1
+509

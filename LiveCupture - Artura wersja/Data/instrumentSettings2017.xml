@@ -1,0 +1,214 @@
+<InstrumentSettings>
+	<Parameter Name="StatusGPS" BitSize="16">
+		<Register Name="SattelitesInUse">
+			<BitOffset>0</BitOffset>
+			<BitSize>4</BitSize>
+		</Register>	
+
+		<Register Name="SattelitesInView">
+			<BitOffset>4</BitOffset>
+			<BitSize>4</BitSize>
+		</Register>		
+
+		<Register Name="East/West">
+			<BitOffset>9</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>	
+
+		<Register Name="NorthSouth">
+			<BitOffset>10</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>		
+
+		<Register Name="DOPTooHigh">
+			<BitOffset>11</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>		
+
+		<Register Name="ToFewSatellites">
+			<BitOffset>12</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>			
+
+		<Register Name="CheckSumError">
+			<BitOffset>13</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>		
+
+		<Register Name="FixError">
+			<BitOffset>14</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>
+
+		<Register Name="GPSLock">
+			<BitOffset>15</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="DilutionOfPrecision" BitSize="16">
+		<Register Name="VDOP">
+			<BitOffset>0</BitOffset>
+			<BitSize>4</BitSize>
+		</Register>	
+
+		<Register Name="HDOP">
+			<BitOffset>4</BitOffset>
+			<BitSize>4</BitSize>
+		</Register>	
+
+		<Register Name="PDOP">
+			<BitOffset>8</BitOffset>
+			<BitSize>4</BitSize>
+		</Register>
+	</Parameter>	
+
+
+<Parameter Name="HeadingLo"  BitSize="16">
+		<Register Name="Degrees - Degrees 0 to 359" DataFormat="BCD" >
+			<BitOffset>0</BitOffset>
+			<BitSize>12</BitSize>
+		</Register>	
+
+		
+	</Parameter>	
+
+
+	<Parameter Name="HeadingHi"  BitSize="16">
+		<Register Name="DecimalDegrees" DataFormat="BCD" >
+			<BitOffset>0</BitOffset>
+			<BitSize>8</BitSize>
+		</Register>	
+
+		
+	</Parameter>	
+
+	<Parameter Name="AltitudeHi" BitSize="16">
+		<Register Name="Altitude - Tens of thousands of meters">
+			<BitOffset>0</BitOffset>
+			<BitSize>4</BitSize>
+		</Register>	
+		<Register Name="AltitudeIsNegative">
+			<BitOffset>15</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="LongitudeMicroMinutes" BitSize="16">
+		<Register Name="DecimalMinutes"  DataFormat="BCD">
+			<BitOffset>0</BitOffset>
+			<BitSize>12</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="LongitudeLo" BitSize="16">
+		<Register Name="DecimalMinutes" DataFormat="BCD">
+			<BitOffset>0</BitOffset>
+			<BitSize>8</BitSize>
+		</Register>	
+		<Register Name="Minutes" DataFormat="BCD">
+			<BitOffset>8</BitOffset>
+			<BitSize>8</BitSize>
+		</Register>
+	</Parameter>
+
+	<Parameter Name="LongitudeHi" BitSize="16">
+		<Register Name="Degrees">
+			<BitOffset>0</BitOffset>
+			<BitSize>12</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="LatitudeMicroMinutes" BitSize="16">
+		<Register Name="DecimalMinutes" DataFormat="BCD" >
+			<BitOffset>0</BitOffset>
+			<BitSize>4</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="LatitudeHi" BitSize="16" >
+		<Register Name="Minutes" DataFormat="BCD">
+			<BitOffset>0</BitOffset>
+			<BitSize>8</BitSize>
+		</Register>	
+		<Register Name="Degrees" DataFormat="BCD">
+			<BitOffset>8</BitOffset>
+			<BitSize>8</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="LatitudeLo" BitSize="16" >
+		<Register Name="DecimalMinutes" DataFormat="BCD">
+			<BitOffset>0</BitOffset>
+			<BitSize>16</BitSize>
+		</Register>			
+	</Parameter>
+
+	<Parameter Name="DayOfYear" BitSize="16">
+		<Register Name="DayOfYear" DataFormat="BCD">
+			<BitOffset>0</BitOffset>
+			<BitSize>10</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="TimeLo" BitSize="16">
+		<Register Name="Centiseconds">
+			<BitOffset>0</BitOffset>
+			<BitSize>8</BitSize>
+		</Register>	
+
+		<Register Name="Seconds">
+			<BitOffset>8</BitOffset>
+			<BitSize>7</BitSize>			
+		</Register>
+	</Parameter>
+
+
+	<Parameter Name="TimeHi" BitSize="16">
+		<Register Name="Minutes" DataFormat="BCD">
+			<BitOffset>0</BitOffset>
+			<BitSize>7</BitSize>
+		</Register>	
+
+		<Register Name="Hours" DataFormat="BCD">
+			<BitOffset>7</BitOffset>
+			<BitSize>6</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="ControlFunction" BitSize="32">
+		<Register Name="ControlFunction">
+			<BitOffset>5</BitOffset>
+			<BitSize>27</BitSize>
+		</Register>	
+	</Parameter>
+
+	<Parameter Name="StatusIn" BitSize="16">
+		<Register Name="BatteryFail">
+			<BitOffset>0</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>	
+
+		<Register Name="TimerLock">
+			<BitOffset>1</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>	
+
+		<Register Name="SourcePrimary">
+			<BitOffset>2</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>	
+
+		<Register Name="StraightBinarySeconds">
+			<BitOffset>14</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>	
+
+		<Register Name="IRIG-BLock">
+			<BitOffset>15</BitOffset>
+			<BitSize>1</BitSize>
+		</Register>		
+
+	</Parameter>
+
+</InstrumentSettings>

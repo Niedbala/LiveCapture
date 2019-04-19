@@ -1,0 +1,3 @@
+Uwaga:
+zmieniono niektore wartosci w pliku singlereferencesapmple.txt - szcegolnie te dotyczace BCD
+oryginal znajduje sie w .xlsx

@@ -111,6 +111,6 @@ C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.exe
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.pdb
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Axis_setting.resources
-C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Marker_Setting.resources
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Min_max_setting.resources
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.Time_delta_form.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\Debug\WinformsExample.StringsMethod.resources

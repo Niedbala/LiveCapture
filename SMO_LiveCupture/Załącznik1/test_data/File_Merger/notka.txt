@@ -1,0 +1,6 @@
+uzyskano za pomoca programu editcap (utility wiresharka)
+z zapisu 305 
+za kazdym razem brano pierwsze 4 (puste) pakiety:
+
+editcap -r "D:\Roboczy\0000_0000.cap" "D:\Roboczy\part1.cap"  1-4 5-100
+editcap -r "D:\Roboczy\0000_0000.cap" "D:\Roboczy\part2.cap"  1-4 101-200

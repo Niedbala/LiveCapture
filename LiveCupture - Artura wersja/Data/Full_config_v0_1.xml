@@ -1,0 +1,2304 @@
+﻿<xidml Version="3.0.0">
+  <Instrumentation>
+    <InstrumentSet>
+      <Instrument Name="SSR_CHS_001_B_0">
+        <Manufacturer>
+          <Name>ACRA CONTROL</Name>
+          <PartReference>SSR/CHS/001/B</PartReference>
+          <SerialNumber>
+          </SerialNumber>
+        </Manufacturer>
+        <Settings>
+          <Setting>
+            <Name>IP Address</Name>
+            <Value>192.168.28.1</Value>
+          </Setting>
+          <Setting>
+            <Name>Primary Input</Name>
+            <Value>GPS</Value>
+          </Setting>
+          <Setting>
+            <Name>Allow Secondary Input</Name>
+            <Value>True</Value>
+          </Setting>
+          <Setting>
+            <Name>PTP Leap Seconds</Name>
+            <Value>35</Value>
+          </Setting>
+          <Setting>
+            <Name>Synchronisation Level</Name>
+            <Value>1000</Value>
+          </Setting>
+          <Setting>
+            <Name>Packetization Policy</Name>
+            <Value>Disabled</Value>
+          </Setting>
+          <Setting>
+            <Name>Matches To Lock</Name>
+            <Value>5</Value>
+          </Setting>
+          <Setting>
+            <Name>Is Leap Year</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Current Year</Name>
+            <Value>2018</Value>
+          </Setting>
+          <Setting>
+            <Name>Wrap Around</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Recorder Control Method</Name>
+            <Value>Local</Value>
+          </Setting>
+          <Setting>
+            <Name>Memory Utilization Threshold</Name>
+            <Value>12800</Value>
+          </Setting>
+          <Setting>
+            <Name>Recorder Command</Name>
+            <Value>Stop</Value>
+          </Setting>
+          <Setting>
+            <Name>Recorder Erase</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Default File Size</Name>
+            <Value>0</Value>
+          </Setting>
+          <Setting>
+            <Name>Record from Ethernet</Name>
+            <Value>True</Value>
+          </Setting>
+          <Setting>
+            <Name>Store Ethernet Frame CRC</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Bright Mode</Name>
+            <Value>10</Value>
+          </Setting>
+          <Setting>
+            <Name>Dim Mode</Name>
+            <Value>-10</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Destination IP Address</Name>
+            <Value>127.0.0.1</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Destination Port</Name>
+            <Value>1234</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Stream Id</Name>
+            <Value>1000</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Packet Format</Name>
+            <Value>iNetX</Value>
+          </Setting>
+          <Setting>
+            <Name>Event IENA Trailer</Name>
+            <Value>57005</Value>
+          </Setting>
+        </Settings>
+        <Channels>
+          <Channel VendorName="GPS-In" Direction="Input">
+            <Settings>
+              <Setting>
+                <Name>Use SBAS</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Use RAIM</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Minimum Number Of Satelites</Name>
+                <Value>4</Value>
+              </Setting>
+              <Setting>
+                <Name>Maximum Dilution Of Precision</Name>
+                <Value>5</Value>
+              </Setting>
+              <Setting>
+                <Name>Baud Rate</Name>
+                <Value>115200</Value>
+              </Setting>
+              <Setting>
+                <Name>Check For Parity</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Eight Bits</Name>
+                <Value>True</Value>
+              </Setting>
+              <Setting>
+                <Name>Parity Odd</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Dynamic</Name>
+                <Value>Airborne with &lt;2g Acceleration</Value>
+              </Setting>
+            </Settings>
+            <Parameters>
+              <ParameterReference VendorName="StatusGPS" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_StatusGPS</ParameterReference>
+              <ParameterReference VendorName="Latitude" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Latitude</ParameterReference>
+              <ParameterReference VendorName="Longitude" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Longitude</ParameterReference>
+              <ParameterReference VendorName="Altitude" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Altitude</ParameterReference>
+              <ParameterReference VendorName="VelocityInKph" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_VelocityInKph</ParameterReference>
+              <ParameterReference VendorName="VelocityInKn" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_VelocityInKn</ParameterReference>
+              <ParameterReference VendorName="Heading" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Heading</ParameterReference>
+              <ParameterReference VendorName="DilutionOfPrecision" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_DilutionOfPrecision</ParameterReference>
+            </Parameters>
+          </Channel>
+          <Channel VendorName="Ethernet" Direction="Bidirectional">
+            <LinkReference>Link_SSR_CHS_001_B_0_Ethernet</LinkReference>
+          </Channel>
+          <Channel VendorName="PPSOut" Direction="Output" />
+          <Channel VendorName="Audio-In(0)" Direction="Input">
+            <Settings>
+              <Setting>
+                <Name>Packet Size</Name>
+                <Value>722</Value>
+              </Setting>
+              <Setting>
+                <Name>Stream Id</Name>
+                <Value>FFFFFFFF</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Enabled</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Bit Rate</Name>
+                <Value>64000</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Type</Name>
+                <Value>Bit Aligned</Value>
+              </Setting>
+            </Settings>
+          </Channel>
+          <Channel VendorName="Audio-In(1)" Direction="Input">
+            <Settings>
+              <Setting>
+                <Name>Packet Size</Name>
+                <Value>722</Value>
+              </Setting>
+              <Setting>
+                <Name>Stream Id</Name>
+                <Value>FFFFFFFF</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Enabled</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Bit Rate</Name>
+                <Value>64000</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Type</Name>
+                <Value>Bit Aligned</Value>
+              </Setting>
+            </Settings>
+          </Channel>
+          <Channel VendorName="IRIG-B-In" Direction="Input">
+            <Parameters>
+              <ParameterReference VendorName="ControlFunction" Orientation="Read">P_SSR_CHS_001_B_0_IRIG-B-In_ControlFunction</ParameterReference>
+              <ParameterReference VendorName="StraightBinarySeconds" Orientation="Read">P_SSR_CHS_001_B_0_IRIG-B-In_StraightBinarySeconds</ParameterReference>
+            </Parameters>
+          </Channel>
+          <Channel VendorName="RecorderStatus" Direction="Output" />
+        </Channels>
+        <Parameters>
+          <ParameterReference VendorName="DayOfYear" Orientation="Read">P_SSR_CHS_001_B_0_DayOfYear</ParameterReference>
+          <ParameterReference VendorName="IrigTime48" Orientation="Read">P_SSR_CHS_001_B_0_IrigTime48</ParameterReference>
+          <ParameterReference VendorName="StatusIn" Orientation="Read">P_SSR_CHS_001_B_0_StatusIn</ParameterReference>
+          <ParameterReference VendorName="Report" Orientation="Read">P_SSR_CHS_001_B_0_Report</ParameterReference>
+        </Parameters>
+        <Instruments>
+          <Location Name="1">
+            <Instrument Name="KAD_BIT_101_0">
+              <Manufacturer>
+                <Name>ACRA CONTROL</Name>
+                <PartReference>KAD/BIT/101</PartReference>
+                <SerialNumber>AAB2105</SerialNumber>
+              </Manufacturer>
+              <Settings>
+                <Setting>
+                  <Name>Baud Rate</Name>
+                  <Value>9600</Value>
+                </Setting>
+                <Setting>
+                  <Name>FIFO Select</Name>
+                  <Value>High Low Micro</Value>
+                </Setting>
+                <Setting>
+                  <Name>Ignore Cycles</Name>
+                  <Value>64</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 0</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 1</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 2</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 3</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 0</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 1</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 2</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 3</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 0</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 1</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 2</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 3</Name>
+                  <Value>Active High</Value>
+                </Setting>
+              </Settings>
+              <Parameters>
+                <ParameterReference VendorName="+12V" Orientation="Read">P_KAD_BIT_101_0_+12V</ParameterReference>
+                <ParameterReference VendorName="-12V" Orientation="Read">P_KAD_BIT_101_0_-12V</ParameterReference>
+                <ParameterReference VendorName="+7V" Orientation="Read">P_KAD_BIT_101_0_+7V</ParameterReference>
+                <ParameterReference VendorName="-7V" Orientation="Read">P_KAD_BIT_101_0_-7V</ParameterReference>
+                <ParameterReference VendorName="5V" Orientation="Read">P_KAD_BIT_101_0_5V</ParameterReference>
+                <ParameterReference VendorName="InternalTemperature" Orientation="Read">P_KAD_BIT_101_0_InternalTemperature</ParameterReference>
+                <ParameterReference VendorName="ChassisTemperature" Orientation="Read">P_KAD_BIT_101_0_ChassisTemperature</ParameterReference>
+                <ParameterReference VendorName="BackplaneTicks" Orientation="Read">P_KAD_BIT_101_0_BackplaneTicks</ParameterReference>
+                <ParameterReference VendorName="CurrentFormat" Orientation="Read">P_KAD_BIT_101_0_CurrentFormat</ParameterReference>
+                <ParameterReference VendorName="Status" Orientation="Read">P_KAD_BIT_101_0_Status</ParameterReference>
+                <ParameterReference VendorName="FifoError" Orientation="Read">P_KAD_BIT_101_0_FifoError</ParameterReference>
+                <ParameterReference VendorName="FifoTime" Orientation="Read">P_KAD_BIT_101_0_FifoTime</ParameterReference>
+                <ParameterReference VendorName="ErrorCounter" Orientation="Read">P_KAD_BIT_101_0_ErrorCounter</ParameterReference>
+                <ParameterReference VendorName="PowerUpCount" Orientation="Read">P_KAD_BIT_101_0_PowerUpCount</ParameterReference>
+                <ParameterReference VendorName="TimeOn" Orientation="Read">P_KAD_BIT_101_0_TimeOn</ParameterReference>
+              </Parameters>
+            </Instrument>
+          </Location>
+          <Location Name="2">
+            <Instrument Name="KAD_ADC_134_B_100M_0">
+              <Manufacturer>
+                <Name>ACRA CONTROL</Name>
+                <PartReference>KAD/ADC/134/B/100M</PartReference>
+                <SerialNumber>AAD2360</SerialNumber>
+              </Manufacturer>
+              <Channels>
+                <Channel VendorName="Analog(0)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(0)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(0)_Analog(0)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(1)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(1)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(1)_Analog(1)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(2)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(2)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(2)_Analog(2)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(3)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(3)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(3)_Analog(3)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(4)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(4)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(4)_Analog(4)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(5)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(5)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(5)_Analog(5)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(6)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(6)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(6)_Analog(6)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(7)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(7)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(7)_Analog(7)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(8)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(8)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(8)_Analog(8)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(9)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(9)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(9)_Analog(9)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(10)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(10)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(10)_Analog(10)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(11)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(11)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(11)_Analog(11)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(12)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(12)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(12)_Analog(12)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(13)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(13)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(13)_Analog(13)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(14)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(14)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(14)_Analog(14)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(15)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Mode</Name>
+                      <Value>IIR</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Mode</Name>
+                      <Value>Voltage</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Excitation Amplitude</Name>
+                      <Value>0.2</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Type</Name>
+                      <Value>CurrentShunt</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.BalanceThisTime</Name>
+                      <Value>False</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Tolerance</Name>
+                      <Value>0.1</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Achieved</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Target</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Balance.Actual</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>ShuntCurrent.Applied</Name>
+                      <Value>0</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Classic Shunt</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                    <Setting>
+                      <Name>Enable Half Bridge Completion Resistors</Name>
+                      <Value>Disabled</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(15)" Orientation="Read">P_KAD_ADC_134_B_100M_0_Analog(15)_Analog(15)</ParameterReference>
+                  </Parameters>
+                </Channel>
+              </Channels>
+            </Instrument>
+          </Location>
+          <Location Name="3">
+            <Instrument Name="KAD_ADC_106_C_0">
+              <Manufacturer>
+                <Name>ACRA CONTROL</Name>
+                <PartReference>KAD/ADC/106/C</PartReference>
+                <SerialNumber>AAD1195</SerialNumber>
+              </Manufacturer>
+              <Channels>
+                <Channel VendorName="Acceleration(0)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Acceleration(0)" Orientation="Read">P_KAD_ADC_106_C_0_Acceleration(0)_Acceleration(0)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Acceleration(1)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Acceleration(1)" Orientation="Read">P_KAD_ADC_106_C_0_Acceleration(1)_Acceleration(1)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Acceleration(2)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Acceleration(2)" Orientation="Read">P_KAD_ADC_106_C_0_Acceleration(2)_Acceleration(2)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Acceleration(3)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Acceleration(3)" Orientation="Read">P_KAD_ADC_106_C_0_Acceleration(3)_Acceleration(3)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Acceleration(4)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Acceleration(4)" Orientation="Read">P_KAD_ADC_106_C_0_Acceleration(4)_Acceleration(4)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Acceleration(5)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Acceleration(5)" Orientation="Read">P_KAD_ADC_106_C_0_Acceleration(5)_Acceleration(5)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="AnalogIn(0)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="AnalogIn(0)" Orientation="Read">P_KAD_ADC_106_C_0_AnalogIn(0)_AnalogIn(0)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="AnalogIn(1)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="AnalogIn(1)" Orientation="Read">P_KAD_ADC_106_C_0_AnalogIn(1)_AnalogIn(1)</ParameterReference>
+                  </Parameters>
+                </Channel>
+              </Channels>
+            </Instrument>
+          </Location>
+          <Location Name="4">
+            <Instrument Name="KAD_ADC_112_10V_0">
+              <Manufacturer>
+                <Name>ACRA CONTROL</Name>
+                <PartReference>KAD/ADC/112/10V</PartReference>
+                <SerialNumber>AAD2401</SerialNumber>
+              </Manufacturer>
+              <Channels>
+                <Channel VendorName="Analog(0)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(0)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(0)_Analog(0)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(1)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(1)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(1)_Analog(1)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(2)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(2)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(2)_Analog(2)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(3)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(3)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(3)_Analog(3)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(4)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(4)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(4)_Analog(4)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(5)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(5)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(5)_Analog(5)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(6)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(6)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(6)_Analog(6)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(7)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(7)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(7)_Analog(7)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(8)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(8)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(8)_Analog(8)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(9)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(9)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(9)_Analog(9)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(10)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(10)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(10)_Analog(10)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(11)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(11)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(11)_Analog(11)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(12)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(12)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(12)_Analog(12)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(13)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(13)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(13)_Analog(13)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(14)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(14)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(14)_Analog(14)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(15)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(15)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(15)_Analog(15)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(16)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(16)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(16)_Analog(16)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(17)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(17)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(17)_Analog(17)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(18)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(18)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(18)_Analog(18)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(19)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(19)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(19)_Analog(19)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(20)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(20)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(20)_Analog(20)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(21)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(21)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(21)_Analog(21)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(22)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(22)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(22)_Analog(22)</ParameterReference>
+                  </Parameters>
+                </Channel>
+                <Channel VendorName="Analog(23)" Direction="Input">
+                  <Settings>
+                    <Setting>
+                      <Name>Filter Cutoff</Name>
+                      <Value>0.25</Value>
+                    </Setting>
+                  </Settings>
+                  <Parameters>
+                    <ParameterReference VendorName="Analog(23)" Orientation="Read">P_KAD_ADC_112_10V_0_Analog(23)_Analog(23)</ParameterReference>
+                  </Parameters>
+                </Channel>
+              </Channels>
+            </Instrument>
+          </Location>
+        </Instruments>
+      </Instrument>
+    </InstrumentSet>
+  </Instrumentation>
+  <Parameters>
+    <ParameterSet>
+      <Parameter Name="P_SSR_CHS_001_B_0_DayOfYear" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_IrigTime48" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_StatusIn" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_Report" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_StatusGPS" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Latitude" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Longitude" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Altitude" Orientation="Read">
+        <BaseUnit>Meter</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_VelocityInKph" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_VelocityInKn" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Heading" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_DilutionOfPrecision" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_IRIG-B-In_ControlFunction" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_IRIG-B-In_StraightBinarySeconds" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_+12V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>20</RangeMaximum>
+        <RangeMinimum>0</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_-12V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0</RangeMaximum>
+        <RangeMinimum>-20</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_+7V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>0</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_-7V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_5V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_InternalTemperature" Orientation="Read">
+        <BaseUnit>Celsius</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>125</RangeMaximum>
+        <RangeMinimum>-40</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_ChassisTemperature" Orientation="Read">
+        <BaseUnit>Celsius</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>125</RangeMaximum>
+        <RangeMinimum>-40</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_BackplaneTicks" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_CurrentFormat" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_Status" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_FifoError" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_FifoTime" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_ErrorCounter" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_PowerUpCount" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_TimeOn" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(0)_Analog(0)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(1)_Analog(1)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(2)_Analog(2)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(3)_Analog(3)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(4)_Analog(4)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(5)_Analog(5)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(6)_Analog(6)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(7)_Analog(7)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(8)_Analog(8)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(9)_Analog(9)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(10)_Analog(10)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(11)_Analog(11)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(12)_Analog(12)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(13)_Analog(13)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(14)_Analog(14)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_134_B_100M_0_Analog(15)_Analog(15)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0.1</RangeMaximum>
+        <RangeMinimum>-0.1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_Acceleration(0)_Acceleration(0)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_Acceleration(1)_Acceleration(1)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_Acceleration(2)_Acceleration(2)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>5</RangeMaximum>
+        <RangeMinimum>-5</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_Acceleration(3)_Acceleration(3)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_Acceleration(4)_Acceleration(4)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>1</RangeMaximum>
+        <RangeMinimum>-1</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_Acceleration(5)_Acceleration(5)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_AnalogIn(0)_AnalogIn(0)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_106_C_0_AnalogIn(1)_AnalogIn(1)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(0)_Analog(0)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(1)_Analog(1)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(2)_Analog(2)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(3)_Analog(3)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(4)_Analog(4)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(5)_Analog(5)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(6)_Analog(6)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(7)_Analog(7)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(8)_Analog(8)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(9)_Analog(9)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(10)_Analog(10)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(11)_Analog(11)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(12)_Analog(12)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(13)_Analog(13)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(14)_Analog(14)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(15)_Analog(15)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(16)_Analog(16)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(17)_Analog(17)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(18)_Analog(18)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(19)_Analog(19)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(20)_Analog(20)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(21)_Analog(21)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(22)_Analog(22)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_ADC_112_10V_0_Analog(23)_Analog(23)" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+    </ParameterSet>
+  </Parameters>
+  <Links>
+    <LinkSet>
+      <Link Name="Link_SSR_CHS_001_B_0_Ethernet">
+        <Type>Ethernet</Type>
+        <Packages>
+          <PackageReference>MyPlacediNET-XPackage</PackageReference>
+        </Packages>
+      </Link>
+    </LinkSet>
+  </Links>
+  <Packages>
+    <PackageSet>
+      <iNET-X Name="MyPlacediNET-XPackage">
+        <PackageRate>16</PackageRate>
+        <Properties>
+          <StreamID>01</StreamID>
+          <Format>
+            <Placed />
+          </Format>
+        </Properties>
+        <Source>
+          <IPAddress>
+            <Value>000.000.000.000</Value>
+          </IPAddress>
+          <Port>
+            <Value>0</Value>
+          </Port>
+        </Source>
+        <Destination>
+          <IPAddress>
+            <Value>235.0.0.1</Value>
+          </IPAddress>
+          <Port>
+            <Value>1023</Value>
+          </Port>
+          <MACAddress>
+            <Value>01-00-5E-00-00-01</Value>
+          </MACAddress>
+        </Destination>
+        <Content>
+          <Mapping>
+            <ParameterReference>P_KAD_ADC_106_C_0_Acceleration(1)_Acceleration(1)</ParameterReference>
+            <Location>
+              <Offset_Bytes>28</Offset_Bytes>
+              <Occurrences>128</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_ADC_106_C_0_Acceleration(2)_Acceleration(2)</ParameterReference>
+            <Location>
+              <Offset_Bytes>284</Offset_Bytes>
+              <Occurrences>256</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_ADC_106_C_0_Acceleration(4)_Acceleration(4)</ParameterReference>
+            <Location>
+              <Offset_Bytes>796</Offset_Bytes>
+              <Occurrences>256</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_ADC_106_C_0_Acceleration(5)_Acceleration(5)</ParameterReference>
+            <Location>
+              <Offset_Bytes>1308</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_ErrorCounter</ParameterReference>
+            <Location>
+              <Offset_Bytes>1310</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_ChassisTemperature</ParameterReference>
+            <Location>
+              <Offset_Bytes>1312</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_Status</ParameterReference>
+            <Location>
+              <Offset_Bytes>1314</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+        </Content>
+      </iNET-X>
+    </PackageSet>
+  </Packages>
+</xidml>

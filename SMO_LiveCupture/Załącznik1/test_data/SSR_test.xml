@@ -1,0 +1,700 @@
+﻿<xidml Version="3.0.0">
+  <Instrumentation>
+    <InstrumentSet>
+      <Instrument Name="SSR_CHS_001_B_0">
+        <Manufacturer>
+          <Name>ACRA CONTROL</Name>
+          <PartReference>SSR/CHS/001/B</PartReference>
+          <SerialNumber>
+          </SerialNumber>
+        </Manufacturer>
+        <Settings>
+          <Setting>
+            <Name>IP Address</Name>
+            <Value>192.168.28.1</Value>
+          </Setting>
+          <Setting>
+            <Name>Primary Input</Name>
+            <Value>GPS</Value>
+          </Setting>
+          <Setting>
+            <Name>Allow Secondary Input</Name>
+            <Value>True</Value>
+          </Setting>
+          <Setting>
+            <Name>PTP Leap Seconds</Name>
+            <Value>35</Value>
+          </Setting>
+          <Setting>
+            <Name>Synchronisation Level</Name>
+            <Value>1000</Value>
+          </Setting>
+          <Setting>
+            <Name>Packetization Policy</Name>
+            <Value>Disabled</Value>
+          </Setting>
+          <Setting>
+            <Name>Matches To Lock</Name>
+            <Value>5</Value>
+          </Setting>
+          <Setting>
+            <Name>Is Leap Year</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Current Year</Name>
+            <Value>2018</Value>
+          </Setting>
+          <Setting>
+            <Name>Wrap Around</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Recorder Control Method</Name>
+            <Value>Local</Value>
+          </Setting>
+          <Setting>
+            <Name>Memory Utilization Threshold</Name>
+            <Value>12800</Value>
+          </Setting>
+          <Setting>
+            <Name>Recorder Command</Name>
+            <Value>Stop</Value>
+          </Setting>
+          <Setting>
+            <Name>Recorder Erase</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Default File Size</Name>
+            <Value>0</Value>
+          </Setting>
+          <Setting>
+            <Name>Record from Ethernet</Name>
+            <Value>True</Value>
+          </Setting>
+          <Setting>
+            <Name>Store Ethernet Frame CRC</Name>
+            <Value>False</Value>
+          </Setting>
+          <Setting>
+            <Name>Bright Mode</Name>
+            <Value>10</Value>
+          </Setting>
+          <Setting>
+            <Name>Dim Mode</Name>
+            <Value>-10</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Destination IP Address</Name>
+            <Value>127.0.0.1</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Destination Port</Name>
+            <Value>1234</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Stream Id</Name>
+            <Value>1000</Value>
+          </Setting>
+          <Setting>
+            <Name>Event Packet Format</Name>
+            <Value>iNetX</Value>
+          </Setting>
+          <Setting>
+            <Name>Event IENA Trailer</Name>
+            <Value>57005</Value>
+          </Setting>
+        </Settings>
+        <Channels>
+          <Channel VendorName="GPS-In" Direction="Input">
+            <Settings>
+              <Setting>
+                <Name>Use SBAS</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Use RAIM</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Minimum Number Of Satelites</Name>
+                <Value>4</Value>
+              </Setting>
+              <Setting>
+                <Name>Maximum Dilution Of Precision</Name>
+                <Value>5</Value>
+              </Setting>
+              <Setting>
+                <Name>Baud Rate</Name>
+                <Value>115200</Value>
+              </Setting>
+              <Setting>
+                <Name>Check For Parity</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Eight Bits</Name>
+                <Value>True</Value>
+              </Setting>
+              <Setting>
+                <Name>Parity Odd</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Dynamic</Name>
+                <Value>Airborne with &lt;2g Acceleration</Value>
+              </Setting>
+            </Settings>
+            <Parameters>
+              <ParameterReference VendorName="StatusGPS" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_StatusGPS</ParameterReference>
+              <ParameterReference VendorName="Latitude" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Latitude</ParameterReference>
+              <ParameterReference VendorName="Longitude" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Longitude</ParameterReference>
+              <ParameterReference VendorName="Altitude" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Altitude</ParameterReference>
+              <ParameterReference VendorName="VelocityInKph" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_VelocityInKph</ParameterReference>
+              <ParameterReference VendorName="VelocityInKn" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_VelocityInKn</ParameterReference>
+              <ParameterReference VendorName="Heading" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_Heading</ParameterReference>
+              <ParameterReference VendorName="DilutionOfPrecision" Orientation="Read">P_SSR_CHS_001_B_0_GPS-In_DilutionOfPrecision</ParameterReference>
+              <ParameterReference VendorName="LatitudeHi" Orientation="Read">MyLatitudeHi</ParameterReference>
+              <ParameterReference VendorName="LatitudeLo" Orientation="Read">MyLatitudeLo</ParameterReference>
+              <ParameterReference VendorName="LatitudeMicroMinutes" Orientation="Read">MyLatitudeMicroMinutes</ParameterReference>
+              <ParameterReference VendorName="LongitudeHi" Orientation="Read">MyLongitudeHi</ParameterReference>
+              <ParameterReference VendorName="LongitudeLo" Orientation="Read">MyLongitudeLo</ParameterReference>
+              <ParameterReference VendorName="LongitudeMicroMinutes" Orientation="Read">MyLongitudeMicroMinutes</ParameterReference>
+              <ParameterReference VendorName="AltitudeHi" Orientation="Read">MyAltitudeHi</ParameterReference>
+              <ParameterReference VendorName="AltitudeLo" Orientation="Read">MyAltitudeLo</ParameterReference>
+            </Parameters>
+          </Channel>
+          <Channel VendorName="Ethernet" Direction="Bidirectional">
+            <LinkReference>MyEthernetLink</LinkReference>
+          </Channel>
+          <Channel VendorName="PPSOut" Direction="Output" />
+          <Channel VendorName="Audio-In(0)" Direction="Input">
+            <Settings>
+              <Setting>
+                <Name>Packet Size</Name>
+                <Value>722</Value>
+              </Setting>
+              <Setting>
+                <Name>Stream Id</Name>
+                <Value>FFFFFFFF</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Enabled</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Bit Rate</Name>
+                <Value>640000</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Type</Name>
+                <Value>Bit Aligned</Value>
+              </Setting>
+            </Settings>
+          </Channel>
+          <Channel VendorName="Audio-In(1)" Direction="Input">
+            <Settings>
+              <Setting>
+                <Name>Packet Size</Name>
+                <Value>722</Value>
+              </Setting>
+              <Setting>
+                <Name>Stream Id</Name>
+                <Value>FFFFFFFF</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Enabled</Name>
+                <Value>False</Value>
+              </Setting>
+              <Setting>
+                <Name>Bit Rate</Name>
+                <Value>640000</Value>
+              </Setting>
+              <Setting>
+                <Name>Packetization Type</Name>
+                <Value>Bit Aligned</Value>
+              </Setting>
+            </Settings>
+          </Channel>
+          <Channel VendorName="IRIG-B-In" Direction="Input">
+            <Parameters>
+              <ParameterReference VendorName="ControlFunction" Orientation="Read">P_SSR_CHS_001_B_0_IRIG-B-In_ControlFunction</ParameterReference>
+              <ParameterReference VendorName="StraightBinarySeconds" Orientation="Read">P_SSR_CHS_001_B_0_IRIG-B-In_StraightBinarySeconds</ParameterReference>
+            </Parameters>
+          </Channel>
+          <Channel VendorName="RecorderStatus" Direction="Output" />
+        </Channels>
+        <Parameters>
+          <ParameterReference VendorName="DayOfYear" Orientation="Read">P_SSR_CHS_001_B_0_DayOfYear</ParameterReference>
+          <ParameterReference VendorName="IrigTime48" Orientation="Read">P_SSR_CHS_001_B_0_IrigTime48</ParameterReference>
+          <ParameterReference VendorName="StatusIn" Orientation="Read">P_SSR_CHS_001_B_0_StatusIn</ParameterReference>
+          <ParameterReference VendorName="Report" Orientation="Read">P_SSR_CHS_001_B_0_Report</ParameterReference>
+        </Parameters>
+        <Instruments>
+          <Location Name="1">
+            <Instrument Name="KAD_BIT_101_0">
+              <Manufacturer>
+                <Name>ACRA CONTROL</Name>
+                <PartReference>KAD/BIT/101</PartReference>
+                <SerialNumber>AAB2105</SerialNumber>
+              </Manufacturer>
+              <Settings>
+                <Setting>
+                  <Name>Baud Rate</Name>
+                  <Value>9600</Value>
+                </Setting>
+                <Setting>
+                  <Name>FIFO Select</Name>
+                  <Value>High Low Micro</Value>
+                </Setting>
+                <Setting>
+                  <Name>Ignore Cycles</Name>
+                  <Value>64</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 0</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 1</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 2</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>Dolls Eye 3</Name>
+                  <Value>Active Set</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 0</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 1</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 2</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>LED 3</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 0</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 1</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 2</Name>
+                  <Value>Active High</Value>
+                </Setting>
+                <Setting>
+                  <Name>TTL 3</Name>
+                  <Value>Active High</Value>
+                </Setting>
+              </Settings>
+              <Parameters>
+                <ParameterReference VendorName="+12V" Orientation="Read">P_KAD_BIT_101_0_+12V</ParameterReference>
+                <ParameterReference VendorName="-12V" Orientation="Read">P_KAD_BIT_101_0_-12V</ParameterReference>
+                <ParameterReference VendorName="+7V" Orientation="Read">P_KAD_BIT_101_0_+7V</ParameterReference>
+                <ParameterReference VendorName="-7V" Orientation="Read">P_KAD_BIT_101_0_-7V</ParameterReference>
+                <ParameterReference VendorName="5V" Orientation="Read">P_KAD_BIT_101_0_5V</ParameterReference>
+                <ParameterReference VendorName="InternalTemperature" Orientation="Read">P_KAD_BIT_101_0_InternalTemperature</ParameterReference>
+                <ParameterReference VendorName="ChassisTemperature" Orientation="Read">P_KAD_BIT_101_0_ChassisTemperature</ParameterReference>
+                <ParameterReference VendorName="BackplaneTicks" Orientation="Read">P_KAD_BIT_101_0_BackplaneTicks</ParameterReference>
+                <ParameterReference VendorName="CurrentFormat" Orientation="Read">P_KAD_BIT_101_0_CurrentFormat</ParameterReference>
+                <ParameterReference VendorName="Status" Orientation="Read">P_KAD_BIT_101_0_Status</ParameterReference>
+                <ParameterReference VendorName="FifoError" Orientation="Read">P_KAD_BIT_101_0_FifoError</ParameterReference>
+                <ParameterReference VendorName="FifoTime" Orientation="Read">P_KAD_BIT_101_0_FifoTime</ParameterReference>
+                <ParameterReference VendorName="ErrorCounter" Orientation="Read">P_KAD_BIT_101_0_ErrorCounter</ParameterReference>
+                <ParameterReference VendorName="PowerUpCount" Orientation="Read">P_KAD_BIT_101_0_PowerUpCount</ParameterReference>
+                <ParameterReference VendorName="TimeOn" Orientation="Read">P_KAD_BIT_101_0_TimeOn</ParameterReference>
+              </Parameters>
+            </Instrument>
+          </Location>
+        </Instruments>
+      </Instrument>
+    </InstrumentSet>
+  </Instrumentation>
+  <Parameters>
+    <ParameterSet>
+      <Parameter Name="P_SSR_CHS_001_B_0_DayOfYear" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_IrigTime48" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_StatusIn" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_Report" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_StatusGPS" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Latitude" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Longitude" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Altitude" Orientation="Read">
+        <BaseUnit>Meter</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_VelocityInKph" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_VelocityInKn" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_Heading" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_GPS-In_DilutionOfPrecision" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_IRIG-B-In_ControlFunction" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_SSR_CHS_001_B_0_IRIG-B-In_StraightBinarySeconds" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_+12V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>20</RangeMaximum>
+        <RangeMinimum>0</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_-12V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0</RangeMaximum>
+        <RangeMinimum>-20</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_+7V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>0</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_-7V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>0</RangeMaximum>
+        <RangeMinimum>-10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_5V" Orientation="Read">
+        <BaseUnit>Volt</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>10</RangeMaximum>
+        <RangeMinimum>10</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_InternalTemperature" Orientation="Read">
+        <BaseUnit>Celsius</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>125</RangeMaximum>
+        <RangeMinimum>-40</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_ChassisTemperature" Orientation="Read">
+        <BaseUnit>Celsius</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+        <RangeMaximum>125</RangeMaximum>
+        <RangeMinimum>-40</RangeMinimum>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_BackplaneTicks" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_CurrentFormat" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_Status" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_FifoError" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_FifoTime" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>48</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_ErrorCounter" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_PowerUpCount" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="P_KAD_BIT_101_0_TimeOn" Orientation="Read">
+        <BaseUnit>Count</BaseUnit>
+        <DataFormat>OffsetBinary</DataFormat>
+        <SizeInBits>32</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyLatitudeHi" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyLatitudeLo" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyLatitudeMicroMinutes" Orientation="Read">
+        <BaseUnit>BitVector</BaseUnit>
+        <DataFormat>BitVector</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyLongitudeHi" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyLongitudeLo" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyLongitudeMicroMinutes" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyAltitudeHi" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+      <Parameter Name="MyAltitudeLo" Orientation="Read">
+        <BaseUnit>Unitless</BaseUnit>
+        <DataFormat>BinaryCodedDecimal</DataFormat>
+        <SizeInBits>16</SizeInBits>
+      </Parameter>
+    </ParameterSet>
+  </Parameters>
+  <Links>
+    <LinkSet>
+      <Link Name="MyEthernetLink">
+        <Type>Ethernet</Type>
+        <Packages>
+          <PackageReference>MyPlacediNET-XPackage</PackageReference>
+        </Packages>
+      </Link>
+    </LinkSet>
+  </Links>
+  <Packages>
+    <PackageSet>
+      <iNET-X Name="MyPlacediNET-XPackage">
+        <PackageRate>16</PackageRate>
+        <Properties>
+          <StreamID>AB</StreamID>
+          <Format>
+            <Placed />
+          </Format>
+        </Properties>
+        <Source>
+          <IPAddress>
+            <Value>000.000.000.000</Value>
+          </IPAddress>
+          <Port>
+            <Value>0</Value>
+          </Port>
+        </Source>
+        <Destination>
+          <IPAddress>
+            <Value>235.0.0.1</Value>
+          </IPAddress>
+          <Port>
+            <Value>1027</Value>
+          </Port>
+          <MACAddress>
+            <Value>01-00-5E-00-00-01</Value>
+          </MACAddress>
+        </Destination>
+        <Content>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_+12V</ParameterReference>
+            <Location>
+              <Offset_Bytes>28</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_+7V</ParameterReference>
+            <Location>
+              <Offset_Bytes>30</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_-12V</ParameterReference>
+            <Location>
+              <Offset_Bytes>32</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_ChassisTemperature</ParameterReference>
+            <Location>
+              <Offset_Bytes>34</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_InternalTemperature</ParameterReference>
+            <Location>
+              <Offset_Bytes>36</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_PowerUpCount</ParameterReference>
+            <Location>
+              <Offset_Bytes>38</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_Status</ParameterReference>
+            <Location>
+              <Offset_Bytes>42</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_KAD_BIT_101_0_TimeOn</ParameterReference>
+            <Location>
+              <Offset_Bytes>44</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_SSR_CHS_001_B_0_GPS-In_DilutionOfPrecision</ParameterReference>
+            <Location>
+              <Offset_Bytes>48</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_SSR_CHS_001_B_0_GPS-In_VelocityInKph</ParameterReference>
+            <Location>
+              <Offset_Bytes>50</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>P_SSR_CHS_001_B_0_GPS-In_StatusGPS</ParameterReference>
+            <Location>
+              <Offset_Bytes>52</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>MyAltitudeHi</ParameterReference>
+            <Location>
+              <Offset_Bytes>54</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>MyAltitudeLo</ParameterReference>
+            <Location>
+              <Offset_Bytes>56</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>MyLatitudeHi</ParameterReference>
+            <Location>
+              <Offset_Bytes>58</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>MyLatitudeLo</ParameterReference>
+            <Location>
+              <Offset_Bytes>60</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>MyLatitudeMicroMinutes</ParameterReference>
+            <Location>
+              <Offset_Bytes>62</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>MyLongitudeHi</ParameterReference>
+            <Location>
+              <Offset_Bytes>64</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+          <Mapping>
+            <ParameterReference>MyLongitudeLo</ParameterReference>
+            <Location>
+              <Offset_Bytes>66</Offset_Bytes>
+              <Occurrences>1</Occurrences>
+            </Location>
+          </Mapping>
+        </Content>
+      </iNET-X>
+    </PackageSet>
+  </Packages>
+</xidml>

@@ -1,0 +1,92 @@
+<head>
+    <style>
+        body {
+            background-color: linen;
+        }
+
+        h1 {
+            color: maroon;
+            margin-left: 40px;
+        }
+
+        img {
+            width: 400px;
+        }
+
+        .label {
+            margin-bottom: 20px;
+        }
+
+        .final-assesment {
+            font-weight: 900;
+        }
+
+        .final-assesment.good {
+            color: green
+        }
+        .final-assesment.bad {
+            color: red
+        }
+    </style>
+</head>
+
+<body>
+    <div style='page-break-after:always'>
+        <h1>@Title</h1>
+        <div style="width: 100%; overflow: hidden;">
+
+            <div style="width: 50%; background: blue; float: left;">
+                <img @strainGauge1></img>
+                <div class="label">strain gauge 1</div>
+
+                <img @strainGauge2></img>
+                <div class="label">strain gauge 2</div>
+
+                <img @strainGauge3></img>
+                <div class="label">Podwozie - zginanie</div>
+
+                <img @strainGauge4></img>
+                <div class="label">Podwozie - sciskanie</div>
+
+                <img @altitude></img>
+                <div class="label">altitude</div>
+
+                <img @velocity></img>
+                <div class="label">velocity</div>
+                
+                <!--<img @GaGinput></img>-->
+
+            </div>
+            <div style="margin-left: 500px;">
+                <img @strainGauge5></img>
+                <div class="label">strain gauge 5</div>
+
+                <img @strainGauge6></img>
+                <div class="label">strain gauge 6</div>
+
+                <img @strainGauge7></img>
+                <div class="label">Podwozie - zginanie</div>
+
+                <img @strainGauge8></img>
+                <div class="label">Podwozie - sciskanie</div>
+
+                <div class="text-block">
+                    <p>Niepoprawne zapisy, satelita: @SatteliteErrorPercent %</p>
+                    <p>Niepoprawne zapisy, predkosc: @VelocityErrorPercent %</p>
+                    <p>Niepoprawne zapisy, Fix Error: @FixErrorPercent %</p>
+                    <p>Niepoprawne zapisy, GPS Lock: @GpsLockErrorPercent %</p>
+                    <p>bledny czas: @TimeErrorPercent %</p>           
+                    <p>Liczba startow: @NumberOfTakeOffs</p>
+                    <p>Liczba ladowan: @NumberOfLandings </p>
+                    <p>Liczba T&G: @NumberOfTGs</p>                 
+                    <p>bledny czas, lacznie (s): @TimeErrorSeconds</p>
+                    <p>ilosc plikow skladowych: @NumberOfFiles</p>
+                    <p>katalog: @directory</p>
+                    <p>grupa: @group</p>
+                    <h1 class="final-assesment @finalAssessmentStyle">@finalAssessment</h1>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>

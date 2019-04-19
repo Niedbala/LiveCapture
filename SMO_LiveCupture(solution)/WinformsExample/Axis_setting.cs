@@ -32,22 +32,33 @@ namespace WinformsExample
 
         private void button1_Click(object sender, EventArgs e)
         {
-            chart1.ChartAreas[0].AxisX.ScaleView.Position = Int32.Parse(textBox1.Text);
-            chart1.ChartAreas[0].AxisX.ScaleView.Size = Int32.Parse(textBox3.Text) - Int32.Parse(textBox1.Text);
-            chart1.ChartAreas[0].AxisY.ScaleView.Position = Int32.Parse(textBox6.Text);
-            chart1.ChartAreas[0].AxisY.ScaleView.Size = Int32.Parse(textBox5.Text) - Int32.Parse(textBox6.Text);
-            chart1.ChartAreas[0].AxisX.MajorGrid.Interval = Int32.Parse(textBox2.Text);
-            chart1.ChartAreas[0].AxisY.MajorGrid.Interval = Int32.Parse(textBox4.Text);
+            chart1.ChartAreas[0].AxisX.ScaleView.Position = Math.Round(Double.Parse(textBox1.Text),0);
+            chart1.ChartAreas[0].AxisX.ScaleView.Size = Math.Round(Double.Parse(textBox3.Text), 0) - Math.Round(Double.Parse(textBox1.Text), 0);
+            chart1.ChartAreas[0].AxisY.ScaleView.Position = Math.Round(Double.Parse(textBox6.Text), 0);
+            chart1.ChartAreas[0].AxisY.ScaleView.Size = Math.Round(Double.Parse(textBox5.Text), 0) - Math.Round(Double.Parse(textBox6.Text), 0);
+            chart1.ChartAreas[0].AxisX.MajorGrid.Interval = Math.Round(Double.Parse(textBox2.Text), 0);
+            chart1.ChartAreas[0].AxisY.MajorGrid.Interval = Math.Round(Double.Parse(textBox4.Text), 0);
 
             this.Close();
         }
 
         private void Axis_setting_Load(object sender, EventArgs e)
         {
-            textBox1.Text = chart1.ChartAreas[0].AxisX.Minimum.ToString();
-            textBox3.Text = chart1.ChartAreas[0].AxisX.Maximum.ToString();
-            textBox6.Text = chart1.ChartAreas[0].AxisY.Minimum.ToString();
-            textBox5.Text = chart1.ChartAreas[0].AxisY.Maximum.ToString();
+            if (chart1.ChartAreas[0].AxisY.ScaleView.IsZoomed || chart1.ChartAreas[0].AxisX.ScaleView.IsZoomed)
+            {
+                textBox1.Text = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum.ToString();
+                textBox3.Text = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum.ToString();
+                textBox6.Text = chart1.ChartAreas[0].AxisY.ScaleView.ViewMinimum.ToString();
+                textBox5.Text = chart1.ChartAreas[0].AxisY.ScaleView.ViewMaximum.ToString();
+            }
+            else
+            {
+                textBox1.Text = chart1.ChartAreas[0].AxisX.Minimum.ToString();
+                textBox3.Text = chart1.ChartAreas[0].AxisX.Maximum.ToString();
+                textBox6.Text = chart1.ChartAreas[0].AxisY.Minimum.ToString();
+                textBox5.Text = chart1.ChartAreas[0].AxisY.Maximum.ToString();
+            }
+
             textBox2.Text = chart1.ChartAreas[0].AxisX.MajorGrid.Interval.ToString();
             textBox4.Text = chart1.ChartAreas[0].AxisY.MajorGrid.Interval.ToString();
         }
