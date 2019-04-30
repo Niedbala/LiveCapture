@@ -127,6 +127,9 @@
   <data name="10.MAXmin-logo2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\10.MAXmin-logo2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Red_Cross_Icon_Reworked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Red_Cross_Icon_Reworked.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="graph" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\graph.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,8 +139,14 @@
   <data name="full-screen" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\full-screen.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ust21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ust21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ust2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ust2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play_icon_enabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\play_icon_enabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,11 +160,17 @@
   <data name="save1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="us4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\us4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="unnamed-1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unnamed-1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stop_icon_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop_icon_disabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="us3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\us3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pobrane" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pobrane.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,7 +184,10 @@
   <data name="stop_icon_enabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\stop_icon_enabled.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Red_Cross_Icon_Reworked" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Red_Cross_Icon_Reworked.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="us31" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\us31.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="us41" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\us41.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

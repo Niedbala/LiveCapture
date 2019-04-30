@@ -80,6 +80,7 @@ namespace WinformsExample
         public static int hold_coursor = 0;
         public static bool croos_cursor_on = true;
         public static Dictionary<int,List<string>> MarkerSeries = new Dictionary<int, List<string>>();
+        public static int ProbkowanieLast = 0;
 
         public int X_diff { get; private set; }
 
@@ -181,9 +182,9 @@ namespace WinformsExample
 
         }
 
-     
+        public static List<double> samplings = new List<double>();
 
-        private void dodawanie_checklistbox2(List<string> keys, CheckedListBox checkedListBox, Dictionary<string, List<ValueType>> extractedSamples)
+        public void dodawanie_checklistbox2(List<string> keys, CheckedListBox checkedListBox, Dictionary<string, List<ValueType>> extractedSamples)
         {
             checkedListBox.Items.Clear();
 
@@ -194,7 +195,7 @@ namespace WinformsExample
                 string[] split_key = keys[i].ToString().Split('_');
                 
                 var name = "(" + extractedSamples[keys[i]].Count.ToString() + ")" + split_key[split_key.Count() - 1];
-
+                if (!samplings.Contains(extractedSamples[keys[i]].Count)) { samplings.Add(extractedSamples[keys[i]].Count); };
                 if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
                 if (name.Contains("Analog")) { name = name + "_" + split_key[4]; }
                 if (name.Split('_').Last() == "B") { name = name + "_" + split_key[5]; }
@@ -354,6 +355,18 @@ namespace WinformsExample
                     if (probkowanie == 0)
                     { probkowanie = probkowanie_key; }
                     if (probkowanie != probkowanie_key) { warnform.ShowDialog(); break; }
+                    probkowanieNew = probkowanie;
+
+                    if (probkowanieNew != ProbkowanieLast)
+                    {
+                        chart1.ChartAreas[0].AxisX.ScaleView.Position = double.NaN;
+                        chart1.ChartAreas[0].AxisX.ScaleView.Size = double.NaN;
+                        chart1.ChartAreas[0].AxisY.ScaleView.Position = double.NaN;
+                        chart1.ChartAreas[0].AxisY.ScaleView.Size = double.NaN;
+                        chart1.ChartAreas[0].AxisX.MajorGrid.Interval = double.NaN;
+                        chart1.ChartAreas[0].AxisY.MajorGrid.Interval = double.NaN;
+
+                    }
                     chart1.Series.Add(keys[i]).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine; ;
                     chart1.Series[keys[i]].ToolTip = "x = {#VALX}" + '\r' + '\n' + "y = {#VALY}";
                     chart1.Series[keys[i]].XValueType = ChartValueType.Double;
@@ -616,10 +629,10 @@ namespace WinformsExample
                  //if (time_divide > 250 && time_divide < 260) { timebase = timearray_256f; }
 
 
-                 int iteration = Int32.Parse(resampling);
-                 if (every)
+                 int iteration = Int32.Parse(resamplingFile);
+                 if (everyFile)
                  {
-                     iteration = Int32.Parse(resampling.Split('_').Last());
+                     iteration = Int32.Parse(resamplingFile.Split('_').Last());
                      for (int i = iter; i < chartarray.Count() - 1; i += iteration)
                      {
                          chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
@@ -631,7 +644,7 @@ namespace WinformsExample
                  //Console.WriteLine(sw.ElapsedMilliseconds.ToString());
                  //sw.Start();
 
-                 if (dy)
+                 if (dyFile)
                  {
                      int iterable = 0;
                      bool dir = chartarray[iter] - chartarray[iter - 1] > 0;
@@ -655,6 +668,12 @@ namespace WinformsExample
                  //sw.Stop();
                  // Console.WriteLine(sw.ElapsedMilliseconds.ToString());
              }
+
+            //if (probkowanieNew != ProbkowanieLast)
+            //{
+            //    chart.ChartAreas[0].AxisX.Maximum = timebase.Count();
+
+            //}
         }
        
 
@@ -665,7 +684,7 @@ namespace WinformsExample
 
         private void Chart_form_Load(object sender, EventArgs e)
         {
-
+            toolTip1.SetToolTip(button6, "Draw sample settings");
         }
 
         private void Chart_form_FormClosing(object sender, FormClosingEventArgs e)
@@ -1076,8 +1095,12 @@ namespace WinformsExample
 
         private void button2_Click(object sender, EventArgs e)
         {
-            StartChart_file(chart1, checkedListBox1, extractedSamples);
-            Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1);
+            try
+            {
+                StartChart_file(chart1, checkedListBox1, extractedSamples);
+                Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1);
+            }
+            catch { }
            if (mrk_1.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_1,1);}
            if (mrk_2.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_2, 2); }
            if (mrk_3.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_3, 3); }
@@ -2056,6 +2079,10 @@ namespace WinformsExample
         private bool find_min;
         public List<double> timebase;
         private int  series_num = 1;
+        private int probkowanieNew;
+        internal static string resamplingFile = "1";
+        internal static bool everyFile = true;
+        internal static bool dyFile = false;
 
         private bool preser(Label mrk,Label mrk_lbl,Label lbl_num_mrk,  bool m_press, int num)
         {
@@ -2261,6 +2288,18 @@ namespace WinformsExample
             { chart1.ChartAreas[0].CursorX.IsUserEnabled = true; }
             croos_cursor_on = !croos_cursor_on;
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            var ImpSet= new ImportSetting();
+            ImpSet.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            var Signalform =new  SiganalCalulator(this);
+            Signalform.Show();
         }
     }
     }

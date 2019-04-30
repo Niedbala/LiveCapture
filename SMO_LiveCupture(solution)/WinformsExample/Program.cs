@@ -18,7 +18,9 @@ namespace WinformsExample
             Application.SetCompatibleTextRenderingDefault(false);
 
             var mainCaptureForm = new CaptureForm();
-            Application.Run(mainCaptureForm);
+           
+                Application.Run(mainCaptureForm);
+           
         }
     }
 }

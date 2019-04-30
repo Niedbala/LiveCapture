@@ -28,34 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Chart_form));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
-            this.M1_btn = new System.Windows.Forms.ToolStripButton();
-            this.M2_btn = new System.Windows.Forms.ToolStripButton();
-            this.M3_btn = new System.Windows.Forms.ToolStripButton();
-            this.M4_btn = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton21 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton22 = new System.Windows.Forms.ToolStripButton();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
@@ -94,36 +77,56 @@
             this.lbl_num_mrk2 = new System.Windows.Forms.Label();
             this.lbl_num_mrk3 = new System.Windows.Forms.Label();
             this.lbl_num_mrk4 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton9 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.M1_btn = new System.Windows.Forms.ToolStripButton();
+            this.M2_btn = new System.Windows.Forms.ToolStripButton();
+            this.M3_btn = new System.Windows.Forms.ToolStripButton();
+            this.M4_btn = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton21 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton22 = new System.Windows.Forms.ToolStripButton();
+            this.button6 = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.DockedToChartArea = "ChartArea1";
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.DockedToChartArea = "ChartArea1";
+            legend3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(2, 28);
             this.chart1.Name = "chart1";
-            series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series2.Legend = "Legend1";
-            series2.Name = "Series2";
-            this.chart1.Series.Add(series1);
-            this.chart1.Series.Add(series2);
+            series5.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            series5.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series6.Legend = "Legend1";
+            series6.Name = "Series2";
+            this.chart1.Series.Add(series5);
+            this.chart1.Series.Add(series6);
             this.chart1.Size = new System.Drawing.Size(1117, 381);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -134,228 +137,30 @@
             this.chart1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseDoubleClick);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
             // 
-            // toolStrip1
-            // 
-            this.toolStrip1.BackColor = System.Drawing.SystemColors.Menu;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.toolStripButton4,
-            this.toolStripButton7,
-            this.toolStripButton5,
-            this.toolStripButton6,
-            this.toolStripButton8,
-            this.toolStripButton14,
-            this.toolStripButton9,
-            this.toolStripButton10,
-            this.M1_btn,
-            this.M2_btn,
-            this.M3_btn,
-            this.M4_btn,
-            this.toolStripButton21,
-            this.toolStripButton22});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1285, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::WinformsExample.Properties.Resources.play_icon_enabled;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "Launch LiveChart";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::WinformsExample.Properties.Resources.stop_icon_enabled;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "STOP LiveChart";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::WinformsExample.Properties.Resources.set;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "Live Settings";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::WinformsExample.Properties.Resources.save1;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "Save Part of Chart";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Image = global::WinformsExample.Properties.Resources.saveee;
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton7.Text = "Save All Parametr";
-            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
-            // 
-            // toolStripButton5
-            // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = global::WinformsExample.Properties.Resources.legend;
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "Hide/Show Legend";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = global::WinformsExample.Properties.Resources.axis;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton6.Text = "Axis settings";
-            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
-            // 
-            // toolStripButton8
-            // 
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = global::WinformsExample.Properties.Resources._10_MAXmin_logo2;
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton8.Text = "Min/Max Finder";
-            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
-            // 
-            // toolStripButton14
-            // 
-            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton14.Image = global::WinformsExample.Properties.Resources.Red_Cross_Icon_Reworked;
-            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton14.Name = "toolStripButton14";
-            this.toolStripButton14.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton14.Text = "Cross Cursor Hide/Show";
-            this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
-            // 
-            // toolStripButton9
-            // 
-            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton9.Image = global::WinformsExample.Properties.Resources.graph;
-            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton9.Name = "toolStripButton9";
-            this.toolStripButton9.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton9.Text = "Change Lable Series";
-            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
-            // 
-            // toolStripButton10
-            // 
-            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton10.Image = global::WinformsExample.Properties.Resources.full_screen;
-            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton10.Text = "Full Screen";
-            this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
-            // 
-            // M1_btn
-            // 
-            this.M1_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.M1_btn.Image = ((System.Drawing.Image)(resources.GetObject("M1_btn.Image")));
-            this.M1_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.M1_btn.Name = "M1_btn";
-            this.M1_btn.Size = new System.Drawing.Size(28, 22);
-            this.M1_btn.Text = "M1";
-            this.M1_btn.Click += new System.EventHandler(this.toolStripButton17_Click);
-            // 
-            // M2_btn
-            // 
-            this.M2_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.M2_btn.Image = ((System.Drawing.Image)(resources.GetObject("M2_btn.Image")));
-            this.M2_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.M2_btn.Name = "M2_btn";
-            this.M2_btn.Size = new System.Drawing.Size(28, 22);
-            this.M2_btn.Text = "M2";
-            this.M2_btn.Click += new System.EventHandler(this.toolStripButton18_Click);
-            // 
-            // M3_btn
-            // 
-            this.M3_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.M3_btn.Image = ((System.Drawing.Image)(resources.GetObject("M3_btn.Image")));
-            this.M3_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.M3_btn.Name = "M3_btn";
-            this.M3_btn.Size = new System.Drawing.Size(28, 22);
-            this.M3_btn.Text = "M3";
-            this.M3_btn.Click += new System.EventHandler(this.toolStripButton19_Click);
-            // 
-            // M4_btn
-            // 
-            this.M4_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.M4_btn.Image = ((System.Drawing.Image)(resources.GetObject("M4_btn.Image")));
-            this.M4_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.M4_btn.Name = "M4_btn";
-            this.M4_btn.Size = new System.Drawing.Size(28, 22);
-            this.M4_btn.Text = "M4";
-            this.M4_btn.Click += new System.EventHandler(this.toolStripButton20_Click);
-            // 
-            // toolStripButton21
-            // 
-            this.toolStripButton21.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton21.Image = global::WinformsExample.Properties.Resources.markerpng;
-            this.toolStripButton21.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton21.Name = "toolStripButton21";
-            this.toolStripButton21.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton21.Text = "Marker Settings";
-            this.toolStripButton21.Click += new System.EventHandler(this.toolStripButton21_Click);
-            // 
-            // toolStripButton22
-            // 
-            this.toolStripButton22.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton22.Image = global::WinformsExample.Properties.Resources.pobrane;
-            this.toolStripButton22.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton22.Name = "toolStripButton22";
-            this.toolStripButton22.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton22.Text = "dt / dA Calculate";
-            this.toolStripButton22.Click += new System.EventHandler(this.toolStripButton22_Click);
-            // 
             // chart2
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.DockedToChartArea = "ChartArea1";
-            legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            chartArea4.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea4);
+            legend4.DockedToChartArea = "ChartArea1";
+            legend4.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            legend4.Name = "Legend1";
+            this.chart2.Legends.Add(legend4);
             this.chart2.Location = new System.Drawing.Point(2, 443);
             this.chart2.Name = "chart2";
-            series3.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series3.IsValueShownAsLabel = true;
-            series3.Label = "=IIf(Fields!valueV.Value=Last(Fields!valueV.Value,\"DataSet1\"),true,false)";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
-            series4.Legend = "Legend1";
-            series4.Name = "Series2";
-            this.chart2.Series.Add(series3);
-            this.chart2.Series.Add(series4);
+            series7.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series7.IsValueShownAsLabel = true;
+            series7.Label = "=IIf(Fields!valueV.Value=Last(Fields!valueV.Value,\"DataSet1\"),true,false)";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            series7.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series8.Legend = "Legend1";
+            series8.Name = "Series2";
+            this.chart2.Series.Add(series7);
+            this.chart2.Series.Add(series8);
             this.chart2.Size = new System.Drawing.Size(1117, 205);
             this.chart2.TabIndex = 2;
             this.chart2.Text = "chart2";
@@ -398,9 +203,9 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(935, 4);
+            this.button1.Location = new System.Drawing.Point(935, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 23);
+            this.button1.Size = new System.Drawing.Size(52, 23);
             this.button1.TabIndex = 8;
             this.button1.Text = "Import from file";
             this.button1.UseVisualStyleBackColor = true;
@@ -409,9 +214,9 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1009, 4);
+            this.button2.Location = new System.Drawing.Point(990, 3);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(59, 23);
+            this.button2.Size = new System.Drawing.Size(46, 22);
             this.button2.TabIndex = 9;
             this.button2.Text = "Draw from file";
             this.button2.UseVisualStyleBackColor = true;
@@ -636,6 +441,7 @@
             this.button5.TabIndex = 26;
             this.button5.Text = "Add Signal";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // mrk_lbl_2
             // 
@@ -701,12 +507,223 @@
             this.lbl_num_mrk4.Size = new System.Drawing.Size(0, 13);
             this.lbl_num_mrk4.TabIndex = 38;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.Menu;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton1,
+            this.toolStripButton2,
+            this.toolStripButton3,
+            this.toolStripButton4,
+            this.toolStripButton7,
+            this.toolStripButton5,
+            this.toolStripButton6,
+            this.toolStripButton8,
+            this.toolStripButton14,
+            this.toolStripButton9,
+            this.toolStripButton10,
+            this.M1_btn,
+            this.M2_btn,
+            this.M3_btn,
+            this.M4_btn,
+            this.toolStripButton21,
+            this.toolStripButton22});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1285, 25);
+            this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::WinformsExample.Properties.Resources.play_icon_enabled;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Launch LiveChart";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::WinformsExample.Properties.Resources.stop_icon_enabled;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "STOP LiveChart";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::WinformsExample.Properties.Resources.set;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Live Settings";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::WinformsExample.Properties.Resources.save1;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "Save Part of Chart";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = global::WinformsExample.Properties.Resources.saveee;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton7.Text = "Save All Parametr";
+            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
+            // 
+            // toolStripButton5
+            // 
+            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton5.Image = global::WinformsExample.Properties.Resources.legend;
+            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton5.Name = "toolStripButton5";
+            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton5.Text = "Hide/Show Legend";
+            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = global::WinformsExample.Properties.Resources.axis;
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton6.Text = "Axis settings";
+            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = global::WinformsExample.Properties.Resources._10_MAXmin_logo2;
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton8.Text = "Min/Max Finder";
+            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
+            // 
+            // toolStripButton14
+            // 
+            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton14.Image = global::WinformsExample.Properties.Resources.Red_Cross_Icon_Reworked;
+            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton14.Name = "toolStripButton14";
+            this.toolStripButton14.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton14.Text = "Cross Cursor Hide/Show";
+            this.toolStripButton14.Click += new System.EventHandler(this.toolStripButton14_Click);
+            // 
+            // toolStripButton9
+            // 
+            this.toolStripButton9.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton9.Image = global::WinformsExample.Properties.Resources.graph;
+            this.toolStripButton9.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton9.Name = "toolStripButton9";
+            this.toolStripButton9.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton9.Text = "Change Lable Series";
+            this.toolStripButton9.Click += new System.EventHandler(this.toolStripButton9_Click);
+            // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton10.Image = global::WinformsExample.Properties.Resources.full_screen;
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton10.Text = "Full Screen";
+            this.toolStripButton10.Click += new System.EventHandler(this.toolStripButton10_Click);
+            // 
+            // M1_btn
+            // 
+            this.M1_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.M1_btn.Image = ((System.Drawing.Image)(resources.GetObject("M1_btn.Image")));
+            this.M1_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.M1_btn.Name = "M1_btn";
+            this.M1_btn.Size = new System.Drawing.Size(28, 22);
+            this.M1_btn.Text = "M1";
+            this.M1_btn.Click += new System.EventHandler(this.toolStripButton17_Click);
+            // 
+            // M2_btn
+            // 
+            this.M2_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.M2_btn.Image = ((System.Drawing.Image)(resources.GetObject("M2_btn.Image")));
+            this.M2_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.M2_btn.Name = "M2_btn";
+            this.M2_btn.Size = new System.Drawing.Size(28, 22);
+            this.M2_btn.Text = "M2";
+            this.M2_btn.Click += new System.EventHandler(this.toolStripButton18_Click);
+            // 
+            // M3_btn
+            // 
+            this.M3_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.M3_btn.Image = ((System.Drawing.Image)(resources.GetObject("M3_btn.Image")));
+            this.M3_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.M3_btn.Name = "M3_btn";
+            this.M3_btn.Size = new System.Drawing.Size(28, 22);
+            this.M3_btn.Text = "M3";
+            this.M3_btn.Click += new System.EventHandler(this.toolStripButton19_Click);
+            // 
+            // M4_btn
+            // 
+            this.M4_btn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.M4_btn.Image = ((System.Drawing.Image)(resources.GetObject("M4_btn.Image")));
+            this.M4_btn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.M4_btn.Name = "M4_btn";
+            this.M4_btn.Size = new System.Drawing.Size(28, 22);
+            this.M4_btn.Text = "M4";
+            this.M4_btn.Click += new System.EventHandler(this.toolStripButton20_Click);
+            // 
+            // toolStripButton21
+            // 
+            this.toolStripButton21.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton21.Image = global::WinformsExample.Properties.Resources.markerpng;
+            this.toolStripButton21.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton21.Name = "toolStripButton21";
+            this.toolStripButton21.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton21.Text = "Marker Settings";
+            this.toolStripButton21.Click += new System.EventHandler(this.toolStripButton21_Click);
+            // 
+            // toolStripButton22
+            // 
+            this.toolStripButton22.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton22.Image = global::WinformsExample.Properties.Resources.pobrane;
+            this.toolStripButton22.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton22.Name = "toolStripButton22";
+            this.toolStripButton22.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton22.Text = "dt / dA Calculate";
+            this.toolStripButton22.Click += new System.EventHandler(this.toolStripButton22_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackgroundImage = global::WinformsExample.Properties.Resources.us4;
+            this.button6.Location = new System.Drawing.Point(1042, 1);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(26, 27);
+            this.button6.TabIndex = 39;
+            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // Chart_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1285, 644);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.lbl_num_mrk4);
             this.Controls.Add(this.lbl_num_mrk3);
@@ -744,8 +761,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Chart_form_FormClosing);
             this.Load += new System.EventHandler(this.Chart_form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
             this.toolStripContainer1.ContentPanel.PerformLayout();
@@ -753,6 +768,8 @@
             this.toolStripContainer1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -762,8 +779,8 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        public System.Windows.Forms.CheckedListBox checkedListBox1;
+        public System.Windows.Forms.CheckedListBox checkedListBox2;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
@@ -816,5 +833,7 @@
         private System.Windows.Forms.Label lbl_num_mrk2;
         private System.Windows.Forms.Label lbl_num_mrk3;
         private System.Windows.Forms.Label lbl_num_mrk4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

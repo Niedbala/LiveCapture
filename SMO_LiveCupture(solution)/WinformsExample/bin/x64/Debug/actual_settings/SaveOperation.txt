@@ -1,0 +1,6 @@
+$#1#2
+#Signal#Acceleration(0)
++#Signal#Acceleration(1)
+$#2#2
+#Signal#Acceleration(0)
++#Signal#Acceleration(1)

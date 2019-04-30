@@ -90,6 +90,9 @@
     <Reference Include="PacketDotNet">
       <HintPath>..\..\SharpPcap\PacketDotNet\PacketDotNet.dll</HintPath>
     </Reference>
+    <Reference Include="Telerik.WinControls, Version=2019.1.219.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
+    <Reference Include="Telerik.WinControls.UI, Version=2019.1.219.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="TelerikCommon, Version=2019.1.219.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
@@ -119,18 +122,26 @@
     <Compile Include="DeviceListForm.Designer.cs">
       <DependentUpon>DeviceListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImportSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportSetting.Designer.cs">
+      <DependentUpon>ImportSetting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Marker_Setting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Marker_Setting.Designer.cs">
       <DependentUpon>Marker_Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Math.cs" />
     <Compile Include="Min_max_setting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Min_max_setting.Designer.cs">
       <DependentUpon>Min_max_setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs">
@@ -144,6 +155,12 @@
     </Compile>
     <Compile Include="Set_chart_form.Designer.cs">
       <DependentUpon>Set_chart_form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SiganalCalulator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SiganalCalulator.Designer.cs">
+      <DependentUpon>SiganalCalulator.cs</DependentUpon>
     </Compile>
     <Compile Include="StringMethod.cs" />
     <Compile Include="Time_delta_form.cs">
@@ -177,12 +194,16 @@
     <EmbeddedResource Include="DeviceListForm.resx">
       <DependentUpon>DeviceListForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ImportSetting.resx">
+      <DependentUpon>ImportSetting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Marker_Setting.resx">
       <DependentUpon>Marker_Setting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Min_max_setting.resx">
       <DependentUpon>Min_max_setting.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -198,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Set_chart_form.resx">
       <DependentUpon>Set_chart_form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SiganalCalulator.resx">
+      <DependentUpon>SiganalCalulator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Time_delta_form.resx">
       <DependentUpon>Time_delta_form.cs</DependentUpon>
@@ -221,6 +245,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\us41.png" />
+    <None Include="Resources\us4.png" />
+    <None Include="Resources\us31.png" />
+    <None Include="Resources\us3.png" />
+    <None Include="Resources\ust21.png" />
+    <None Include="Resources\ust2.png" />
     <None Include="Resources\unnamed-1.png" />
     <None Include="Resources\play_icon_enabled.png" />
     <None Include="Resources\save1.png" />
