@@ -34,32 +34,39 @@ namespace WinformsExample
         private Dictionary<string, string> SeriesMap = new Dictionary<string, string>();
         private void button1_Click(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedItem.ToString() != "")
+            if (!((rdbtnsignal.Checked && comboBox1.SelectedItem == null) || (textBox1.Text == "" && radioButton1.Checked)))
             {
-                comboBox2.Enabled = false;
-                   var signal = ""; var oper = ""; var Type = "";
-                if (radioButton1.Checked) { signal = textBox1.Text; Type = "Con"; }
-                if (rdbtnsignal.Checked) { signal = comboBox1.SelectedItem.ToString(); Type = "Signal"; }
-                //var znak = comboBox3.SelectedItem.ToString();
-                if (count == 0)
+                if (comboBox2.SelectedItem.ToString() != "")
                 {
-                    dataGridView1.Rows.Add("", Type, signal); comboBox3.Show(); label2.Show();
-                    operations.Add(new WinformsExample.Operation() { signal = signal, oper = "", type = Type });
-                }
-                else
-                {
-                    if (comboBox3.SelectedItem == null)
+                    comboBox2.Enabled = false;
+                    var signal = ""; var oper = ""; var Type = "";
+                    if (radioButton1.Checked) { signal = textBox1.Text; Type = "Con"; }
+                    if (rdbtnsignal.Checked) { signal = comboBox1.SelectedItem.ToString(); Type = "Signal"; }
+                    //var znak = comboBox3.SelectedItem.ToString();
+                    if (count == 0)
                     {
-                        MessageBox.Show("Give me opertaion");
+                        dataGridView1.Rows.Add("", Type, signal); comboBox3.Show(); label2.Show();
+                        operations.Add(new WinformsExample.Operation() { signal = signal, oper = "", type = Type });
                     }
                     else
                     {
-                        dataGridView1.Rows.Add(comboBox3.SelectedItem.ToString(), Type, signal);
-                        operations.Add(new WinformsExample.Operation() { signal = signal, oper = comboBox3.SelectedItem.ToString(), type = Type });
-                    }
+                        if (comboBox3.SelectedItem == null)
+                        {
+                            MessageBox.Show("Give me opertaion");
+                        }
+                        else
+                        {
+                            dataGridView1.Rows.Add(comboBox3.SelectedItem.ToString(), Type, signal);
+                            operations.Add(new WinformsExample.Operation() { signal = signal, oper = comboBox3.SelectedItem.ToString(), type = Type });
+                        }
 
+                    }
+                    count++;
                 }
-                count++;
+            }
+            else
+            {
+                MessageBox.Show("Set signal or constant");
             }
             
         }
@@ -78,7 +85,9 @@ namespace WinformsExample
 
             // object[] Samplings = new object[] { keys.ToArray()};
             comboBox2.Items.AddRange(keys.ToArray());
-        
+            comboBox2.SelectedItem = comboBox2.Items[0];
+
+
             radioButton1.Checked = true;
             foreach (var seria in Chart_form.dic1.Keys.Distinct())
             {
@@ -108,7 +117,7 @@ namespace WinformsExample
                 var count = 0;
                 foreach (var operation in operations)
                 {
-                    if((oper == operation.oper) && (type == operation.type) && (signal == operation.signal))
+                    if( (type == operation.type) && (signal == operation.signal))
                     {
                         operations.Remove(operation);
                         dataGridView1.Rows.RemoveAt(dataGridView1.SelectedRows[0].Index);

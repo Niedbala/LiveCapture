@@ -84,7 +84,7 @@ namespace WinformsExample
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (comboBox3.SelectedItem == null || comboBox4.SelectedItem == null)
+            if (comboBox3.SelectedItem == null || comboBox4.SelectedItem == null || comboBox5.SelectedItem == null)
             { MessageBox.Show("Pole markera jest puste.", "UWAGA!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); }
             else
             {

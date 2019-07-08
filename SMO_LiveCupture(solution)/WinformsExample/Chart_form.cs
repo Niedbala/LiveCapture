@@ -307,6 +307,75 @@ namespace WinformsExample
                 Time = new Thread(new ThreadStart(this.TimeHandler));
                 Time.IsBackground = true;
                 Time.Start();
+
+                if (MarkerSeries.Count == 0)
+                {
+                    var mrk_ser = new List<string>();
+                    for (int i = 0; i < 3; i++)
+                    {
+                        try
+                        {
+                            mrk_ser.Add(list_series[i].ToString());
+                        }
+                        catch
+                        {
+                            mrk_ser.Add("");
+                        }
+
+                    }
+
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        MarkerSeries.Add(i, new List<string>(mrk_ser));
+                    }
+
+                }
+                else
+                {
+                    foreach (var key in MarkerSeries.Keys)
+                    {
+                        //for (var i = 0; i < MarkerSeries[key].Count - 1; i++)
+                        //{
+                        var i = 0;
+                        var series = list_series.Select(x => x.ToString()).ToList();
+                        while (i < MarkerSeries[key].Count)
+                        {
+                            var str = (MarkerSeries[key][i]).ToString();
+                            var b = (series.Contains(str));
+                            if (!((series.Contains(MarkerSeries[key][i])) || (MarkerSeries[key][i] == "")))
+                            {
+                                if (!(i == 2))
+                                {
+                                    MarkerSeries[key][i] = MarkerSeries[key][i + 1];
+                                    MarkerSeries[key][i + 1] = "";
+                                }
+                                else
+                                { MarkerSeries[key][i] = ""; }
+                            }
+                            else { i++; }
+                        }
+
+                        if (MarkerSeries[key].All(x => x == ""))
+                        {
+                            try
+                            {
+                                MarkerSeries[key][0] = list_series[0].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                MarkerSeries[key][1] = list_series[1].ToString();
+                            }
+                            catch { }
+                            try
+                            {
+                                MarkerSeries[key][2] = list_series[2].ToString();
+                            }
+                            catch { }
+                        }
+                    }
+                }
             }
             catch { }
         }
@@ -489,6 +558,10 @@ namespace WinformsExample
                 string name = seria.ToString().Split('-')[1];
                 var chartarray = CaptureForm.extractedSamples[seria.ToString().Substring(7)]
                     .Select(x => Convert.ToDouble(x)).ToList();
+
+                
+
+                
                 int iter = 0;
                 if (chartarray.Count() < chart_width)
                 {
@@ -511,12 +584,20 @@ namespace WinformsExample
                 if (every)
                 {
                     iteration = Int32.Parse(resampling.Split('_').Last());
-                    for (int i = iter; i < chartarray.Count() - 1; i += iteration)
-                    {
-                        chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
+                    //if (iteration == 1)
+                    //{
+                       // chart.Series[seria.ToString().Substring(7)].Points.DataBindXY(timebase, chartarray);
+                    //}
+                    //else
+                    //{
+                        for (int i = iter; i < chartarray.Count() - 1; i += iteration)
+                        {
+                            chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
+                        
+                            //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
+                        }
+                    //}
 
-                        //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
-                    }
                 }
 
                 sw.Stop();
@@ -539,8 +620,8 @@ namespace WinformsExample
                     }
                 }
 
-                chart.Series[seria.ToString().Substring(7)].LegendText =
-                    "#" + index.ToString() + chart.Series[seria.ToString().Substring(7)].LegendText;
+                //chart.Series[seria.ToString().Substring(7)].LegendText =
+                   // "#" + index.ToString() + chart.Series[seria.ToString().Substring(7)].LegendText;
 
                                                                          // chart.DataBindCrossTable(chartarray);
                                                                          //chart.Series[seria.ToString().Substring(7)].Points.Last().Label = chartarray[chartarray.Count() - 1].ToString();
@@ -633,13 +714,21 @@ namespace WinformsExample
                  if (everyFile)
                  {
                      iteration = Int32.Parse(resamplingFile.Split('_').Last());
-                     for (int i = iter; i < chartarray.Count() - 1; i += iteration)
-                     {
-                         chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
+                    if (iteration == 1)
+                    {
+                        chart.Series[seria.ToString().Substring(7)].Points.DataBindXY(timebase, chartarray);
+                    }
+                    else
+                    {
+                        for (int i = iter; i < chartarray.Count() - 1; i += iteration)
+                        {
+                            chart.Series[seria.ToString().Substring(7)].Points.AddXY(timebase[i], chartarray[i]);
 
-                         //chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
-                     }
-                 }
+                            //    chart1.Series[seria.ToString().Substring(7)].XValueType(Data);
+                        }
+                    }
+                   
+                }
                  //sw.Stop();
                  //Console.WriteLine(sw.ElapsedMilliseconds.ToString());
                  //sw.Start();
@@ -696,6 +785,17 @@ namespace WinformsExample
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             stop_chart = true;
+            extractedSamples = new Dictionary<string, List<ValueType>>();
+            foreach (var series in list_series)
+            {
+                var data = chart1.Series[series.ToString().Substring(7)].Points.ToList().Select(x => (ValueType)x.YValues[0]).ToList();
+                
+                extractedSamples[series.ToString().Substring(7)] = new List<ValueType>(data);
+                
+            }
+            time_dictionatyf["1"] = chart1.Series[list_series[0].ToString().Substring(7)].Points.ToList().Select(x => x.XValue).ToList();
+            dic1 = new Dictionary<string, string>();
+            dic1[list_series[0].ToString().Substring(7)] = "1";
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -1044,28 +1144,7 @@ namespace WinformsExample
                     }
                 }
                 catch { }
-                
-                //if (timearrayf.Count() > 1)
-                //{
-                //    double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / 128;
-                //    timearray_128f.Add(timearrayf[timearrayf.Count() - 2] + delta);
-                //    for (int i = 0; i < 127; i++)
-                //    {
-                //        timearray_128f.Add(timearray_128f.Last() + delta);
-                //    }
-                //}
-                //if (timearrayf.Count() > 1)
-                //{
-                //    double delta = timearrayf[timearrayf.Count() - 1] - timearrayf[timearrayf.Count() - 2] / 128;
-                //    timearray_256f.Add(timearrayf[timearrayf.Count() - 2] + delta);
-                //    for (int i = 0; i < 255; i++)
-                //    {
-                //        timearray_256f.Add(timearray_256f.Last() + delta);
-                //    }
-                //}
-
-
-                // int dataKeys = extractedSamples.Keys.Count();
+            
                 if (packetIndex % 1000 == 0)
                 {
 
@@ -1422,7 +1501,7 @@ namespace WinformsExample
             try
             {
                 //chart1.Series[keys[i]].IsXValueIndexed = true;
-                double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum;
+                double max = chart1.ChartAreas[0].AxisX.ScaleView.ViewMaximum - 1;
                 double min = chart1.ChartAreas[0].AxisX.ScaleView.ViewMinimum;
                 var name = chart1.Series[0].ToString().Substring(7);
                 extractedPartOfSamples = new Dictionary<string, List<ValueType>>();
@@ -1612,23 +1691,7 @@ namespace WinformsExample
 
             }
             catch { }
-            //using (StreamWriter sw = File.CreateText(name_file))
-            //{
-            //    sw.WriteLine(headerLine);
-            //    for (int i = 0; i < len; i++)
-            //    {
-            //        string valuesLine = "";
-            //        foreach (string key in extractedSamplesSorted.Keys)
-            //        {
-            //            try
-            //            {
-            //                valuesLine = valuesLine + extractedSamplesSorted[key][i] + "\t";
-            //            }
-            //            catch { break; }
-            //        }
-            //        sw.WriteLine(valuesLine);
-            //    }
-            //}
+           
         }
 
         private void toolStripButton8_Click(object sender, EventArgs e)

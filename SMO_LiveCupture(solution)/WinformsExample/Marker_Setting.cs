@@ -31,53 +31,56 @@ namespace WinformsExample
             //comboboxy = new List<ComboBox>() { comboBox1 , comboBox2, comboBox3, comboBox4, comboBox5, comboBox6, comboBox7, comboBox8, comboBox9, comboBox10, comboBox11, comboBox12};
             //List<object> series = new List<object>(Chart_form.list_series.ToList());
             var series_X = Chart_form.list_series;
-            
 
-            List<string> name_list = new List<string>();
-
-            for (int i = series_X.Count() - 1; i >= 0; i--)
+            if (series_X.Count == 0) { MessageBox.Show("Choose series"); Close(); }
+            else
             {
-                string[] split_key = series_X[i].ToString().Split('_');
+                List<string> name_list = new List<string>();
 
-                var name =split_key[split_key.Count() - 1];
+                for (int i = series_X.Count() - 1; i >= 0; i--)
+                {
+                    string[] split_key = series_X[i].ToString().Split('_');
 
-                if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
-                if (name.Contains("Analog")) { name = name + "_" + split_key[4]; }
-                if (name.Split('_').Last() == "B") { name = name + "_" + split_key[5]; }
-                name_list.Add(name);
-                series_dictionary.Add(name, series_X[i].ToString());
-                //checkedListBox.Items.Insert(0, name);
+                    var name = split_key[split_key.Count() - 1];
+
+                    if (name.Contains("AnalogIn")) { name = name + "_" + split_key[1]; }
+                    if (name.Contains("Analog")) { name = name + "_" + split_key[4]; }
+                    if (name.Split('_').Last() == "B") { name = name + "_" + split_key[5]; }
+                    name_list.Add(name);
+                    series_dictionary.Add(name, series_X[i].ToString());
+                    //checkedListBox.Items.Insert(0, name);
+                }
+                name_list.Add("");
+                string cos = "";
+
+
+                var series = name_list.ToArray();
+               
+                comboBox1.Items.AddRange(series);
+                comboBox1.SelectedItem = Chart_form.MarkerSeries[0][0].Map_Series();
+                comboBox2.Items.AddRange(series);
+                comboBox2.SelectedItem = Chart_form.MarkerSeries[0][1].Map_Series();
+                comboBox3.Items.AddRange(series);
+                comboBox3.SelectedItem = Chart_form.MarkerSeries[0][2].Map_Series();
+                comboBox4.Items.AddRange(series);
+                comboBox4.SelectedItem = Chart_form.MarkerSeries[1][2].Map_Series();
+                comboBox5.Items.AddRange(series);
+                comboBox5.SelectedItem = Chart_form.MarkerSeries[1][1].Map_Series();
+                comboBox6.Items.AddRange(series);
+                comboBox6.SelectedItem = Chart_form.MarkerSeries[1][0].Map_Series();
+                comboBox7.Items.AddRange(series);
+                comboBox7.SelectedItem = Chart_form.MarkerSeries[2][2].Map_Series();
+                comboBox8.Items.AddRange(series);
+                comboBox8.SelectedItem = Chart_form.MarkerSeries[2][1].Map_Series();
+                comboBox9.Items.AddRange(series);
+                comboBox9.SelectedItem = Chart_form.MarkerSeries[2][0].Map_Series();
+                comboBox10.Items.AddRange(series);
+                comboBox10.SelectedItem = Chart_form.MarkerSeries[3][2].Map_Series();
+                comboBox11.Items.AddRange(series);
+                comboBox11.SelectedItem = Chart_form.MarkerSeries[3][1].Map_Series();
+                comboBox12.Items.AddRange(series);
+                comboBox12.SelectedItem = Chart_form.MarkerSeries[3][0].Map_Series();
             }
-            name_list.Add("");
-            string cos = "";
-           
-            
-            var series = name_list.ToArray();
-            comboBox1.Items.AddRange(series);
-            comboBox1.SelectedItem = Chart_form.MarkerSeries[0][0].Map_Series();
-            comboBox2.Items.AddRange(series);
-            comboBox2.SelectedItem = Chart_form.MarkerSeries[0][1].Map_Series();
-            comboBox3.Items.AddRange(series);
-            comboBox3.SelectedItem = Chart_form.MarkerSeries[0][2].Map_Series();
-            comboBox4.Items.AddRange(series);
-            comboBox4.SelectedItem = Chart_form.MarkerSeries[1][2].Map_Series();
-            comboBox5.Items.AddRange(series);
-            comboBox5.SelectedItem = Chart_form.MarkerSeries[1][1].Map_Series();
-            comboBox6.Items.AddRange(series);
-            comboBox6.SelectedItem = Chart_form.MarkerSeries[1][0].Map_Series();
-            comboBox7.Items.AddRange(series);
-            comboBox7.SelectedItem = Chart_form.MarkerSeries[2][2].Map_Series();
-            comboBox8.Items.AddRange(series);
-            comboBox8.SelectedItem = Chart_form.MarkerSeries[2][1].Map_Series();
-            comboBox9.Items.AddRange(series);
-            comboBox9.SelectedItem = Chart_form.MarkerSeries[2][0].Map_Series();
-            comboBox10.Items.AddRange(series);
-            comboBox10.SelectedItem = Chart_form.MarkerSeries[3][2].Map_Series();
-            comboBox11.Items.AddRange(series);
-            comboBox11.SelectedItem = Chart_form.MarkerSeries[3][1].Map_Series();
-            comboBox12.Items.AddRange(series);
-            comboBox12.SelectedItem = Chart_form.MarkerSeries[3][0].Map_Series();
-
 
         }
 
