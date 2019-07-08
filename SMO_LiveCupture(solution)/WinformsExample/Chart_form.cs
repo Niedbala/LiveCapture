@@ -2364,6 +2364,13 @@ namespace WinformsExample
             var Signalform =new  SiganalCalulator(this);
             Signalform.Show();
         }
+
+        private void funkcja_testowa()
+        {
+            int i = 2;
+            int w = 3;
+            var wynik = i + w;
+        }
     }
     }
 
