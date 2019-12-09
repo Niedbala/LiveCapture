@@ -44,9 +44,4 @@ C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\x64\Debug\WinformsExample.Marker_Setting.resources
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\x64\Debug\WinformsExample.ImportSetting.resources
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\x64\Debug\WinformsExample.SiganalCalulator.resources
-C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\x64\Debug\Telerik.WinControls.dll
-C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\x64\Debug\Telerik.WinControls.UI.dll
-C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\x64\Debug\TelerikCommon.dll
-C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\x64\Debug\Telerik.WinControls.xml
-C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\bin\x64\Debug\Telerik.WinControls.UI.xml
 C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\WinformsExample\obj\x64\Debug\WinformsExample.exe.licenses

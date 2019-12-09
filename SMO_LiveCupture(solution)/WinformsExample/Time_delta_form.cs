@@ -97,10 +97,19 @@ namespace WinformsExample
                 var name = translated.ToString().Substring(7);
 
                 var xValue1 = (int)chart2.chart1.ChartAreas[0].AxisX.PixelPositionToValue(chart2.Xvalues[num_1 - 1]);
-                
-                var ampl1 = Convert.ToDouble(Chart_form.extractedSamples[name][xValue1]);
                 var xValue2 = (int)chart2.chart1.ChartAreas[0].AxisX.PixelPositionToValue(chart2.Xvalues[num_2 - 1]);
-                var ampl2 = Convert.ToDouble(Chart_form.extractedSamples[name][xValue2]);
+                Double ampl1, ampl2;
+                var count = Chart_form.extractedSamples[name].Count;
+                try
+                {
+                     ampl1 = Convert.ToDouble(Chart_form.extractedSamples[name][xValue1]);
+                     ampl2 = Convert.ToDouble(Chart_form.extractedSamples[name][xValue2]);
+                }
+                catch
+                {
+                    ampl1 = Convert.ToDouble(Chart_form.interpolate_samples[count][name][xValue1]);
+                    ampl2 = Convert.ToDouble(Chart_form.interpolate_samples[count][name][xValue2]);
+                }
                 label7.Text = Math.Round(ampl2 - ampl1, 6).ToString();
             }
         }

@@ -81,6 +81,12 @@ namespace WinformsExample
         public static bool croos_cursor_on = true;
         public static Dictionary<int,List<string>> MarkerSeries = new Dictionary<int, List<string>>();
         public static int ProbkowanieLast = 0;
+        public static bool indexing = true;
+        public static bool indexing2 = true;
+        public static int globe_max_count;
+        public static string globe_max_name;
+        public static Dictionary<int, Dictionary<string, List<ValueType>>> interpolate_samples = new Dictionary<int, Dictionary<string, List<ValueType>>>();
+        public static Dictionary<int, Dictionary<string, List<ValueType>>> interpolate_samples2 = new Dictionary<int, Dictionary<string, List<ValueType>>>();
 
         public int X_diff { get; private set; }
 
@@ -277,7 +283,7 @@ namespace WinformsExample
                         chart1.Series.Add(keys[i]).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine; ;
                         chart1.Series[keys[i]].ToolTip = "x = {#VALX}" + '\r' + '\n' + "y = {#VALY}";
                         chart1.Series[keys[i]].XValueType = ChartValueType.DateTime;
-                        chart1.Series[keys[i]].IsXValueIndexed = true;
+                        chart1.Series[keys[i]].IsXValueIndexed = indexing;
                         chart1.Series[keys[i]].SmartLabelStyle.Enabled = false;
                         chart1.Series[keys[i]].LegendText =
                             "#" + index.ToString() + " " + keys[i];
@@ -379,8 +385,8 @@ namespace WinformsExample
             }
             catch { }
         }
-
-        private void StartChart_file(Chart chart1, CheckedListBox checkedListBox1, Dictionary<string, List<ValueType>> extractedSamples)
+        
+        private List<Series> StartChart_file(Chart chart1, CheckedListBox checkedListBox1, Dictionary<string, List<ValueType>> extractedSamples, bool isIndexed, List<Series> list_series,bool indexing )
         {
 
             if (grid == "None") { chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false; }
@@ -408,44 +414,66 @@ namespace WinformsExample
             List<string> keys = new List<string>(extractedSamples.Keys);
             int probkowanie = 0;
             var index = 0;
+            var max_count = 0;
+            var max_name = "";
             for (int i = 0; i <= co_eksportowac1.Count() - 1; i++)
                 if (co_eksportowac1[i])
                 {
                     index++;
-                    var probkowanie_key = 1;
-                    try
-                    {
-                        probkowanie_key = Int32.Parse(extractedSamples[keys[i]].Count.ToString());//.Split(')').First().Split('(').Last();
-                    }
-                    catch
-                    {
-                        return;
-                    }
-                    if (probkowanie == 0)
-                    { probkowanie = probkowanie_key; }
-                    if (probkowanie != probkowanie_key) { warnform.ShowDialog(); break; }
-                    probkowanieNew = probkowanie;
+                    //if (indexing)
+                    //{
+                    //    var probkowanie_key = 1;
+                    //    try
+                    //    {
+                    //        probkowanie_key = Int32.Parse(extractedSamples[keys[i]].Count.ToString());//.Split(')').First().Split('(').Last();
+                    //    }
+                    //    catch
+                    //    {
+                    //        return;
+                    //    }
+                    //    if (probkowanie == 0)
+                    //    {
+                    //        probkowanie = probkowanie_key;
+                    //    }
+                    //    if (probkowanie != probkowanie_key) { warnform.ShowDialog(); break; }
+                    //    probkowanieNew = probkowanie;
 
-                    if (probkowanieNew != ProbkowanieLast)
-                    {
-                        chart1.ChartAreas[0].AxisX.ScaleView.Position = double.NaN;
+                    //    if (probkowanieNew != ProbkowanieLast)
+                    //    {
+                    //        chart1.ChartAreas[0].AxisX.ScaleView.Position = double.NaN;
+                    //        chart1.ChartAreas[0].AxisX.ScaleView.Size = double.NaN;
+                    //        chart1.ChartAreas[0].AxisY.ScaleView.Position = double.NaN;
+                    //        chart1.ChartAreas[0].AxisY.ScaleView.Size = double.NaN;
+                    //        chart1.ChartAreas[0].AxisX.MajorGrid.Interval = double.NaN;
+                    //        chart1.ChartAreas[0].AxisY.MajorGrid.Interval = double.NaN;
+
+                    //    }
+                    //}
+                    //else
+                    //{
+                    var key_count = Int32.Parse(extractedSamples[keys[i]].Count.ToString());
+                    
+                    if ( key_count > max_count) { max_count = key_count; max_name = keys[i]; }
+
+                    chart1.ChartAreas[0].AxisX.ScaleView.Position = double.NaN;
                         chart1.ChartAreas[0].AxisX.ScaleView.Size = double.NaN;
                         chart1.ChartAreas[0].AxisY.ScaleView.Position = double.NaN;
                         chart1.ChartAreas[0].AxisY.ScaleView.Size = double.NaN;
                         chart1.ChartAreas[0].AxisX.MajorGrid.Interval = double.NaN;
                         chart1.ChartAreas[0].AxisY.MajorGrid.Interval = double.NaN;
-
-                    }
+                    //}
                     chart1.Series.Add(keys[i]).ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine; ;
                     chart1.Series[keys[i]].ToolTip = "x = {#VALX}" + '\r' + '\n' + "y = {#VALY}";
                     chart1.Series[keys[i]].XValueType = ChartValueType.Double;
-                    chart1.Series[keys[i]].IsXValueIndexed = true;
+                    chart1.Series[keys[i]].IsXValueIndexed = indexing;  // tu zmieniłem
                     chart1.Series[keys[i]].SmartLabelStyle.Enabled = false;
                     chart1.Series[keys[i]].IsVisibleInLegend = show_legend;
                     chart1.Series[keys[i]].LegendText =
                         "#" + index.ToString() + " " + keys[i];
                     //chart1.Series[keys[i]].IsValueShownAsLabel = true;
                 }
+            globe_max_count = max_count;
+            globe_max_name = max_name;
             chart1.ChartAreas[0].AxisX.LabelStyle.Format = "N2";
             chart1.ChartAreas[0].AxisY.LabelStyle.Format = "N2";
             list_series = chart1.Series.ToList();
@@ -519,6 +547,8 @@ namespace WinformsExample
                     }
                 }
             }
+
+            return list_series;
 
         }
 
@@ -656,7 +686,7 @@ namespace WinformsExample
 
         }
         //kvar sw = new Stopwatch();
-        public void Changechartfile(Chart chart, Dictionary<string, List<ValueType>> extractedSamples, Dictionary<string, List<double>> time_dictionatyf, Dictionary<string, string> dic)
+        public void Changechartfile(Chart chart, Dictionary<string, List<ValueType>> extractedSamples, Dictionary<string, List<double>> time_dictionatyf, Dictionary<string, string> dic, List<Series> list_series, Dictionary<int, Dictionary<string, List<ValueType>>> interpolate_samples)
         {
 
 
@@ -671,12 +701,31 @@ namespace WinformsExample
                  chart.Series[seria.ToString().Substring(7)].Points.Clear();
                  var strings = seria.ToString().Split('-');
                  string name = strings[1];
-                 // if (strings.Count() == 2) { name = strings[1]; }
-                 // else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
-                 // else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
-
-                 var chartarray = extractedSamples[seria.ToString().Substring(7)].Select(x => Convert.ToDouble(x))
-                     .ToList();
+                // if (strings.Count() == 2) { name = strings[1]; }
+                // else if (strings.Count() == 3) { name = strings[1] + '-' + strings[2]; }
+                // else if (strings.Count() == 4) { name = strings[1].Remove(strings[1].Length - 1); }
+                var num = extractedSamples[seria.ToString().Substring(7)].Count;
+                var chartarray = new List<double>();
+                if (indexing)
+                {
+                    if (num == globe_max_count)
+                    {
+                        chartarray = extractedSamples[seria.ToString().Substring(7)].Select(x => Convert.ToDouble(x))
+                           .ToList();
+                    }
+                    else
+                    {
+                        chartarray = interpolate_samples[num][seria.ToString().Substring(7)].Select(x => Convert.ToDouble(x))
+                           .ToList();
+                    }
+                    name = globe_max_name;
+                }
+                else
+                {
+                    chartarray = extractedSamples[seria.ToString().Substring(7)].Select(x => Convert.ToDouble(x))
+                       .ToList();
+                }
+               
                  int iter = 1;
                  string time_divide = "";
                  try
@@ -766,10 +815,6 @@ namespace WinformsExample
         }
        
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Chart_form_Load(object sender, EventArgs e)
         {
@@ -876,7 +921,7 @@ namespace WinformsExample
             }
             }
 
-            private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem == null)
             {
@@ -941,7 +986,72 @@ namespace WinformsExample
                         dic1 = keys.Zip(occurence, (k, v) => new { k, v })
                           .ToDictionary(x => x.k, x => x.v);
                     }
+                    
+                    Dictionary <string, int> dictionary_keys = new Dictionary<string, int>();
+                    var keys3 = new List<string>();
+                    var occurence2 = new List<int>();
+                    extractedSamples.Keys.ToList().ForEach(x => keys3.Add(x));
+                    extractedSamples.Keys.ToList().ForEach(x => occurence2.Add(extractedSamples[x].Count));
+                   // var min_occure = occurence2.Min();
+                   // var occurence3 = occurence2.Select(x => x / min_occure).ToList();
+                    var dic3= keys3.Zip(occurence2, (k, v) => new { k, v })
+                          .ToDictionary(x => x.k, x => x.v);
 
+                    var occure2= dic3.Values.ToList().Distinct().ToList();
+                    //var occure2 = ocure.Select(x => x).ToList();
+                    occure2.Sort();
+                    var occure3 = new List<int> (occure2);
+                    occure2.Remove(occure2.Last());
+                    occure3.Remove(occure3.First());
+                   
+                    int i = 0;
+                    List<string> parametry = new List<string>();
+                    interpolate_samples = new Dictionary<int, Dictionary<string, List<ValueType>>>();
+                    foreach (var num in occure2)
+                    {
+                        parametry.AddRange(dic3.Where(x => x.Value == num).Select(x => x.Key).ToList());
+                        interpolate_samples[num] = new Dictionary<string, List<ValueType>>();
+                        foreach (var par in parametry)
+                        {
+                            var new_signal = interpolate(extractedSamples[par], occure3[i]);
+
+                            
+                            
+                            interpolate_samples[num][par] = new List<ValueType>(new_signal);
+
+                            //if (interpolate_samples.ContainsKey(num))
+                            //{
+                            //    if(interpolate_samples[num].ContainsKey(par))
+                            //    {
+                                    
+                            //    }
+                            //    else
+                            //    {
+
+                            //    }
+                             
+                            //}
+                            //else
+                            //{
+
+                            //}
+
+
+                            //if (occurance.ContainsKey(x.StreamID))
+                            //{
+                            //    occurance?[x.StreamID].Add(x.Occurrences);
+                            //    repeat_occurance.Add(x.Occurrences);
+                            //}
+                            //else
+                            //{
+                            //    occurance[x.StreamID] = new List<int>() { x.Occurrences };
+                            //    repeat_occurance.Add(x.Occurrences);
+                            //}
+                        }
+                        i++;
+                        
+                    }
+                    
 
                 }
                 if (capFile[capFile.Count() - 3] == 't')
@@ -957,6 +1067,155 @@ namespace WinformsExample
 
             }
         }
+
+        public List<ValueType> interpolate (List<ValueType> Y, double SampleCount)
+        {   //moge tu policzyc count z Y
+            //mam ile musi byc probek na kocu
+
+            var ilosc = Y.Count();
+            var SampleRate = SampleCount / ilosc;
+
+            List<ValueType> new_signal = new List<ValueType>();
+            if (SampleRate == 2)
+            {
+               
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add((UInt32)Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < SampleCount; i++)
+                        { new_signal.Add((UInt32)Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < SampleRate; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                new_signal.Add((UInt32)Y[Y.Count() - 1]);
+                new_signal.Add((UInt32)Y[Y.Count() - 1]);
+            }
+            else if (SampleRate < 2)
+            {
+                
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add((UInt32)Y[a]);
+                    
+                }
+                new_signal.Add((UInt32)Y[Y.Count() - 1]);
+                
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add((UInt32)0); }
+            }
+            else if (SampleRate > 2 && SampleRate < 5)
+            {
+
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add((UInt32)Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < (int)SampleCount; i++)
+                        { new_signal.Add((UInt32)Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < (int)SampleRate; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                new_signal.Add((UInt32)Y[Y.Count() - 1]);
+                new_signal.Add((UInt32)Y[Y.Count() - 1]);
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add((UInt32)0); }
+            }
+            else if (SampleRate > 768 && SampleRate < 775)
+            {
+                
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add((UInt32)0); }
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add((UInt32)Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add((UInt32)Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add((UInt32)Y[Y.Count() - 1]); }
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add((UInt32)0); }
+            }
+            else if (SampleRate > 755 && SampleRate < 768)
+            {
+
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add((UInt32)0); }
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add((UInt32)Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add((UInt32)Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add((UInt32)Y[Y.Count() - 1]); }
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add((UInt32)0); }
+            }
+            else if (SampleRate > 370 && SampleRate < 390)
+            {
+                for (int i = 1; i < 48; i++)
+                { new_signal.Add((UInt32)0); }
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add((UInt32)Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < 384; i++)
+                        { new_signal.Add((UInt32)Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < 384; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                for (int i = 1; i < 48; i++)
+                { new_signal.Add((UInt32)Y[Y.Count() - 1]); }
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add((UInt32)0); }
+            }
+
+                return new_signal;
+        }
+
         private void text_file_reader(string file_name, Dictionary<string, List<ValueType>> extractedSamples, Dictionary<string, List<double>> time_dictionatyf,CheckedListBox checkedListBox,Dictionary<string, string> dic)
         {
             try
@@ -1176,11 +1435,11 @@ namespace WinformsExample
         {
             try
             {
-                StartChart_file(chart1, checkedListBox1, extractedSamples);
-                Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1);
+                list_series = StartChart_file(chart1, checkedListBox1, extractedSamples,false,list_series,indexing);
+                Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1, list_series, interpolate_samples);
             }
             catch { }
-           if (mrk_1.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_1,1);}
+           if (mrk_1.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_1, 1);}
            if (mrk_2.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_2, 2); }
            if (mrk_3.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_3, 3); }
            if (mrk_4.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_4, 4); }
@@ -1188,8 +1447,8 @@ namespace WinformsExample
 
         public void button_Click()
         {
-            StartChart_file(chart1, checkedListBox1, extractedSamples);
-            Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1);
+            list_series = StartChart_file(chart1, checkedListBox1, extractedSamples,false,list_series,indexing);
+            Changechartfile(chart1, extractedSamples, time_dictionatyf, dic1,list_series, interpolate_samples);
         }
 
 
@@ -1217,7 +1476,14 @@ namespace WinformsExample
 
                     var name = list_series[series_iter].ToString().Substring(7);
                     //.Single(s => s.Equals(max));
-                    var YVAL = extractedSamples[name][xValue];
+                    var count = extractedSamples[name].Count;
+                    ValueType YVAL;
+                    xValue = xValue * Int32.Parse(resamplingFile);
+                    if(count < globe_max_count)
+                    { YVAL = interpolate_samples[count][name][xValue]; }
+                    else
+                    {  YVAL = extractedSamples[name][xValue]; }
+                    
                     label4.Text = String.Concat(String.Concat(xValue.ToString(), " , "), YVAL.ToString(),"\n #", (series_iter + 1).ToString());
                     label4.Location = new Point(10, e.Y + 40);
                 }
@@ -1471,7 +1737,69 @@ namespace WinformsExample
                           .ToDictionary(x => x.k, x => x.v);
                     }
 
+                    Dictionary<string, int> dictionary_keys = new Dictionary<string, int>();
+                    var keys3 = new List<string>();
+                    var occurence2 = new List<int>();
+                    extractedSamples2.Keys.ToList().ForEach(x => keys3.Add(x));
+                    extractedSamples2.Keys.ToList().ForEach(x => occurence2.Add(extractedSamples2[x].Count));
+                    // var min_occure = occurence2.Min();
+                    // var occurence3 = occurence2.Select(x => x / min_occure).ToList();
+                    var dic3 = keys3.Zip(occurence2, (k, v) => new { k, v })
+                          .ToDictionary(x => x.k, x => x.v);
 
+                    var occure2 = dic3.Values.ToList().Distinct().ToList();
+                    //var occure2 = ocure.Select(x => x).ToList();
+                    occure2.Sort();
+                    var occure3 = new List<int>(occure2);
+                    occure2.Remove(occure2.Last());
+                    occure3.Remove(occure3.First());
+
+                    int i = 0;
+                    List<string> parametry = new List<string>();
+                    foreach (var num in occure2)
+                    {
+                        parametry.AddRange(dic3.Where(x => x.Value == num).Select(x => x.Key).ToList());
+                        interpolate_samples2[num] = new Dictionary<string, List<ValueType>>();
+                        foreach (var par in parametry)
+                        {
+                            var new_signal = interpolate(extractedSamples2[par], occure3[i]);
+
+
+
+                            interpolate_samples2[num][par] = new List<ValueType>(new_signal);
+
+                            //if (interpolate_samples.ContainsKey(num))
+                            //{
+                            //    if(interpolate_samples[num].ContainsKey(par))
+                            //    {
+
+                            //    }
+                            //    else
+                            //    {
+
+                            //    }
+
+                            //}
+                            //else
+                            //{
+
+                            //}
+
+
+                            //if (occurance.ContainsKey(x.StreamID))
+                            //{
+                            //    occurance?[x.StreamID].Add(x.Occurrences);
+                            //    repeat_occurance.Add(x.Occurrences);
+                            //}
+                            //else
+                            //{
+                            //    occurance[x.StreamID] = new List<int>() { x.Occurrences };
+                            //    repeat_occurance.Add(x.Occurrences);
+                            //}
+                        }
+                        i++;
+
+                    }
                 }
                 if (capFile[capFile.Count() - 3] == 't')
                     text_file_reader(capFile, extractedSamples2, time_dictionatyf2, checkedListBox2, dic2);
@@ -1490,8 +1818,8 @@ namespace WinformsExample
 
         private void button4_Click(object sender, EventArgs e)
         {
-            StartChart_file(chart2,checkedListBox2,extractedSamples2);
-            Changechartfile(chart2, extractedSamples2, time_dictionatyf2, dic2);
+            list_series2 = StartChart_file(chart2,checkedListBox2,extractedSamples2,true,list_series2,indexing2);
+            Changechartfile(chart2, extractedSamples2, time_dictionatyf2, dic2,list_series2, interpolate_samples2);
         }
         public int FileCount = 0;
         private int time;
@@ -1528,14 +1856,36 @@ namespace WinformsExample
                 //    }
 
 
-
+                
                 var list_series = chart1.Series.ToList();
-
+                int series_max_count = 0 ;
                 foreach (var series in list_series)
                 {
                     name = series.ToString().Substring(7);
+                    var count = extractedSamples[name].Count;
+                    if (count > series_max_count) { series_max_count = count; }
+                }
 
-                    for (int i = (int)Math.Round(min); i < max; i++)
+
+                    int max_it =0, min_it= 0;
+                foreach (var series in list_series)
+                {
+                    name = series.ToString().Substring(7);
+                    var count = extractedSamples[name].Count();
+                    if(globe_max_count > count)
+                    {
+                        min_it = (int)Math.Round((min * count) / series_max_count);
+                        max_it = (int)Math.Round((max * count) / series_max_count);
+                        if(max_it > count) { max_it = count; }
+                    }
+                    else
+                    {
+                        min_it = (int)Math.Round(min);
+                        max_it = (int)Math.Round(max);
+                        if (max_it > count) { max_it = count; }
+                    }
+
+                    for (int i = min_it; i < max_it; i++)
                     {
                         //extractedPartOfSamples.Add(extractedSamples[list_series[0].ToString().Substring(7)][i]);
 
@@ -1548,36 +1898,40 @@ namespace WinformsExample
 
 
                     }
-                }
-
-                var strings = list_series[0].ToString().Split('-');
-                string name2 = strings[1];
-                string time_divide = "";
-                try { time_divide = dic1[name2]; }
-                catch
-                {
-                    try { time_divide = dic1[name2.Remove(strings[1].Length - 1)]; }
+                
+                    var strings = series.ToString().Split('-');
+                     string name2 = strings[1];
+                    string time_divide = "";
+                    try { time_divide = dic1[name2]; }
                     catch
                     {
-                        try { time_divide = dic1[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
-                        catch { time_divide = dic1[strings[1] + '-' + strings[2]]; }
+                        try { time_divide = dic1[name2.Remove(strings[1].Length - 1)]; }
+                        catch
+                        {
+                            try { time_divide = dic1[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+                            catch { time_divide = dic1[strings[1] + '-' + strings[2]]; }
+                        }
                     }
-                }
-                extractedPartOfSamples["Time_with_occurence_" + time_divide] = new List<ValueType>();
-                for (int i = (int)Math.Round(min); i < max; i++)
-                {
-                    extractedPartOfSamples["Time_with_occurence_" + time_divide].Add(time_dictionatyf[time_divide][i]);
+                    if (!extractedPartOfSamples.Keys.Contains("Time_with_occurence_" + time_divide))
+                    {
+                        extractedPartOfSamples["Time_with_occurence_" + time_divide] = new List<ValueType>();
+                        for (int it = min_it; it < max_it; it++)
+                        {
+                            extractedPartOfSamples["Time_with_occurence_" + time_divide].Add(time_dictionatyf[time_divide][it]);
+                        }
+                    }
+
                 }
 
+                extractedPartOfSamples.OrderByDescending(x => x.Value.Count).ToDictionary(x => x.Key, x => x.Value);
 
                 string headerLine = "";
                 foreach (string key in extractedPartOfSamples.Keys)
                 {
                     headerLine = headerLine + key + "\t";
                 }
-                var keys_test = new List<string>(extractedPartOfSamples.Keys);
-                var test = keys_test[0];
-                int len = extractedPartOfSamples[test].Count;
+                
+                int len = series_max_count;
                 //FileCount++;
                 //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
                 var directory =CaptureForm.path_savetsv;
@@ -1587,24 +1941,58 @@ namespace WinformsExample
                     FileCount++;
                     name_file = directory + "\\" + comboBox1.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_" + FileCount + ".tsv";
                 }
-                using (StreamWriter sw = File.CreateText(name_file))
+
+               
+
+                
+             
+
+                //using (StreamWriter sw = File.CreateText(name_file))
+                //{
+                //    sw.WriteLine(headerLine);
+                //    for (int i = 0; i < len; i++)
+                //    {
+                //        string valuesLine = "";
+                //        foreach (string key in extractedPartOfSamples.Keys)
+                //        {
+                //            valuesLine = valuesLine + extractedPartOfSamples[key][i] + "\t";
+                //        }
+                //        //time_dictionatyf[time_divide][i]
+                //        sw.WriteLine(valuesLine);
+                //    }
+                //}
+                /////wklejone z saveall//////
+              
+                StringBuilder stringbuilder = new StringBuilder();
+                stringbuilder.Append(headerLine + "\n");
+                var keys = extractedPartOfSamples.Keys.ToList();
+                for (int i = 1; i < len; i++)
                 {
-                    sw.WriteLine(headerLine);
-                    for (int i = 0; i < len; i++)
+                    foreach (string key in keys)
                     {
-                        string valuesLine = "";
-                        foreach (string key in extractedPartOfSamples.Keys)
+                        try
                         {
-                            valuesLine = valuesLine + extractedPartOfSamples[key][i] + "\t";
+                            stringbuilder.Append(extractedPartOfSamples[key][i].ToString() + "\t");
                         }
-                        //time_dictionatyf[time_divide][i]
-                        sw.WriteLine(valuesLine);
+                        catch
+                        {
+                            keys.Remove(key);
+                            break;
+                        }
+
                     }
+                    stringbuilder.Append("\n");
                 }
+
+                File.AppendAllText(name_file, stringbuilder.ToString());
+
+                ////////////////
+
+
 
                 MessageBox.Show("Save Complited");
             }
-            catch { }
+            catch { MessageBox.Show("Error. Save Cancelled"); }
         }
 
         private void toolStripButton5_Click(object sender, EventArgs e)
@@ -1762,14 +2150,35 @@ namespace WinformsExample
                 //    }
 
 
-
                 var list_series = chart2.Series.ToList();
-
+                int series_max_count = 0;
                 foreach (var series in list_series)
                 {
                     name = series.ToString().Substring(7);
+                    var count = extractedSamples2[name].Count;
+                    if (count > series_max_count) { series_max_count = count; }
+                }
 
-                    for (int i = (int)Math.Round(min); i < max; i++)
+
+                int max_it = 0, min_it = 0;
+                foreach (var series in list_series)
+                {
+                    name = series.ToString().Substring(7);
+                    var count = extractedSamples2[name].Count();
+                    if (series_max_count > count)
+                    {
+                        min_it = (int)Math.Round((min * count) / series_max_count);
+                        max_it = (int)Math.Round((max * count) / series_max_count);
+                        if (max_it > count) { max_it = count; }
+                    }
+                    else
+                    {
+                        min_it = (int)Math.Round(min);
+                        max_it = (int)Math.Round(max);
+                        if (max_it > count) { max_it = count; }
+                    }
+
+                    for (int i = min_it; i < max_it; i++)
                     {
                         //extractedPartOfSamples.Add(extractedSamples[list_series[0].ToString().Substring(7)][i]);
 
@@ -1782,36 +2191,45 @@ namespace WinformsExample
 
 
                     }
-                }
 
-                var strings = list_series[0].ToString().Split('-');
-                string name2 = strings[1];
-                string time_divide = "";
-                try { time_divide = dic2[name2]; }
-                catch
-                {
-                    try { time_divide = dic2[name2.Remove(strings[1].Length - 1)]; }
+                    var strings = series.ToString().Split('-');
+                    string name2 = strings[1];
+                    string time_divide = "";
+                    try { time_divide = dic2[name2]; }
                     catch
                     {
-                        try { time_divide = dic2[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
-                        catch { time_divide = dic2[strings[1] + '-' + strings[2]]; }
+                        try { time_divide = dic2[name2.Remove(strings[1].Length - 1)]; }
+                        catch
+                        {
+                            try { time_divide = dic2[strings[1] + '-' + strings[2].Remove(strings[2].Length - 1)]; }
+                            catch { time_divide = dic2[strings[1] + '-' + strings[2]]; }
+                        }
                     }
-                }
-                extractedPartOfSamples2["Time_with_occurence_" + time_divide] = new List<ValueType>();
-                for (int i = (int)Math.Round(min); i < max; i++)
-                {
-                    extractedPartOfSamples2["Time_with_occurence_" + time_divide].Add(time_dictionatyf2[time_divide][i]);
-                }
+                    if (!extractedPartOfSamples2.Keys.Contains("Time_with_occurence_" + time_divide))
+                    {
+                        extractedPartOfSamples2["Time_with_occurence_" + time_divide] = new List<ValueType>();
+                        for (int it = min_it; it < max_it; it++)
+                        {
+                            extractedPartOfSamples2["Time_with_occurence_" + time_divide].Add(time_dictionatyf2[time_divide][it]);
+                        }
+                    }
 
+                }
+                
+
+              
+
+
+
+                extractedPartOfSamples2.OrderByDescending(x => x.Value.Count).ToDictionary(x => x.Key, x => x.Value);
 
                 string headerLine = "";
                 foreach (string key in extractedPartOfSamples2.Keys)
                 {
                     headerLine = headerLine + key + "\t";
                 }
-                var keys_test = new List<string>(extractedPartOfSamples2.Keys);
-                var test = keys_test[0];
-                int len = extractedPartOfSamples2[test].Count;
+
+                int len = series_max_count;
                 //FileCount++;
                 //string dumpTextPath = "C:\\Users\\pniedbala\\Desktop\\test_data\\509_valid_file1\\data_read2.tsv";
                 var directory = CaptureForm.path_savetsv;
@@ -1821,22 +2239,59 @@ namespace WinformsExample
                     FileCount++;
                     name_file = directory + "\\" + comboBox2.Text.Split('.')[0] + "_" + System.DateTime.Today.ToString("MM-dd-yyyy") + "_file_" + FileCount + ".tsv";
                 }
-                using (StreamWriter sw = File.CreateText(name_file))
+
+
+
+
+
+
+                //using (StreamWriter sw = File.CreateText(name_file))
+                //{
+                //    sw.WriteLine(headerLine);
+                //    for (int i = 0; i < len; i++)
+                //    {
+                //        string valuesLine = "";
+                //        foreach (string key in extractedPartOfSamples.Keys)
+                //        {
+                //            valuesLine = valuesLine + extractedPartOfSamples[key][i] + "\t";
+                //        }
+                //        //time_dictionatyf[time_divide][i]
+                //        sw.WriteLine(valuesLine);
+                //    }
+                //}
+                /////wklejone z saveall//////
+
+                StringBuilder stringbuilder = new StringBuilder();
+                stringbuilder.Append(headerLine + "\n");
+                var keys = extractedPartOfSamples2.Keys.ToList();
+                for (int i = 1; i < len; i++)
                 {
-                    sw.WriteLine(headerLine);
-                    for (int i = 0; i < len; i++)
+                    foreach (string key in keys)
                     {
-                        string valuesLine = "";
-                        foreach (string key in extractedPartOfSamples2.Keys)
+                        try
                         {
-                            valuesLine = valuesLine + extractedPartOfSamples2[key][i] + "\t";
+                            stringbuilder.Append(extractedPartOfSamples2[key][i].ToString() + "\t");
                         }
-                        //time_dictionatyf[time_divide][i]
-                        sw.WriteLine(valuesLine);
+                        catch
+                        {
+                            keys.Remove(key);
+                            break;
+                        }
+
                     }
+                    stringbuilder.Append("\n");
                 }
+
+                File.AppendAllText(name_file, stringbuilder.ToString());
+
+                ////////////////
+
+
+
+                MessageBox.Show("Save Complited");
             }
-            catch { }
+            catch { MessageBox.Show("Error. Save Cancelled"); }
+        
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -1863,6 +2318,7 @@ namespace WinformsExample
 
 
                 xValue = (int) chart1.ChartAreas[0].AxisX.PixelPositionToValue(X);
+                xValue = xValue * Int32.Parse(resamplingFile);
                 // double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(Y);
                 int iter = 0;
                 string lbl_text = "";
@@ -1894,8 +2350,12 @@ namespace WinformsExample
                             name = series[iter].ToString().Substring(7);
 
                         }
+                        var count = extractedSamples[name].Count;
+                        if (count == globe_max_count)
+                        { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                        else
+                        { Yvalues[mrk_count - 1, iter] = Convert.ToInt32(interpolate_samples[count][name][xValue]); }
 
-                        Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
                         lbl_text = lbl_text + Yvalues[mrk_count - 1, iter].ToString() + "\n";
 
                     }
@@ -1998,7 +2458,15 @@ namespace WinformsExample
                             name = series[iter].ToString().Substring(7);
 
                         }
-                        Yvalues[hold_coursor, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
+                        xValue = xValue * Int32.Parse(resamplingFile);
+                        var count = extractedSamples[name].Count;
+                        if (count == globe_max_count)
+                        { Yvalues[hold_coursor, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                        else
+                        { Yvalues[hold_coursor, iter] = Convert.ToDouble(interpolate_samples[count][name][xValue]); }
+
+
+                        //Yvalues[hold_coursor, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
                         lbl_text = lbl_text + Yvalues[hold_coursor , iter].ToString() + "\n";
 
                     }
@@ -2109,8 +2577,13 @@ namespace WinformsExample
                         name = series[iter].ToString().Substring(7);
 
                     }
+                    var count = extractedSamples[name].Count;
+                    if (count == globe_max_count)
+                    { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                    else
+                    { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(interpolate_samples[count][name][xValue]); }
 
-                    Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
+                    //Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
                     lbl_text = lbl_text + Yvalues[mrk_count - 1, iter].ToString() + "\n";
 
                 }
@@ -2275,10 +2748,22 @@ namespace WinformsExample
                         break;
                     }
             }
+            var count = extractedSamples[name].Count;
+            ValueType max;
+            int max_index;
+            if (count == globe_max_count)
+            { max = extractedSamples[name].Max(); max_index = extractedSamples[name].ToList().IndexOf(max); }
+            else
+            {
+                max = interpolate_samples[count][name].Max();
+                max_index = interpolate_samples[count][name].ToList().IndexOf(max); }
 
-             var max = extractedSamples[name].Max();
-             var max_index = extractedSamples[name].ToList().IndexOf(max);
-            var X = (int)chart1.ChartAreas[0].AxisX.ValueToPixelPosition(max_index) + 1;
+
+                //Yvalues[mrk_count - 1, iter] = Convert.ToDouble(interpolate_samples[count][name][xValue]); }
+
+            
+            
+            var X = (int)chart1.ChartAreas[0].AxisX.ValueToPixelPosition(max_index) + 2;
             marker_genrator(mrk, mrk_lbl,lbl_num_mrk, X, mrk_counter);
         }
 
@@ -2303,10 +2788,16 @@ namespace WinformsExample
                         break;
                     }
             }
+            var count = extractedSamples[name].Count;
+            ValueType min;
+            int min_index;
+            if (count == globe_max_count)
+            { min = extractedSamples[name].Max(); min_index = extractedSamples[name].ToList().IndexOf(min); }
+            else
+            { min = interpolate_samples[count][name].Max(); min_index = interpolate_samples[count][name].ToList().IndexOf(min); }
 
-
-            var min = extractedSamples[name].Min();
-            var min_index = extractedSamples[name].ToList().IndexOf(min);
+            //var min = extractedSamples[name].Min();
+            //var min_index = extractedSamples[name].ToList().IndexOf(min);
             var X = (int)chart1.ChartAreas[0].AxisX.ValueToPixelPosition(min_index) + 1;
             marker_genrator(mrk, mrk_lbl,lbl_num_mrk, X, mrk_counter);
         }
@@ -2370,6 +2861,22 @@ namespace WinformsExample
             int i = 2;
             int w = 3;
             var wynik = i + w;
+        }
+
+        private void toolStripButton17_Click_1(object sender, EventArgs e)
+        {
+            if (indexing) { toolStripButton17.BackColor = SystemColors.ControlDark; }
+            else { toolStripButton17.BackColor = SystemColors.Menu; }
+
+            indexing = !indexing;
+        }
+
+        private void toolStripButton18_Click_1(object sender, EventArgs e)
+        {
+            if (indexing2) { toolStripButton18.BackColor = SystemColors.ControlDark; }
+            else { toolStripButton18.BackColor = SystemColors.Menu; }
+
+            indexing2 = !indexing2;
         }
     }
     }

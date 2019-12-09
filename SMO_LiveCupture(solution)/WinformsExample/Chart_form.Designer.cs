@@ -64,6 +64,7 @@
             this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton16 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
             this.mrk_4 = new System.Windows.Forms.Label();
             this.mrk_1 = new System.Windows.Forms.Label();
             this.mrk_2 = new System.Windows.Forms.Label();
@@ -95,6 +96,7 @@
             this.M4_btn = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton21 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton22 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
             this.button6 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
@@ -132,7 +134,6 @@
             this.chart1.Text = "chart1";
             this.chart1.AxisViewChanging += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chart1_AxisViewChanging);
             this.chart1.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.chart1_AxisViewChanged);
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
             this.chart1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseClick);
             this.chart1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseDoubleClick);
             this.chart1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.chart1_MouseMove);
@@ -323,8 +324,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label5);
-            this.toolStripContainer1.ContentPanel.Controls.Add(this.toolStrip2);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(352, 29);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(352, 54);
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(-73, 410);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -346,10 +346,11 @@
             this.toolStripButton12,
             this.toolStripButton13,
             this.toolStripButton15,
-            this.toolStripButton16});
-            this.toolStrip2.Location = new System.Drawing.Point(84, 1);
+            this.toolStripButton16,
+            this.toolStripButton18});
+            this.toolStrip2.Location = new System.Drawing.Point(37, 408);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(127, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(181, 25);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -401,6 +402,16 @@
             this.toolStripButton16.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton16.Text = "Full Screen";
             this.toolStripButton16.Click += new System.EventHandler(this.toolStripButton16_Click);
+            // 
+            // toolStripButton18
+            // 
+            this.toolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton18.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton18.Image")));
+            this.toolStripButton18.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton18.Name = "toolStripButton18";
+            this.toolStripButton18.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton18.Text = "toolStripButton18";
+            this.toolStripButton18.Click += new System.EventHandler(this.toolStripButton18_Click_1);
             // 
             // mrk_4
             // 
@@ -527,7 +538,8 @@
             this.M3_btn,
             this.M4_btn,
             this.toolStripButton21,
-            this.toolStripButton22});
+            this.toolStripButton22,
+            this.toolStripButton17});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1285, 25);
@@ -705,6 +717,16 @@
             this.toolStripButton22.Text = "dt / dA Calculate";
             this.toolStripButton22.Click += new System.EventHandler(this.toolStripButton22_Click);
             // 
+            // toolStripButton17
+            // 
+            this.toolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton17.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton17.Image")));
+            this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton17.Name = "toolStripButton17";
+            this.toolStripButton17.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton17.Text = "toolStripButton17";
+            this.toolStripButton17.Click += new System.EventHandler(this.toolStripButton17_Click_1);
+            // 
             // button6
             // 
             this.button6.BackgroundImage = global::WinformsExample.Properties.Resources.us4;
@@ -723,6 +745,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1285, 644);
+            this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.lbl_num_mrk4);
@@ -835,5 +858,7 @@
         private System.Windows.Forms.Label lbl_num_mrk4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton17;
+        private System.Windows.Forms.ToolStripButton toolStripButton18;
     }
 }
