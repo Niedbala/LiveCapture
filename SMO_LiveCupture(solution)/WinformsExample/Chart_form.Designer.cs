@@ -99,6 +99,7 @@
             this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
             this.button6 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -324,7 +325,7 @@
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.label5);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(352, 54);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(352, 29);
             this.toolStripContainer1.LeftToolStripPanelVisible = false;
             this.toolStripContainer1.Location = new System.Drawing.Point(-73, 410);
             this.toolStripContainer1.Name = "toolStripContainer1";
@@ -350,7 +351,7 @@
             this.toolStripButton18});
             this.toolStrip2.Location = new System.Drawing.Point(37, 408);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(181, 25);
+            this.toolStrip2.Size = new System.Drawing.Size(150, 25);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -739,12 +740,25 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button7
+            // 
+            this.button7.BackgroundImage = global::WinformsExample.Properties.Resources.us4;
+            this.button7.Location = new System.Drawing.Point(868, 409);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(26, 27);
+            this.button7.TabIndex = 40;
+            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Chart_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1285, 644);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.toolStrip2);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.chart2);
@@ -860,5 +874,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ToolStripButton toolStripButton17;
         private System.Windows.Forms.ToolStripButton toolStripButton18;
+        private System.Windows.Forms.Button button7;
     }
 }

@@ -118,8 +118,10 @@ namespace SmoReader
                 var acraDateTimeSample = TimeFormatter.UnixTimeStampToDateTime(AcraKamSeconds, AcraKamNanoSeconds);
 
                 //TODO: crude check of invalid timestamp. use median or some other solution
-                if (acraDateTimeSample < CutoffDate)
-                    return result;
+
+                
+                //if (acraDateTimeSample < CutoffDate)
+                //    return result;
 
                 result.AcraTime = acraDateTimeSample;
 

@@ -289,8 +289,29 @@ namespace WinformsExample
             catch { MessageBox.Show("Error. Try other signal name"); return false; }
 
                 Chart_form.dic1.Add(name, sample);
-            var keys2 = new List<string>(Chart_form.extractedSamples.Keys);
-            chart.dodawanie_checklistbox2(keys2, chart.checkedListBox1, Chart_form.extractedSamples);
+            var keys3 = new List<string>(Chart_form.extractedSamples.Keys);
+            chart.dodawanie_checklistbox2(keys3, chart.checkedListBox1, Chart_form.extractedSamples);
+            //trzeba wyciagnac z interpolate occure
+           var occure =  Chart_form.interpolate_samples.Keys.ToList();
+            var occurence2 = new List<int>();
+            Chart_form.extractedSamples.Keys.ToList().ForEach(x => occurence2.Add(Chart_form.extractedSamples[x].Count));
+            var dic3 = keys3.Zip(occurence2, (k, v) => new { k, v })
+                         .ToDictionary(x => x.k, x => x.v);
+
+            var occure2 = dic3.Values.ToList().Distinct().ToList();
+            //var occure2 = ocure.Select(x => x).ToList();
+            occure2.Sort();
+            var occure3 = new List<int>(occure2);
+            occure2.Remove(occure2.Last());
+            occure3.Remove(occure3.First());
+            // dla kazdego occurance wywolac interpolatre
+            int j = 0;
+            foreach (var num in occure2)
+            {
+                var new_interpolate_signal = interpolate(new_signal, occure3[j]);
+               Chart_form.interpolate_samples[num][name] = new List<ValueType>(new_interpolate_signal);
+                j++;
+            }
 
             return true;
         }
@@ -367,6 +388,154 @@ namespace WinformsExample
         {
             DGV_change(6);
             ChangeButtonsColor(button9);
+        }
+
+        public List<ValueType> interpolate(List<ValueType> Y, double SampleCount)
+        {   //moge tu policzyc count z Y
+            //mam ile musi byc probek na kocu
+
+            var ilosc = Y.Count();
+            var SampleRate = SampleCount / ilosc;
+
+            List<ValueType> new_signal = new List<ValueType>();
+            if (SampleRate == 2)
+            {
+
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add(Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < SampleCount; i++)
+                        { new_signal.Add(Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < SampleRate; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                new_signal.Add(Y[Y.Count() - 1]);
+                new_signal.Add(Y[Y.Count() - 1]);
+            }
+            else if (SampleRate < 2)
+            {
+
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add(Y[a]);
+
+                }
+                new_signal.Add(Y[Y.Count() - 1]);
+
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add(0); }
+            }
+            else if (SampleRate > 2 && SampleRate < 5)
+            {
+
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add(Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < (int)SampleCount; i++)
+                        { new_signal.Add(Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < (int)SampleRate; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                new_signal.Add(Y[Y.Count() - 1]);
+                new_signal.Add(Y[Y.Count() - 1]);
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add(0); }
+            }
+            else if (SampleRate > 768 && SampleRate < 775)
+            {
+
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add(Y[0]); }
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add(Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add(Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add(Y[Y.Count() - 1]); }
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add(0); }
+            }
+            else if (SampleRate > 755 && SampleRate < 768)
+            {
+
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add(Y[0]); }
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add(Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add(Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < 768; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                for (int i = 1; i < 96; i++)
+                { new_signal.Add(Y[Y.Count() - 1]); }
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add(0); }
+            }
+            else if (SampleRate > 370 && SampleRate < 390)
+            {
+                for (int i = 1; i < 48; i++)
+                { new_signal.Add(Y[0]); }
+                for (int a = 0; a < Y.Count() - 1; a++)
+                {
+                    new_signal.Add(Y[a]);
+                    if (Y[a] == Y[a + 1])
+                    {
+                        for (int i = 1; i < 384; i++)
+                        { new_signal.Add(Y[a]); }
+                    }
+                    else if (Y[a] != Y[a + 1])
+                    {
+                        var dis = (Convert.ToDouble(Y[a + 1]) - Convert.ToDouble(Y[a])) / SampleCount;
+                        for (int i = 1; i < 384; i++)
+                        { new_signal.Add(Convert.ToUInt32(Convert.ToDouble(Y[a]) + (dis * i))); }
+
+                    }
+                }
+                for (int i = 1; i < 48; i++)
+                { new_signal.Add(Y[Y.Count() - 1]); }
+                for (int i = new_signal.Count; i < SampleCount; i++)
+                { new_signal.Add(0); }
+            }
+
+            return new_signal;
         }
     }
 }

@@ -19,3 +19,10 @@ C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution
 C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\Debug\ScalingConverter.csproj.CoreCompileInputs.cache
 C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\Debug\ScalingConverter.exe
 C:\Users\pniedbala\Desktop\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\Debug\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\Debug\ScalingConverter.exe.config
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\Debug\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\bin\Debug\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\Debug\ScalingConverter.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\Debug\ScalingConverter.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\Debug\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture\Załącznik1\SMO_LiveCupture(solution)\ScalingConverter\obj\Debug\ScalingConverter.pdb

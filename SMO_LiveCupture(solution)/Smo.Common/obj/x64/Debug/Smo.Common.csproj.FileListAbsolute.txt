@@ -1,0 +1,11 @@
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\bin\x64\Debug\Smo.Common.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\bin\x64\Debug\Smo.Common.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\bin\x64\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\bin\x64\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\bin\x64\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\bin\x64\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\obj\x64\Debug\Smo.Common.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\obj\x64\Debug\Smo.Common.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\obj\x64\Debug\Smo.Common.csproj.CopyComplete
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\obj\x64\Debug\Smo.Common.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Common\obj\x64\Debug\Smo.Common.pdb

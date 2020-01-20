@@ -59,6 +59,7 @@ namespace WinformsExample
         public static List<double> timearray_128f = new List<double>();
         public static List<double> timearray_256f = new List<double>();
         public static Dictionary<string, List<double>> time_dictionatyf = new Dictionary<string, List<double>>();
+        public static Dictionary<string, List<double>> time_dictionatyf_round = new Dictionary<string, List<double>>();
         public static Dictionary<string, List<double>> time_dictionatyf2 = new Dictionary<string, List<double>>();
         public static string grid = "Auto";
         private double axismax;
@@ -87,7 +88,7 @@ namespace WinformsExample
         public static string globe_max_name;
         public static Dictionary<int, Dictionary<string, List<ValueType>>> interpolate_samples = new Dictionary<int, Dictionary<string, List<ValueType>>>();
         public static Dictionary<int, Dictionary<string, List<ValueType>>> interpolate_samples2 = new Dictionary<int, Dictionary<string, List<ValueType>>>();
-
+        public static string time_divide = "";
         public int X_diff { get; private set; }
 
         public Chart_form()
@@ -567,6 +568,11 @@ namespace WinformsExample
                 Changechart(chart1,list_series);
                 
                 Changechart(chart2,list_series2);
+
+                if (mrk_1.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_1, 1); }
+                if (mrk_2.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_2, 2); }
+                if (mrk_3.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_3, 3); }
+                if (mrk_4.BackColor == System.Drawing.Color.Lime) { marker_refresh(mrk_lbl_4, 4); }
             }
 
         }
@@ -715,6 +721,7 @@ namespace WinformsExample
                     }
                     else
                     {
+                        var names = seria.ToString().Substring(7);
                         chartarray = interpolate_samples[num][seria.ToString().Substring(7)].Select(x => Convert.ToDouble(x))
                            .ToList();
                     }
@@ -727,7 +734,7 @@ namespace WinformsExample
                 }
                
                  int iter = 1;
-                 string time_divide = "";
+                 time_divide = "";
                  try
                  {
                      time_divide = dic[name];
@@ -829,18 +836,23 @@ namespace WinformsExample
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            stop_chart = true;
-            extractedSamples = new Dictionary<string, List<ValueType>>();
-            foreach (var series in list_series)
+            try
             {
-                var data = chart1.Series[series.ToString().Substring(7)].Points.ToList().Select(x => (ValueType)x.YValues[0]).ToList();
-                
-                extractedSamples[series.ToString().Substring(7)] = new List<ValueType>(data);
-                
+                stop_chart = true;
+                extractedSamples = new Dictionary<string, List<ValueType>>();
+                foreach (var series in list_series)
+                {
+                    var data = chart1.Series[series.ToString().Substring(7)].Points.ToList().Select(x => (ValueType)x.YValues[0]).ToList();
+
+                    extractedSamples[series.ToString().Substring(7)] = new List<ValueType>(data);
+
+                }
+                time_dictionatyf["1"] = chart1.Series[list_series[0].ToString().Substring(7)].Points.ToList().Select(x => x.XValue).ToList();
+                dic1 = new Dictionary<string, string>();
+                dic1[list_series[0].ToString().Substring(7)] = "1";
             }
-            time_dictionatyf["1"] = chart1.Series[list_series[0].ToString().Substring(7)].Points.ToList().Select(x => x.XValue).ToList();
-            dic1 = new Dictionary<string, string>();
-            dic1[list_series[0].ToString().Substring(7)] = "1";
+            catch
+            { }
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -923,6 +935,11 @@ namespace WinformsExample
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if(CaptureForm.start_chart && !stop_chart)
+            {
+                MessageBox.Show("If you want use Import Stop LiveChart first", "UWAGA!", MessageBoxButtons.OK);
+                return;
+            }
             if (comboBox1.SelectedItem == null)
             {
                 MessageBox.Show("Wskaż plik", "UWAGA!", MessageBoxButtons.OK);
@@ -935,6 +952,7 @@ namespace WinformsExample
             }
             else
             {
+                CaptureForm.start_chart = false;
                 extractedSamples = new Dictionary<string, List<ValueType>>();
                 time_dictionatyf = new Dictionary<string, List<double>>();
                 timearrayf = new List<double>();
@@ -968,6 +986,14 @@ namespace WinformsExample
                     device.OnPacketArrival +=
                     new PacketArrivalEventHandler((_sender, _e) => device_OnPacketArrival(this, _e, converter, extractedSamples, time_dictionatyf));
                     device.Capture();
+
+                    foreach (var key in time_dictionatyf.Keys)
+                    {
+                        var list_time = time_dictionatyf[key];
+                        var masterList = list_time.Select(x => Math.Round(x, 2)).ToList();
+                        time_dictionatyf_round[key] = new List<double>(masterList);
+                    }
+
                     var keys2 = new List<string>(extractedSamples.Keys);
                     try
                     {
@@ -1139,7 +1165,7 @@ namespace WinformsExample
             {
                 
                 for (int i = 1; i < 96; i++)
-                { new_signal.Add((UInt32)0); }
+                { new_signal.Add((UInt32)Y[0]); }
                 for (int a = 0; a < Y.Count() - 1; a++)
                 {
                     new_signal.Add((UInt32)Y[a]);
@@ -1165,7 +1191,7 @@ namespace WinformsExample
             {
 
                 for (int i = 1; i < 96; i++)
-                { new_signal.Add((UInt32)0); }
+                { new_signal.Add((UInt32)Y[0]); }
                 for (int a = 0; a < Y.Count() - 1; a++)
                 {
                     new_signal.Add((UInt32)Y[a]);
@@ -1190,7 +1216,7 @@ namespace WinformsExample
             else if (SampleRate > 370 && SampleRate < 390)
             {
                 for (int i = 1; i < 48; i++)
-                { new_signal.Add((UInt32)0); }
+                { new_signal.Add((UInt32)Y[0]); }
                 for (int a = 0; a < Y.Count() - 1; a++)
                 {
                     new_signal.Add((UInt32)Y[a]);
@@ -1403,7 +1429,15 @@ namespace WinformsExample
                     }
                 }
                 catch { }
-            
+
+
+                //ok tu mozna zrobic time_dictionaty_round
+
+              
+
+
+                
+
                 if (packetIndex % 1000 == 0)
                 {
 
@@ -1460,18 +1494,19 @@ namespace WinformsExample
         private void chart1_MouseMove(object sender, MouseEventArgs e)
         {
             //double yOffset = GetYOffset(chart1, e.X);
-            if (croos_cursor_on)
+            if (croos_cursor_on && (indexing))
             {
                 try
                 {
                     Point mousePoint = new Point(e.X, e.Y);
                     chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, false);
-                    chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
+                    chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false); 
 
 
                     //chart1.ChartAreas[0].CursorX.SelectionStart
 
-                    xValue = (int) chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                    xValue = (int)chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                    //var val = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
                     double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
 
                     var name = list_series[series_iter].ToString().Substring(7);
@@ -1479,18 +1514,66 @@ namespace WinformsExample
                     var count = extractedSamples[name].Count;
                     ValueType YVAL;
                     xValue = xValue * Int32.Parse(resamplingFile);
-                    if(count < globe_max_count)
-                    { YVAL = interpolate_samples[count][name][xValue]; }
-                    else
-                    {  YVAL = extractedSamples[name][xValue]; }
-                    
-                    label4.Text = String.Concat(String.Concat(xValue.ToString(), " , "), YVAL.ToString(),"\n #", (series_iter + 1).ToString());
-                    label4.Location = new Point(10, e.Y + 40);
+                    if (xValue > 0)
+                    {
+                        if (count < globe_max_count)
+                        { YVAL = interpolate_samples[count][name][xValue]; }
+                        else
+                        { YVAL = extractedSamples[name][xValue]; }
+
+                        label4.Text = String.Concat(String.Concat(xValue.ToString(), " , "), YVAL.ToString(), "\n #", (series_iter + 1).ToString());
+                        label4.Location = new Point(10, e.Y + 40);
+                    }
                 }
                 catch
                 {
                 }
+
             }
+            else
+            {
+                try
+                {
+
+
+
+                    Point mousePoint = new Point(e.X, e.Y);
+                    chart1.ChartAreas[0].CursorX.SetCursorPixelPosition(mousePoint, false);
+                    chart1.ChartAreas[0].CursorY.SetCursorPixelPosition(mousePoint, false);
+
+
+                    //chart1.ChartAreas[0].CursorX.SelectionStart
+
+
+                    var xval = chart1.ChartAreas[0].AxisX.PixelPositionToValue(e.X);
+                    double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(e.Y);
+
+                    var name = list_series[series_iter].ToString().Substring(7);
+                    //.Single(s => s.Equals(max));
+                    var count = extractedSamples[name].Count;
+                    ValueType YVAL;
+
+
+
+
+                    if (xval > 0)
+                    {
+                        timebase = time_dictionatyf_round[time_divide];
+
+                        var index = timebase.IndexOf(Math.Round(xval,2));
+                        if (count < globe_max_count)
+                        { YVAL = interpolate_samples[count][name][index]; }
+                        else
+                        { YVAL = extractedSamples[name][index]; }
+
+                        label4.Text = String.Concat(String.Concat(Math.Round(xval, 2).ToString(), " , "), YVAL.ToString(), "\n #", (series_iter + 1).ToString());
+                        label4.Location = new Point(10, e.Y + 40);
+                    }
+                }
+                catch
+                { }
+            }
+                
 
             if (mouse_event)
             {
@@ -2302,6 +2385,9 @@ namespace WinformsExample
         public double[,] Yvalues = new double[4,3];
         public int[] Xvalues = new int[4];
         public string[] lbl_texts = new string[4];
+
+
+//////////////////////tu dodac ifa od start_chart i stop_chart + w zaleznosci od tego by korzystał  z capture rate extracted samples
         private void marker_genrator(Label mrk_1,Label mrk_lbl_1, Label lbl_num_mrk, int X, int mrk_count)
         {
             try
@@ -2318,7 +2404,10 @@ namespace WinformsExample
 
 
                 xValue = (int) chart1.ChartAreas[0].AxisX.PixelPositionToValue(X);
-                xValue = xValue * Int32.Parse(resamplingFile);
+                if (CaptureForm.start_chart)
+                { xValue = xValue * Int32.Parse(resampling); } /////czy na pewno ten parametr resampling
+                else
+                { xValue = xValue * Int32.Parse(resamplingFile); }
                 // double yValue = chart1.ChartAreas[0].AxisY.PixelPositionToValue(Y);
                 int iter = 0;
                 string lbl_text = "";
@@ -2350,11 +2439,19 @@ namespace WinformsExample
                             name = series[iter].ToString().Substring(7);
 
                         }
-                        var count = extractedSamples[name].Count;
-                        if (count == globe_max_count)
-                        { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                        if (CaptureForm.start_chart)
+                        {
+                            Yvalues[mrk_count - 1, iter] = Convert.ToDouble(CaptureForm.extractedSamples[name][xValue]);
+                        }
                         else
-                        { Yvalues[mrk_count - 1, iter] = Convert.ToInt32(interpolate_samples[count][name][xValue]); }
+                        {
+                            var count = extractedSamples[name].Count;
+                            if (count == globe_max_count)
+                            { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                            else
+                            { Yvalues[mrk_count - 1, iter] = Convert.ToInt32(interpolate_samples[count][name][xValue]); }
+                        }
+                        
 
                         lbl_text = lbl_text + Yvalues[mrk_count - 1, iter].ToString() + "\n";
 
@@ -2459,11 +2556,18 @@ namespace WinformsExample
 
                         }
                         xValue = xValue * Int32.Parse(resamplingFile);
-                        var count = extractedSamples[name].Count;
-                        if (count == globe_max_count)
-                        { Yvalues[hold_coursor, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                        if (CaptureForm.start_chart)
+                        {
+                            Yvalues[hold_coursor, iter] = Convert.ToDouble(CaptureForm.extractedSamples[name][xValue]);
+                        }
                         else
-                        { Yvalues[hold_coursor, iter] = Convert.ToDouble(interpolate_samples[count][name][xValue]); }
+                        {
+                            var count = extractedSamples[name].Count;
+                            if (count == globe_max_count)
+                            { Yvalues[hold_coursor, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                            else
+                            { Yvalues[hold_coursor, iter] = Convert.ToInt32(interpolate_samples[count][name][xValue]); }
+                        }
 
 
                         //Yvalues[hold_coursor, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
@@ -2542,6 +2646,8 @@ namespace WinformsExample
 
         }
 
+
+
         public void marker_refresh( Label mrk_lbl_1,int mrk_count)
         {
             var X = Xvalues[mrk_count - 1];
@@ -2577,11 +2683,18 @@ namespace WinformsExample
                         name = series[iter].ToString().Substring(7);
 
                     }
-                    var count = extractedSamples[name].Count;
-                    if (count == globe_max_count)
-                    { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                    if (CaptureForm.start_chart)
+                    {
+                        Yvalues[mrk_count - 1, iter] = Convert.ToDouble(CaptureForm.extractedSamples[name][xValue]);
+                    }
                     else
-                    { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(interpolate_samples[count][name][xValue]); }
+                    {
+                        var count = extractedSamples[name].Count;
+                        if (count == globe_max_count)
+                        { Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]); }
+                        else
+                        { Yvalues[mrk_count - 1, iter] = Convert.ToInt32(interpolate_samples[count][name][xValue]); }
+                    }
 
                     //Yvalues[mrk_count - 1, iter] = Convert.ToDouble(extractedSamples[name][xValue]);
                     lbl_text = lbl_text + Yvalues[mrk_count - 1, iter].ToString() + "\n";
@@ -2619,6 +2732,9 @@ namespace WinformsExample
         internal static string resamplingFile = "1";
         internal static bool everyFile = true;
         internal static bool dyFile = false;
+        internal static string resamplingFile2 = "1";
+        internal static bool everyFile2 = true;
+        internal static bool dyFile2 = false;
 
         private bool preser(Label mrk,Label mrk_lbl,Label lbl_num_mrk,  bool m_press, int num)
         {
@@ -2759,10 +2875,10 @@ namespace WinformsExample
                 max_index = interpolate_samples[count][name].ToList().IndexOf(max); }
 
 
-                //Yvalues[mrk_count - 1, iter] = Convert.ToDouble(interpolate_samples[count][name][xValue]); }
+            //Yvalues[mrk_count - 1, iter] = Convert.ToDouble(interpolate_samples[count][name][xValue]); }
 
-            
-            
+
+            max_index = max_index / Int32.Parse(resamplingFile);
             var X = (int)chart1.ChartAreas[0].AxisX.ValueToPixelPosition(max_index) + 2;
             marker_genrator(mrk, mrk_lbl,lbl_num_mrk, X, mrk_counter);
         }
@@ -2792,12 +2908,13 @@ namespace WinformsExample
             ValueType min;
             int min_index;
             if (count == globe_max_count)
-            { min = extractedSamples[name].Max(); min_index = extractedSamples[name].ToList().IndexOf(min); }
+            { min = extractedSamples[name].Min(); min_index = extractedSamples[name].ToList().IndexOf(min); }
             else
-            { min = interpolate_samples[count][name].Max(); min_index = interpolate_samples[count][name].ToList().IndexOf(min); }
+            { min = interpolate_samples[count][name].Min(); min_index = interpolate_samples[count][name].ToList().IndexOf(min); }
 
             //var min = extractedSamples[name].Min();
             //var min_index = extractedSamples[name].ToList().IndexOf(min);
+            min_index = min_index / Int32.Parse(resamplingFile);
             var X = (int)chart1.ChartAreas[0].AxisX.ValueToPixelPosition(min_index) + 1;
             marker_genrator(mrk, mrk_lbl,lbl_num_mrk, X, mrk_counter);
         }
@@ -2846,7 +2963,7 @@ namespace WinformsExample
 
         private void button6_Click(object sender, EventArgs e)
         {
-            var ImpSet= new ImportSetting();
+            var ImpSet= new ImportSetting(1);
             ImpSet.Show();
         }
 
@@ -2877,6 +2994,13 @@ namespace WinformsExample
             else { toolStripButton18.BackColor = SystemColors.Menu; }
 
             indexing2 = !indexing2;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            
+            var ImpSet = new ImportSetting(2);
+            ImpSet.Show();
         }
     }
     }

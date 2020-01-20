@@ -1,8 +1,8 @@
 C:\Users\pniedbala\Desktop\SMST Mi8 dane proba silnika\SMST_hangar_03012019.xidml
 C:\Users\pniedbala\Desktop\SSR\test_data\scalingTables\11.tsv
 C:\Users\pniedbala\Desktop\SSR\test_data\instrumentSettings2017.xml
-C:\Users\pniedbala\Desktop\tsv test\new_cap.cap
-C:\Users\pniedbala\Desktop\tsvtest2
+C:\Users\pniedbala\Desktop\Dane LiveCupture\csv_save\test1
+C:\Users\pniedbala\Desktop\Dane LiveCupture\tsv_save
 1023
 192.168.28.1
 509
