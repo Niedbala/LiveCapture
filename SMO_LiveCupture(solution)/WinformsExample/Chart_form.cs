@@ -22,6 +22,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Documents;
 using SciChart.Core.Extensions;
+using System.Diagnostics;
 
 
 namespace WinformsExample
@@ -1307,6 +1308,7 @@ namespace WinformsExample
         private static int packetIndex = 0;
         private static double last_time = 0;
         public static Dictionary<int, DateTime?> LastAcraTime = new Dictionary<int, DateTime?>();
+        public Stopwatch sw = new Stopwatch();
         private void device_OnPacketArrival(object sender, CaptureEventArgs e, LiveConverter converter, Dictionary<string, List<ValueType>> extractedSamples, Dictionary<string, List<double>> time_dictionatyf)
         {
             if (e.Packet.LinkLayerType == PacketDotNet.LinkLayers.Ethernet && e.Packet.Data.Count() > 1)
@@ -1316,10 +1318,17 @@ namespace WinformsExample
 
 
                 packetIndex++;
-
+                
                 var result = converter.DecodePacket(e.Packet);
                 //result.IsSuccess
+                if(result.streamID == 31)
+                {
+                    var kurde_no = 1; }
 
+                if (result.streamID == 32)
+                {
+                    var kurde_no = 1;
+                }
                 if (LastAcraTime.ContainsKey(result.streamID))
                 {
                     if (result.AcraTime == LastAcraTime[result.streamID]) return;
@@ -1342,6 +1351,8 @@ namespace WinformsExample
                     parametr_definition = converter.parameterDefinitions;
                     parametr_definition.ForEach(x =>
                     {
+                        //zabezpieczony przed wystepowaniem tych samych occurenców co jest zle bo moga wystepowac 
+                        // trzeba uzależnic od StreamID
                         if (repeat_occurance.Any(b => b == x.Occurrences) == false)
                         {
                             if (occurance.ContainsKey(x.StreamID))
@@ -1390,7 +1401,7 @@ namespace WinformsExample
                     }
 
                 }
-                catch { }
+                catch(Exception ex) { var error = ex.Message; }
                 try
                 { 
                     if (last_times[result.streamID] != 0.0)
@@ -1431,7 +1442,7 @@ namespace WinformsExample
                 catch { }
 
 
-                //ok tu mozna zrobic time_dictionaty_round
+               
 
               
 

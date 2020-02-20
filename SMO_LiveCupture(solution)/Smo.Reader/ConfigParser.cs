@@ -152,51 +152,115 @@ namespace SmoReader
 
             var Packages = root.Descendants("Packages").FirstOrDefault();
             int ID_count;
-            var StreamID = root.Descendants("StreamID").FirstOrDefault();
-            var StreamID2 = root.Descendants("StreamID").Last();
-            if (StreamID == StreamID2)
+            var List_StreamID = root.Descendants("StreamID").ToList();
+            var List_Content = root.Descendants("Content").ToList();
+            var mappings = new List<Mapping>();
+            for(int i =0; i < List_StreamID.Count(); i++)
             {
-                ID_count = 1;
-            }
-            else { ID_count = 2; }
-            var Content = root.Descendants("Content").FirstOrDefault();
-            var Content2 = root.Descendants("Content").Last();
-            var mappings = Content.Descendants("Mapping").Select(
+                var stream_id_num = Convert.ToInt32(List_StreamID[i].LastNode.ToString(),16);
+
+                var mappings_new = List_Content[i].Descendants("Mapping").Select(
                 m =>
-                    {
-                        var mapping = new Mapping();
-                        mapping.Name = m.Descendants("ParameterReference").FirstOrDefault().Value;
-                        mapping.OffsetBytes = Convert.ToInt16(m.Descendants("Offset_Bytes").FirstOrDefault().Value);
-                        mapping.Occurrences = Convert.ToInt16(m.Descendants("Occurrences").FirstOrDefault().Value);
-                        mapping.StreamID = 1;
-                        
-                        return mapping;
-                    }
+                {
+                    var mapping = new Mapping();
+                    mapping.Name = m.Descendants("ParameterReference").FirstOrDefault().Value;
+                    mapping.OffsetBytes = Convert.ToInt16(m.Descendants("Offset_Bytes").FirstOrDefault().Value);
+                    mapping.Occurrences = Convert.ToInt16(m.Descendants("Occurrences").FirstOrDefault().Value);
+                    mapping.StreamID = stream_id_num;
+
+                    return mapping;
+                }
                 )
                 .ToList();
-            if (ID_count == 2)
+
+                mappings = mappings.Concat(mappings_new).ToList();
+            }
+
+            //var StreamID = root.Descendants("StreamID").FirstOrDefault();
+            //var stream_id_num = StreamID.LastNode.ToString();
+            //var StreamID2 = root.Descendants("StreamID").Last();
+            //var stream_id2_num = StreamID2.LastNode.ToString();
+            //if (StreamID == StreamID2)
+            //{
+            //    ID_count = 1;
+            //}
+            //else { ID_count = 2; }
+            //var Content = root.Descendants("Content").FirstOrDefault();
+            //var Content2 = root.Descendants("Content").Last();
+            //var mappings = Content.Descendants("Mapping").Select(
+            //    m =>
+            //        {
+            //            var mapping = new Mapping();
+            //            mapping.Name = m.Descendants("ParameterReference").FirstOrDefault().Value;
+            //            mapping.OffsetBytes = Convert.ToInt16(m.Descendants("Offset_Bytes").FirstOrDefault().Value);
+            //            mapping.Occurrences = Convert.ToInt16(m.Descendants("Occurrences").FirstOrDefault().Value);
+            //            mapping.StreamID = Convert.ToInt16(stream_id_num);
+
+            //            return mapping;
+            //        }
+            //    )
+            //    .ToList();
+            //if (ID_count == 2)
+            //{
+            //    var mappings2 = Content2.Descendants("Mapping").Select(
+            //        m =>
+            //        {
+            //            var mapping2 = new Mapping();
+            //            mapping2.Name = m.Descendants("ParameterReference").FirstOrDefault().Value;
+            //            mapping2.OffsetBytes = Convert.ToInt16(m.Descendants("Offset_Bytes").FirstOrDefault().Value);
+            //            mapping2.Occurrences = Convert.ToInt16(m.Descendants("Occurrences").FirstOrDefault().Value);
+            //            mapping2.StreamID = Convert.ToInt16(stream_id2_num);
+            //            return mapping2;
+            //        }
+            //        )
+            //        .ToList();
+            //    mappings = mappings.Concat(mappings2).ToList();
+            //}
+            //sprawdzic czy m.name sie nie powtarza
+            var map_names = mappings.Select(m =>m.Name).ToList();
+            var map_names2 = map_names.Distinct().ToList();
+            var duplicates = map_names.GroupBy(x=>x).SelectMany(g=>g.Skip(1)).ToList();
+
+            if (duplicates.Count != 0)
             {
-                var mappings2 = Content2.Descendants("Mapping").Select(
-                    m =>
+                foreach (var duplicate in duplicates)
+                {
+                    var maps = mappings.Where(m => m.Name == duplicate).ToList();
+                    maps.RemoveAt(0);
+                    int i = 2;
+                    foreach (var map in maps)
                     {
-                        var mapping2 = new Mapping();
-                        mapping2.Name = m.Descendants("ParameterReference").FirstOrDefault().Value;
-                        mapping2.OffsetBytes = Convert.ToInt16(m.Descendants("Offset_Bytes").FirstOrDefault().Value);
-                        mapping2.Occurrences = Convert.ToInt16(m.Descendants("Occurrences").FirstOrDefault().Value);
-                        mapping2.StreamID = 2;
-                        return mapping2;
+                        mappings.Remove(map);
+                        var param = parameters.Where(p => p.Name == map.Name).ToList();
+                        map.Name = map.Name + i.ToString();
+                        mappings.Add(map);
+                        var param_obj = new ParameterDefinition
+                        {
+                            BaseUnit = param[0].BaseUnit,
+                            DataFormat = param[0].DataFormat,
+                            Name = map.Name,
+                            Occurrences = param[0].Occurrences,
+                            OffsetBytes = param[0].OffsetBytes,
+                            Registers = param[0].Registers,
+                            SizeInBits = param[0].SizeInBits,
+                            StreamID = param[0].StreamID
+                            
+                        };
+                        //param_obj.Name = map.Name;
+                        parameters.Add(param_obj);
                     }
-                    )
-                    .ToList();
-                mappings = mappings.Concat(mappings2).ToList();
+                }
+                    
             }
             parameters = mappings.Join(parameters, m => m.Name, p => p.Name, (m, p) =>
-                {
-                    p.OffsetBytes = m.OffsetBytes;
-                    p.Occurrences = m.Occurrences;
-                    p.StreamID = m.StreamID;
-                    return p;
-                }).ToList();
+            {
+                p.OffsetBytes = m.OffsetBytes;
+                p.Occurrences = m.Occurrences;
+                p.StreamID = m.StreamID;
+                return p;
+            }).ToList();
+
+
 
             return parameters;
         }

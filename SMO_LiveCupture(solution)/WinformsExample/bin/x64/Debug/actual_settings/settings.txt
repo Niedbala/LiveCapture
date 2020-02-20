@@ -1,4 +1,4 @@
-C:\Users\pniedbala\Desktop\SMST Mi8 dane proba silnika\SMST_hangar_03012019.xidml
+C:\Users\pniedbala\Desktop\próba silnika Mi-24\config_SMST_2_CF_eraseON.xidml
 C:\Users\pniedbala\Desktop\SSR\test_data\scalingTables\11.tsv
 C:\Users\pniedbala\Desktop\SSR\test_data\instrumentSettings2017.xml
 C:\Users\pniedbala\Desktop\Dane LiveCupture\csv_save\test1

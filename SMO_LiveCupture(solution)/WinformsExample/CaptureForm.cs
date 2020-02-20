@@ -28,6 +28,7 @@ namespace WinformsExample
 {
     public partial class CaptureForm : Form
     {
+        public static List<Chart_form> charts = new List<Chart_form>();
         public static string path_scalingtable = "";
         public static string path_configxml = "";
         public static string path_savetsv = "";
@@ -651,6 +652,7 @@ namespace WinformsExample
         {
             chartform = new Chart_form();
             chartform.Show();
+            charts.Add(chartform);
         }
     }
 }
