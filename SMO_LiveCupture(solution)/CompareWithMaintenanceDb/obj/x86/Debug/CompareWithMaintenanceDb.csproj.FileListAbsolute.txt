@@ -1,0 +1,9 @@
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Debug\CompareWithMaintenanceDb.exe.config
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Debug\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\bin\x86\Debug\CompareWithMaintenanceDb.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Debug\CompareWithMaintenanceDb.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Debug\CompareWithMaintenanceDb.Properties.Resources.resources
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Debug\CompareWithMaintenanceDb.csproj.GenerateResource.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Debug\CompareWithMaintenanceDb.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Debug\CompareWithMaintenanceDb.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\CompareWithMaintenanceDb\obj\x86\Debug\CompareWithMaintenanceDb.pdb

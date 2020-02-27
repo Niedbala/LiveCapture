@@ -1,0 +1,7 @@
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Debug\ScalingConverter.exe.config
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Debug\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\ScalingConverter\bin\x86\Debug\ScalingConverter.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Debug\ScalingConverter.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Debug\ScalingConverter.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Debug\ScalingConverter.exe
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\ScalingConverter\obj\x86\Debug\ScalingConverter.pdb

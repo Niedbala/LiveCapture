@@ -1,0 +1,13 @@
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\obj\Debug\Smo.Analyzer.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\obj\Debug\Smo.Analyzer.csproj.CoreCompileInputs.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\Smo.Analyzer.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\Smo.Analyzer.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\Smo.Common.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\Smo.Common.Public.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\System.Threading.Tasks.Dataflow.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\Smo.Common.Public.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\Smo.Common.pdb
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\bin\Debug\System.Threading.Tasks.Dataflow.xml
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\obj\Debug\Smo.Analyzer.csproj.CopyComplete
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\obj\Debug\Smo.Analyzer.dll
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Analyzer\obj\Debug\Smo.Analyzer.pdb

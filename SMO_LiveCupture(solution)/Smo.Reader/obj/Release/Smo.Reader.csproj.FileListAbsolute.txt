@@ -1,0 +1,2 @@
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Reader\obj\Release\Smo.Reader.csprojAssemblyReference.cache
+C:\Users\pniedbala\Desktop\LiveCapture\SMO_LiveCupture(solution)\Smo.Reader\obj\Release\Smo.Reader.csproj.CoreCompileInputs.cache
