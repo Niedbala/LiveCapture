@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="PacketDotNet" Version="0.18.0" />
     <PackageReference Include="SharpPcap" Version="4.5.0" />
   </ItemGroup>
